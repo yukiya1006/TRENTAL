@@ -1,0 +1,30 @@
+<header class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
+      <!--<a class="ml-3 text-xl" href="/"><span>TRENTAL</span></a>-->
+      <%= image_tag 'TrentaL.png', :size =>'150x150'%>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <% if user_signed_in? %>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </a>
+    <% elsif trainer_signed_in? %>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "ログアウト", destroy_trainer_session_path, method: :delete %>
+      </a>
+    <% elsif admin_signed_in? %>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </a>
+    <% else %>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "新規登録", new_user_registration_path %>
+      </a>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "トレーナー登録", new_trainer_registration_path %>
+      </a>
+    <% end %>
+    </nav>
+  </div>
+</header>
