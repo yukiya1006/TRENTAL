@@ -1,0 +1,21 @@
+<div class="container px-32 mx-auto">
+  <%= form_with model:@trainer, local:true do |f| %>
+  <form class="grid grid-cols-1 gap-6 m-20">
+    <div>
+      <%= f.label :メールアドレス %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div>
+      <%= f.label :タイトル %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.file_field :image, accept: "image/*"  %>
+      <%#= attachment_image_tag trainer, :profile_image, fallback: '240ec862387d03003cb4c41cd93cb0be.png', onClick: "$('.img_field').click()", %>
+    </div>
+    <div>
+      <%= f.submit %>
+    </div>
+    <% end %>
+  </form>
+</div>

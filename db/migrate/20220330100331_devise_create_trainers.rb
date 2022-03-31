@@ -6,6 +6,17 @@ class DeviseCreateTrainers < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :name,               null: false, default: ""
+      t.text :title
+      t.text :introduction
+      t.string :area
+      t.string :activity_area
+      t.string :age
+      t.string :height
+      t.string :weight
+      t.string :body
+      t.string :profession
+      t.string :guidance_fee
 
       ## Recoverable
       t.string   :reset_password_token

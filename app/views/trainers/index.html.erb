@@ -1,0 +1,16 @@
+<div class="bg-blue-300 py-10">
+  <div class="text-6xl">トレーナー検索ページ</div>
+<p class="text-2xl pt-5">トレーナーを一覧で表示、検索結果も同じページで表示</p>
+<div class="flex flex-wrap justify-center space-x-10 font-sans">
+  <% @trainer.each do |trainer| %>
+<div>
+<% if trainer.image.attached? %>
+  <%= image_tag trainer.image, size:'300x300', class: "rounded-full overflow-hidden" %>
+  <% else %>
+  <%= image_tag ("240ec862387d03003cb4c41cd93cb0be.png"), size: '400x400', class: "rounded-full overflow-hidden" %>
+  <% end %>
+  <%= trainer.title %>
+</div>
+<% end %>
+</div>
+</div>

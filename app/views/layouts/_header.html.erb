@@ -9,7 +9,16 @@
       <a class="mr-5 hover:text-gray-900">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </a>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "トレーナーを探す", trainers_path %>
+      </a>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "マイページ", user_path(current_user) %>
+      </a>
     <% elsif trainer_signed_in? %>
+    　<a class="mr-5 hover:text-gray-900">
+        <%= link_to "マイページ", trainer_path(current_trainer) %>
+      </a>
       <a class="mr-5 hover:text-gray-900">
         <%= link_to "ログアウト", destroy_trainer_session_path, method: :delete %>
       </a>
@@ -24,6 +33,13 @@
       <a class="mr-5 hover:text-gray-900">
         <%= link_to "トレーナー登録", new_trainer_registration_path %>
       </a>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "ユーザーログイン", new_user_session_path %>
+      </a>
+      <a class="mr-5 hover:text-gray-900">
+        <%= link_to "トレーナーログイン", new_trainer_session_path %>
+      </a>
+
     <% end %>
     </nav>
   </div>

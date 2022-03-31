@@ -1,0 +1,24 @@
+<div class="items-center">
+  <div class="text-6xl">トレーナーマイページ</div>
+
+  <p class="text-2xl pt-5">メールアドレス　<%= @trainer.email %></p>
+  <p class="text-2xl pt-5">タイトル　<%= @trainer.title %></p>
+  <% if @trainer.image.attached? %>
+  <%= image_tag @trainer.image, size:'100x100' %>
+  <% else %>
+  <%= image_tag ("240ec862387d03003cb4c41cd93cb0be.png"), size: '100x100' %>
+  <% end %>
+
+  <% if @trainer.bookmarked_by?(current_trainer) %>
+    <td><%= link_to "ブックマークを外す", trainer_bookmarks_path(@trainer), method: :delete %></td>
+  <% else %>
+    <td><%= link_to "ブックマーク", trainer_bookmarks_path(@trainer), method: :post %></td>
+  <% end %>
+
+  <div class="m-3">
+    <button class="px-2 py-1 bg-blue-400 text-xl text-white font-semibold rounded hover:bg-blue-500">
+      <%= link_to '編集', edit_trainer_path(@trainer) %>
+    </button>
+  </div>
+
+</div>
