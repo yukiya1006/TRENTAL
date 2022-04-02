@@ -1,20 +1,19 @@
 <div class="items-center">
   <div class="text-6xl">トレーナーマイページ</div>
 
+　<% if @trainer.image.attached? %>
+  <%= image_tag @trainer.image, size:'200x200' %>
+  <% else %>
+  <%= image_tag ("noimage.jpg"), size: '100x100' %>
+  <% end %>
+
   <p class="text-2xl pt-5">メールアドレス　<%= @trainer.email %></p>
-  <p class="text-2xl pt-5">タイトル　<%= @trainer.title %></p>
-  <% if @trainer.image.attached? %>
-  <%= image_tag @trainer.image, size:'100x100' %>
-  <% else %>
-  <%= image_tag ("240ec862387d03003cb4c41cd93cb0be.png"), size: '100x100' %>
-  <% end %>
-
-  <% if @trainer.bookmarked_by?(current_trainer) %>
-    <td><%= link_to "ブックマークを外す", trainer_bookmarks_path(@trainer), method: :delete %></td>
-  <% else %>
-    <td><%= link_to "ブックマーク", trainer_bookmarks_path(@trainer), method: :post %></td>
-  <% end %>
-
+  <p class="text-2xl pt-5">名前　<%= @trainer.name %></p>
+  <p class="text-2xl pt-5">年齢　<%= @trainer.age %></p>
+  <p class="text-2xl pt-5">性別　<%= @trainer.gender %></p>
+  <p class="text-2xl pt-5">設定料金　<%= @trainer.rental_price %></p>
+  <p class="text-2xl pt-5">エリア　<%= @trainer.activity_area %></p>
+  <p class="text-2xl pt-5">紹介文　<%= @trainer.biography %></p>
   <div class="m-3">
     <button class="px-2 py-1 bg-blue-400 text-xl text-white font-semibold rounded hover:bg-blue-500">
       <%= link_to '編集', edit_trainer_path(@trainer) %>
@@ -22,3 +21,44 @@
   </div>
 
 </div>
+
+<div cllass="grid grid-cols-2">
+  <div></div>
+  <div class="bg-purple-200 flex justify-center">
+  <%= form_with model: @post, url: trainer_post_path(@trainer.id), local: true do |form| %>
+  <p><%= form.label :title %><br>
+  <%= form.text_field :title %></p>
+  <p><%= form.label :body %><br>
+  <%= form.text_area :body %></p>
+  <p><%= form.submit %></p>
+  <% end %>
+  </div>
+</div>
+
+<h2>gmap</h2>
+<!-- form_withはデフォルトでremote: trueの挙動になります -->
+<%= form_with url: map_request_path, method: :get do |f|%>
+  <%= f.text_field :address %>
+  <%= f.submit '地図表示' %>
+<% end %>
+
+<div id="map">
+</div>
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
+
+<script>
+  let mapInstance //この変数はmap.js.erbでも使うのでタイプミスに注意
+
+  function initMap(){
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api&/js?key=AIzaSyCiPqVa_P-3EFk3jRLADQdAkpMoAhItO3g&callback=initMap" async defer></script>

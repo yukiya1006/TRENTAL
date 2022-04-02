@@ -6,6 +6,8 @@ class User < ApplicationRecord
   
   has_one_attached :image
   has_many :bookmarks, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
   
  def get_profile_image(width, height)
 #   unless profile_image.attached?

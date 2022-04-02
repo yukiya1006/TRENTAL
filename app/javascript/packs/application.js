@@ -11,4 +11,5 @@ import '../../assets/stylesheets/application.scss'
 
 Rails.start()
 Turbolinks.start()
+data.turbolinks.track()
 ActiveStorage.start()

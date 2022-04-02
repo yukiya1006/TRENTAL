@@ -56,5 +56,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'carrierwave'
-gem 'mini_magick', '~> 4.8'
+gem 'jp_prefecture'
+gem 'jquery-rails'
+gem "gon"

@@ -1,0 +1,2 @@
+class RentalTrainer < ApplicationRecord
+end

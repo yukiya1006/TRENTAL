@@ -33,7 +33,9 @@
         <p class="leading-relaxed text-base">1時間/3000円からレンタルが可能です</p>
       </div>
     </div>
-    <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索してみる</button>
+    <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+      <%= link_to "検索してみる", trainers_path %>
+    </button>
   </div>
 </section>
 
@@ -43,19 +45,17 @@
   <% @trainer.each do |trainer| %>
 <div>
 <% if trainer.image.attached? %>
-  <%= link_to trainer_path(trainer.id) do %>
+  <%= link_to rental_trainer_path(trainer.id) do %>
     <%= image_tag trainer.image, size:'250x250', class: "rounded-full overflow-hidden" %>
   <% end %>
   <% else %>
-  <%= image_tag ("240ec862387d03003cb4c41cd93cb0be.png"), size: '250x250', class: "rounded-full overflow-hidden" %>
+  <%= image_tag ("noimage.jpg"), size: '250x250', class: "rounded-full overflow-hidden" %>
   <% end %>
-  <%= trainer.title %>
-  <% if trainer.bookmarked_by?(current_trainer) %>
-    <td><%= link_to "お気に入りを外す", trainer_bookmarks_path(trainer), method: :delete %></td>
-  <% else %>
-    <td><%= link_to "お気に入り", trainer_bookmarks_path(trainer), method: :post %></td>
-  <% end %>
+  <%= trainer.name %>
 </div>
 <% end %>
 </div>
 </div>
+
+
+

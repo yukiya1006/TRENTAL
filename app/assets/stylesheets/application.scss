@@ -17,9 +17,3 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
-.img_prev:hover {
-  cursor: pointer; 
-  opacity: 0.7;
-  transform: scale(1.01, 1.01);
-}

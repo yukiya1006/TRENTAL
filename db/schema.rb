@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_31_123032) do
+ActiveRecord::Schema.define(version: 2022_04_01_082940) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,20 +61,84 @@ ActiveRecord::Schema.define(version: 2022_03_31_123032) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "trainer_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["trainer_id"], name: "index_entries_on_trainer_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "trainer_id", null: false
+    t.integer "room_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["trainer_id"], name: "index_messages_on_trainer_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "trainer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rental_trainers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "trainer_name", default: "", null: false
+    t.string "age"
+    t.string "gender"
+    t.string "activity_area"
+    t.string "rental_price"
+    t.text "biography"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "trainer_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
+    t.index ["trainer_id"], name: "index_tag_maps_on_trainer_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "trainers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
-    t.text "title"
-    t.text "introduction"
-    t.string "area"
-    t.string "activity_area"
-    t.string "age"
-    t.string "height"
-    t.string "weight"
-    t.string "body"
-    t.string "profession"
-    t.string "guidance_fee"
+    t.integer "postal_code", null: false
+    t.string "prefecture_code", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "other_address"
+    t.integer "age"
+    t.integer "gender"
+    t.integer "activity_area"
+    t.integer "rental_price"
+    t.text "biography"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -87,10 +151,10 @@ ActiveRecord::Schema.define(version: 2022_03_31_123032) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -101,4 +165,12 @@ ActiveRecord::Schema.define(version: 2022_03_31_123032) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "trainers"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "trainers"
+  add_foreign_key "entries", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "trainers"
+  add_foreign_key "messages", "users"
+  add_foreign_key "tag_maps", "tags"
+  add_foreign_key "tag_maps", "trainers"
 end

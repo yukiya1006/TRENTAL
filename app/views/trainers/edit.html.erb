@@ -1,21 +1,40 @@
-<div class="container px-32 mx-auto">
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex justify-center items-center bg-gray-400">
   <%= form_with model:@trainer, local:true do |f| %>
-  <form class="grid grid-cols-1 gap-6 m-20">
-    <div>
+  <form class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+    <div class="py-4">
       <%= f.label :メールアドレス %><br>
       <%= f.text_field :email %>
     </div>
-    <div>
-      <%= f.label :タイトル %><br>
-      <%= f.text_field :title %>
+    <div class="py-4">
+      <%= f.label :名前 %><br>
+      <%= f.text_field :name %>
     </div>
-    <div>
+    <div class="py-4">
+      <%= f.label :プロフィール画像 %><br>
       <%= f.file_field :image, accept: "image/*"  %>
-      <%#= attachment_image_tag trainer, :profile_image, fallback: '240ec862387d03003cb4c41cd93cb0be.png', onClick: "$('.img_field').click()", %>
     </div>
-    <div>
+    <div class="py-4">
+      <%= f.label :プロフィール %><br>
+      <%= f.text_field :biography %>
+    </div>
+    <div class="py-4">
+      <%= f.select :activity_area, options_for_select(Trainer.activity_areas), {prompt: "選択してください"} %>
+    </div>
+    <div class="py-4">
+    　<%= f.select :age, options_for_select(Trainer.ages), {prompt: "選択してください"} %>
+    </div>
+    <div class="py-4">
+      <%= f.select :gender, options_for_select(Trainer.genders), {prompt: "選択してください"} %>
+    </div>
+    <div class="py-4">
+      <%= f.select :rental_price, options_for_select(Trainer.rental_prices), {prompt: "選択してください"} %>
+    </div>
+    <div class="py-4">
       <%= f.submit %>
     </div>
     <% end %>
   </form>
 </div>
+</section>
+

@@ -1,0 +1,9 @@
+<% @trainer.posts.each do |post| %>
+  <%= post.title %>
+  <%= post.body %>
+<% end %>
+
+<% if @post.trainer_id == @current_trainer.id %>
+  <%= link_to("編集","trainers/#{@post.id}/edit") %>
+  <%= link_to("削除","trainers/#{@post.id}/destroy",{method:"post"}) %>
+<% end %>
