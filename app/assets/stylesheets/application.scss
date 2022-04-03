@@ -17,3 +17,9 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.slider img {
+    width: 100%;
+    height: 30vw;
+    object-fit: cover;
+}

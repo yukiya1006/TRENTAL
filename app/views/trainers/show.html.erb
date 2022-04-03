@@ -25,40 +25,13 @@
 <div cllass="grid grid-cols-2">
   <div></div>
   <div class="bg-purple-200 flex justify-center">
-  <%= form_with model: @post, url: trainer_post_path(@trainer.id), local: true do |form| %>
-  <p><%= form.label :title %><br>
-  <%= form.text_field :title %></p>
-  <p><%= form.label :body %><br>
-  <%= form.text_area :body %></p>
-  <p><%= form.submit %></p>
+  <%= form_with(model: @post, local: true, multipart: true) do |f| %>
+  <p><%= f.label :title %><br>
+  <%= f.text_field :title %></p>
+  <p><%= f.label :body %><br>
+  <%= f.text_area :body %></p>
+  <p><%= f.submit %></p>
   <% end %>
   </div>
 </div>
 
-<h2>gmap</h2>
-<!-- form_withはデフォルトでremote: trueの挙動になります -->
-<%= form_with url: map_request_path, method: :get do |f|%>
-  <%= f.text_field :address %>
-  <%= f.submit '地図表示' %>
-<% end %>
-
-<div id="map">
-</div>
-
-<style>
-#map{
-  height: 400px;
-}
-</style>
-
-<script>
-  let mapInstance //この変数はmap.js.erbでも使うのでタイプミスに注意
-
-  function initMap(){
-    mapInstance = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-    });
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api&/js?key=AIzaSyCiPqVa_P-3EFk3jRLADQdAkpMoAhItO3g&callback=initMap" async defer></script>

@@ -10,9 +10,10 @@ Rails.application.routes.draw do
 
   resources :trainers, only: [:index, :show, :edit, :update] do
     resource :bookmarks, only: [:create, :destroy]
-    resources :posts
-    post 'trainer/:id//show' => 'posts#show'
   end
+
+  resources :posts, only: [:index,:show,:edit,:create,:destroy,:update]
+  post 'trainers/:id' => 'posts#show'
 
   get '/map_request', to: 'maps#map', as: 'map_request'
 
@@ -22,6 +23,13 @@ Rails.application.routes.draw do
     resources :trainers, only: [:index, :show, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
   end
+  
+  resources :maps
+  
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :index, :show]
+  
+  get 'latlngsearch/:lat/:lng' => 'posts#search', constraints: { lat: /\d+\.\d+/, lng: /\d+\.\d+/ }
 
 
 end

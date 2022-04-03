@@ -10,22 +10,22 @@ class Trainer < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
   has_many :posts, dependent: :destroy
-  
-  validates :postal_code, presence: true
-  validates :prefecture_code, presence: true
-  validates :city, presence: true
-  validates :street, presence: true
-  
-include JpPrefecture
-jp_prefecture :prefecture_code
+  has_many :users
 
-def prefecture_name
-  JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-end
 
-def prefecture_name=(prefecture_name)
-  self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
-end
+  geocoded_by :address
+  after_validation :geocode
+
+# include JpPrefecture
+# jp_prefecture :prefecture_code
+
+# def prefecture_name
+#   JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+# end
+
+# def prefecture_name=(prefecture_name)
+#   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+# end
 
   def user
   #インスタンスメソッドないで、selfはインスタンス自身を表す

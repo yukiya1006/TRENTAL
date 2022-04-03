@@ -5,7 +5,7 @@ class TrainersController < ApplicationController
 
   def show
     @trainer = current_trainer
-    gon.trainers = Trainer.all
+    @posts = Post.new
   end
 
   def edit
@@ -29,7 +29,7 @@ class TrainersController < ApplicationController
   @latlng = results.first.coordinates
   # これでmap.js.erbで、経度緯度情報が入った@latlngを使える。
   end
-  
+
   def map
   # respond_to以下の記述によって、
   # remote: trueのアクセスに対して、
@@ -50,7 +50,8 @@ class TrainersController < ApplicationController
     :name,
     :biography,
     :image,
-    :email, :postal_code, :prefecture_code, :city, :street, :other_address)
+    :email,
+    :address,)
     .merge(activity_area: params[:trainer][:activity_area].to_i)
     .merge(gender: params[:trainer][:gender].to_i)
     .merge(age: params[:trainer][:age].to_i)

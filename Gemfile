@@ -59,3 +59,6 @@ gem 'devise'
 gem 'jp_prefecture'
 gem 'jquery-rails'
 gem "gon"
+gem "geocoder"
+gem 'dotenv-rails'
+gem "gmaps4rails"
