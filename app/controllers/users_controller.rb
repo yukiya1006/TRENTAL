@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings
+    user = User.find(params[:trainer_id])
+    @trainers = user.followings
+  end
+
   private
 
   def user_params

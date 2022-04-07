@@ -7,13 +7,9 @@ class DeviseCreateTrainers < ActiveRecord::Migration[6.1]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :name,               null: false, default: ""
-      t.string :address
-      t.float :latitude
-      t.float :longitude
       t.integer :age
       t.integer :gender
       t.integer :activity_area
-      t.integer :rental_price
       t.text :biography
 
       ## Recoverable

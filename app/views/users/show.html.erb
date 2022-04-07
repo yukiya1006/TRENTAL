@@ -1,1 +1,11 @@
 <div class="text-6xl">ユーザーマイページ</div>
+<% if current_user.present? %>
+  <p>こんにちは、<%= @user.name %>さん！</p>
+<% else %>
+  <p>こんにちは、ゲストさん！</p>
+<% end %>
+
+
+<%= link_to @user.followings.count, user_followings_path(@user) %>
+
+

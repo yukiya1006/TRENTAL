@@ -7,22 +7,13 @@
     <%= image_tag ("noimage.jpg"), size: '100x100' %>
     <% end %>
   </div>
-  <div></div>
+  <% if user_signed_in? %>
+  <div>
+    <%= link_to "Chat Start", chat_path(@trainer.id) %>
+  </div>
   <div class="text-center col-span-2 py-4">
     <%= @trainer.name %>
   </div>
+  <% end %>
 </div>
 
-<% unless @user.id == current_user.id %>
-  <% if @isRoom == true %>
-    <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
-      <% end %>
-      <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
-    <% end %>
-  <% end %>
-  <% end %>
-<% end %>

@@ -1,26 +1,32 @@
-<h2>Log in</h2>
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex justify-center items-center mb-8">
+    <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-md mt-10 md:mt-0">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Trainer Log in</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "trainers/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="relative mb-4">
+        <%= f.label :email, class: "leading-7 text-sm text-gray-600" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
+      </div>
+      <div class="relative mb-4">
+        <%= f.label :password, class: "leading-7 text-sm text-gray-600"  %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+      <div class="relative mb-4">
+        <%= f.check_box :remember_me, class: "leading-7 text-sm text-gray-600" %>
+        <%= f.label :remember_me, autocomplete: "new-password", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
+      <% end %>
+      </div>
+      <div class="relative mb-4">
+        <%= f.submit "Log in", class: "text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" %>
+        <% end %>
+        <div>登録がお済でない方</div>
+        <p><%= link_to "こちら", new_trainer_registration_path %> からログインしてください。</p>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "trainers/shared/links" %>
+</section>

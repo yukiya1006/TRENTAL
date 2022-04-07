@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_03_060918) do
+ActiveRecord::Schema.define(version: 2022_04_06_100911) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,24 +52,30 @@ ActiveRecord::Schema.define(version: 2022_04_03_060918) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "trainer_id", null: false
+  create_table "chat_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "trainer_id"
+    t.integer "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trainer_id"], name: "index_bookmarks_on_trainer_id"
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "entries", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "trainer_id", null: false
-    t.integer "room_id", null: false
+  create_table "chats", force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "user_id"
+    t.integer "trainer_id"
+    t.text "message"
+    t.boolean "is_trainer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_entries_on_room_id"
-    t.index ["trainer_id"], name: "index_entries_on_trainer_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "trainer_id"
+    t.integer "map_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "maps", force: :cascade do |t|
@@ -83,36 +89,9 @@ ActiveRecord::Schema.define(version: 2022_04_03_060918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "trainer_id", null: false
-    t.integer "room_id", null: false
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["trainer_id"], name: "index_messages_on_trainer_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.integer "trainer_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rental_trainers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "name", default: "", null: false
-    t.string "age"
-    t.string "gender"
-    t.string "activity_area"
-    t.string "rental_price"
-    t.text "biography"
-    t.integer "trainer_id"
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -122,32 +101,13 @@ ActiveRecord::Schema.define(version: 2022_04_03_060918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tag_maps", force: :cascade do |t|
-    t.integer "trainer_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
-    t.index ["trainer_id"], name: "index_tag_maps_on_trainer_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "tag_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "trainers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
     t.integer "age"
     t.integer "gender"
     t.integer "activity_area"
-    t.integer "rental_price"
     t.text "biography"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -173,14 +133,4 @@ ActiveRecord::Schema.define(version: 2022_04_03_060918) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookmarks", "trainers"
-  add_foreign_key "bookmarks", "users"
-  add_foreign_key "entries", "rooms"
-  add_foreign_key "entries", "trainers"
-  add_foreign_key "entries", "users"
-  add_foreign_key "messages", "rooms"
-  add_foreign_key "messages", "trainers"
-  add_foreign_key "messages", "users"
-  add_foreign_key "tag_maps", "tags"
-  add_foreign_key "tag_maps", "trainers"
 end

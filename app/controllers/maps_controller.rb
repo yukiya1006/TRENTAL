@@ -1,7 +1,19 @@
 class MapsController < ApplicationController
-   def index
+
+    def new
+      @map = Map.new
+      @maps = Map.all
+    end
+
+    def index
+      @map = Map.new
+         # クエリ検索が空だったら
+      if params[:q].blank?
         @maps = Map.all
-        @map = Map.new
+      else
+        # クエリ検索でアドレスの情報を持ったmapを探す
+        @maps = Map.where(address: params[:q])
+      end
     end
 
     def show
@@ -12,7 +24,7 @@ class MapsController < ApplicationController
         map = Map.new(map_params)
         map.trainer_id = current_trainer.id
         if map.save
-            redirect_to maps_path(@map), notice: "You have created book successfully."
+            redirect_to maps_path(@map), notice: "You have created successfully."
         else
             redirect_to :action => "index"
         end

@@ -1,0 +1,9 @@
+ <% if map.liked_by?(current_user) %>
+   <%= link_to map_likes_path(map), method: :delete, remote: true do %>
+   <%= map.likes.count %> いいね
+ <% end %>
+ <% else %>
+    <%= link_to map_likes_path(map), method: :post, remote: true do %>
+    <%= map.likes.count %> いいね
+  <% end %>
+  <% end %>

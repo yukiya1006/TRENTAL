@@ -1,70 +1,44 @@
 class Trainer < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
 
-  has_many :bookmarks, dependent: :destroy
-  has_many :tag_maps, dependent: :destroy
-  has_many :tags, through: :tag_maps
-  has_many :posts, dependent: :destroy
-  has_many :users
+  has_many :rooms, through: :chat_rooms
+  has_many :chat_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :maps
 
+  # トレーナーはrelationshipsを通してfollowd_id(フォローされた)を複数持つ
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
-  geocoded_by :address
-  after_validation :geocode
+  # 全てのfollower（フォローした人）を見つける
+  has_many :followers, through: :reverse_of_relationships, source: :follower
 
-# include JpPrefecture
-# jp_prefecture :prefecture_code
+  enum activity_area: { 東京都:0,神奈川県:1,千葉:2,埼玉:3 }
 
-# def prefecture_name
-#   JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-# end
+  enum gender: { 男性:0,女性:1 }
 
-# def prefecture_name=(prefecture_name)
-#   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
-# end
+  enum age: { "20~25歳":0,"26~30歳":1,"30~35歳":2,"35~40歳":3,"40~45歳":4,"45歳以上":5 }
 
-  def user
-  #インスタンスメソッドないで、selfはインスタンス自身を表す
-    return User.find_by(id: self.user_id)
+  def followers?(user)
+    followers.include?(user)
   end
-
-  def posts
-    return Post.where(user_id: self.id)
-  end
-
-  def bookmarked_by?(user)
-    bookmarks.where(user_id: user).exists?
-  end
-
-  enum activity_area: {
-    北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
-    茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
-    新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
-    岐阜県:21,静岡県:22,愛知県:23,三重県:24,
-    滋賀県:25,京都府:26,大阪府:27,兵庫県:28,奈良県:29,和歌山県:30,
-    鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
-    徳島県:36,香川県:37,愛媛県:38,高知県:39,
-    福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
-  }
-
-  enum gender: { 男性:1, 女性:2 }
-
-  enum age: { "20代":1, "30代":2, "40代":3, "50代":4, "歳以上":5 }
-
-  enum rental_price: { "3000円":1, "4000円":2, "5000円":3 }
-
 
 
   def get_image(width, height)
-  # unless image.attached?
-  #   file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
-  #   image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  # end
-  # image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def self.search(activity_area, gender, age, keyword)
+    if search
+      where.('activity_area = ? AND gender = ? AND age = ? AND biography LIKE ?',
+             "#{activity_area}", "#{gender}", "#{age}", "%#{keyword}%")
+    else
+      trainer.all
+    end
+  end
+
+  # Memo : Controller
+  # Trainer.search(params[:activity_area], params[:gender], params[:age], params[:keyword])
 
 end

@@ -1,0 +1,19 @@
+<h1>User Chat Show</h1>
+<%= form_with model: @chat do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :trainer_id %>
+  <%= f.submit %>
+<% end %>
+
+<% @chats.each do |chat| %>
+  <% unless chat.is_trainer %>
+    <div class="text-right">
+      <%= chat.user.email %> / <%= chat.message %>
+    </div>
+  <% else %>
+    <div class="text-left">
+      <%= chat.trainer.email %> / <%= chat.message %>
+    </div>
+  <% end %>
+<% end %>

@@ -3,19 +3,36 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_one_attached :image
-  has_many :bookmarks, dependent: :destroy
-  has_many :entries, dependent: :destroy
-  has_many :messages, dependent: :destroy
-  has_many :trainers
-  
- def get_profile_image(width, height)
-#   unless profile_image.attached?
-#     file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
-#     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-#   end
-#   profile_image.variant(resize_to_limit: [width, height]).processed
-  end
+
+  has_many :rooms, through: :chat_rooms
+  has_many :chat_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :likes
+
+  # ユーザーはrelationshipsを通してfollower_id(フォローした)を複数持つ
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+
+  # 全てのfollowed（フォローされた人）を見つけて一覧表示
+  has_many :followings, through: :relationships, source: :followed
+
+# フォローしたときの処理
+def follow(trainer_id)  # 引数にフォロー相手を指定
+  relationships.create(followed_id: trainer_id) #トレーナーをフォローしたらtrainer_idを持ったfollowed_idが生成される
+end
+# フォローを外すときの処理
+def unfollow(trainer_id)
+  relationships.find_by(followed_id: trainer_id).destroy #フォロー解除したらfollowed_idからtrainer_idを見つけて削除される
+end
+# フォローしているか判定
+def following?(trainer)
+  followings.include?(trainer)
+end
+
+def get_profile_image(width, height)
+end
+
+
 end
 
