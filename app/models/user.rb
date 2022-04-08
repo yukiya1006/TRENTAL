@@ -10,7 +10,13 @@ class User < ApplicationRecord
   has_many :chat_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :likes
-
+  has_many :dislikes
+  
+  has_many :good_evaluations
+  def good_evaluation_count
+    self.good_evaluations.count
+  end
+  
   # ユーザーはrelationshipsを通してfollower_id(フォローした)を複数持つ
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
 

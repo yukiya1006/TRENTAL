@@ -21,11 +21,18 @@ Rails.application.routes.draw do
   resources :trainers, only: [:index, :show, :edit, :update] do
     post 'followers' => 'relationships#create', as: 'follow'
     delete 'followers' => 'relationships#destroy', as: 'unfollow'
+    resources :likes, only: :create
+    resources :dislikes, only: :create
+
   end
 
   resources :maps
   # マップの検索クエリ
   get '/map_request', to: 'maps#map', as: 'map_request'
+
+  get 'search' => 'trainers#search'
+  get 'tags/:tag', to: 'maps#index', as: :tag
+
 
 
 
@@ -36,7 +43,7 @@ Rails.application.routes.draw do
 
 
 
-  # post 'likes/:id' => 'likes#create', as: 'create_like'
+
 
   # get 'latlngsearch/:lat/:lng' => 'posts#search', constraints: { lat: /\d+\.\d+/, lng: /\d+\.\d+/ }
 

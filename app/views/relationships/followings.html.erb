@@ -1,20 +1,25 @@
-<div class="grid grid-cols-1">
-  <!--<div>-->
-  <div class="">
-    <div class="grid col-span-2">
-      <% @trainers.each do |trainer| %>
+<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
+
+<div class="">
+  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
+    <% @trainers.each do |trainer| %>
+    <div class="col-span-1">
       <% if trainer.image.attached? %>
         <%= link_to trainer_path(trainer.id) do %>
-        <%= image_tag trainer.image, size:'150x150', class: "rounded-full overflow-hidden" %>
-      <% end %>
+          <!--mx-autoでイメージを中央に配置-->
+        <%= image_tag trainer.image, size:'200x200', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+        <% end %>
       <% else %>
         <%= link_to trainer_path(trainer.id) do %>
-      <%= image_tag ("noimage.jpg"), size: '150x150', class: "rounded-full overflow-hidden" %>
+          <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+        <% end %>
       <% end %>
-      <% end %>
-        <%= trainer.name %>
-      <% end %>
+        <div class="text-center md:text-left">
+          <h2 class="text-lg"><%= trainer.name %></h2>
+        </div>
     </div>
+    <% end %>
   </div>
-  <!--</div>-->
 </div>
+
+

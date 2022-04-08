@@ -1,68 +1,45 @@
-<div class="flex flex-col">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-6 inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="overflow-hidden">
-        <%= render 'layouts/error', obj: @trainer %>
-        <%= form_with model:@trainer, local:true do |f| %>
-        <table class="min-w-full text-center">
-          <thead>
-            <tr>
-              <th scope="col" class="text-sm font-medium px-6 py-4">
-                Email
-              </th>
-              <th scope="col" class="text-sm font-medium px-6 py-4">
-                Name
-              </th>
-               <th scope="col" class="text-sm font-medium px-6 py-4">
-                Image
-              </th>
-              <th scope="col" class="text-sm font-medium px-6 py-4">
-                Gender
-              </th>
-              <th scope="col" class="text-sm font-medium px-6 py-4">
-                Age
-              </th>
-              <th scope="col" class="text-sm font-medium px-6 py-4">
-                Area
-              </th>
-              <th scope="col" class="text-sm font-medium px-6 py-4">
-                Biography
-              </th>
-              <th scope="col" class="text-sm font-medium px-6 py-4">
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-sm font-light py-4 whitespace-nowrap">
-                <%= f.text_field :email %>
-              </td>
-              <td class="text-sm font-light py-4 whitespace-nowrap">
-                <%= f.text_field :name %>
-              </td>
-              <td class="text-sm font-light py-4 whitespace-nowrap">
-                <%= f.file_field :image, accept: "image/*" %>
-              </td>
-              <td class="text-sm font-light py-4 whitespace-nowrap">
-                <%= f.select :gender, options_for_select(Trainer.genders) %>
-              </td>
-              <td class="text-sm font-light py-4 whitespace-nowrap">
-                <%= f.select :age, options_for_select(Trainer.ages) %>
-              </td>
-              <td class="text-sm font-light py-4 whitespace-nowrap">
-                <%= f.select :activity_area, options_for_select(Trainer.activity_areas) %>
-              </td>
-              <td class="text-sm font-light py-4 whitespace-nowrap">
-                <%= f.text_area :biography, class: 'w-full h-32 ml-6' %>
-              </td>
-              <td class="py-4 whitespace-nowrap">
-                <%= f.submit 'Submit', class: 'px-2 py-1 text-xl text-gray-900 text-white font-semibold rounded' %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <% end %>
-      </div>
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex justify-center items-center mb-8">
+    <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-md mt-10 md:mt-0">
+
+      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Edit</h2>
+      <%= form_with model: @trainer, local: true do |f| %>
+　　　<%= render 'layouts/error', obj: @trainer %>
+
+        <div class="relative mb-4">
+          <%= f.label :email, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :name, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :image, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :gender, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.select :gender, options_for_select(Trainer.genders) %><br />
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :age, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.select :age, options_for_select(Trainer.ages) %><br />
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :activity_area, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.select :activity_area, options_for_select(Trainer.activity_areas) %><br />
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :biography, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.text_area :biography, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
+        </div>
+
+        <div class="relative mb-4">
+          <%= f.submit 'Update', class: 'px-2 py-1 text-xl text-gray-900 bg-blue-300 font-semibold rounded' %>
+        </div>
+　　　<% end %>
+
     </div>
   </div>
-</div>
+</section>

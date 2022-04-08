@@ -1,18 +1,30 @@
-<h1>Trainer Chat</h1>
-<%= form_with model: @chat, url: trainer_chats_path do |f| %>
-  <%= f.text_field :message %>
-  <%= f.hidden_field :room_id %>
-  <%= f.hidden_field :user_id %>
-  <%= f.submit %>
-<% end %>
+<div id="chats">
+<div class="text-center"><%="#{@chat.user.name}さんとのチャット"%></div>
 <% @chats.each do |chat| %>
   <% if chat.is_trainer %>
-    <div class="text-right">
-      <%= chat.trainer.email %> / <%= chat.message %>
-    </div>
+      <div class="mycomment">
+        <p><%=chat.message%></p>
+      </div>
   <% else %>
-    <div class="text-left">
-      <%= chat.user.email %> / <%= chat.message %>
+    <div class="fukidasi">
+      <div class="faceicon">
+        <%= chat.user.name %>
+      </div>
+      <div class="chatting">
+        <div class="says">
+          <p><%=chat.message%></p>
+        </div>
+      </div>
     </div>
   <% end %>
 <% end %>
+
+<div class=" text-center">
+  <%= form_with model: @chat do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.submit "送信", class: "btn btn-info btn-xs" %>
+ <% end %>
+</div>
+</div>

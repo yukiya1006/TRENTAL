@@ -1,41 +1,45 @@
-<div class="grid grid-rows-3 grid-flow-col bg-gray-200 py-4 gap-2">
+<div class="grid grid-rows-3 grid-flow-col sm:grid-col-1 bg-gray-200 py-4">
   <!--写真col-->
     <div class="row-span-3 col-span-2 mx-auto my-auto text-center">
       <%= @trainer.name %>
       <% if @trainer.image.attached? %>
-        <%= image_tag @trainer.image, size:'250x250', class: "rounded-full mt-2" %>
+        <%= image_tag @trainer.image, size:'200x200', class: "rounded-full mt-2" %>
       <% else %>
-        <%= image_tag ("noimage.jpg"), size: '100x100' %>
+        <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full mt-2" %>
       <% end %>
 
-      <div class="flex justify-center  mt-2">
-        <div class="chat-button bg-white">
-        <button>
-          <% if trainer_signed_in? %>
+      <div class="flex justify-center mt-2 gap-5">
+        <div>
+          <% if @trainer == current_trainer %>
+           <button class="btn btn-accent">
           <%= link_to 'Edit', edit_trainer_path(@trainer) %>
+           </button>
           <% elsif user_signed_in? %>
+           <button class="btn btn-accent">
           <%= link_to "Chat", chat_path(@trainer.id) %>
+          </button>
           <% else %>
           <% end %>
-        </button>
       </div>
 
       <% if user_signed_in? %>
-      <div class="chat-button bg-white">
-        <button>
+      <div>
           <% if user_signed_in? %>
           <% if current_user.following?(@trainer) %>
-            <%= link_to "Follow", trainer_unfollow_path(@trainer.id), method: :delete %>
+          <button class="btn btn-primary">
+            <%= link_to "Unfollow", trainer_unfollow_path(@trainer.id), method: :delete %>
+          </button>
           <% else %>
-            <%= link_to "Unfollow", trainer_follow_path(@trainer.id), method: :post %>
+          <button class="btn btn-secondary">
+            <%= link_to "Follow", trainer_follow_path(@trainer.id), method: :post %>
+          </button>
           <% end %>
           <% end %>
-        </button>
       </div>
       <% end %>
       </div>
-
     </div>
+
     <!--プロフィールcol-->
     <div class="row-span-2 col-span-2 my-auto">
       <%= @trainer.email %><br>
@@ -48,43 +52,4 @@
       <%= @trainer.biography %>
     </div>
 </div>
-
-
-
-<style>
-.chat-button {
-
- width: 5rem;
- height: 3em;
- border-radius: 30em;
- font-size: 15px;
- font-family: inherit;
- border: none;
- position: relative;
- display: flex;
- justify-content :center;
- overflow: hidden;
- z-index: 1;
- box-shadow: 6px 6px 12px #c5c5c5,
-             -6px -6px 12px #ffffff;
-}
-
-.chat-button::before {
- content: '';
- width: 0;
- height: 3em;
- border-radius: 30em;
- position: absolute;
- top: 0;
- left: 0;
- background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
- transition: .5s ease;
- display: block;
- z-index: -1;
-}
-
-.chat-button:hover::before {
- width: 100%;
-}
-</style>
 

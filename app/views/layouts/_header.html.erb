@@ -1,57 +1,82 @@
-<header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
-      <!--<a class="ml-3 text-xl" href="/"><span>TRENTAL</span></a>-->
-      <%= image_tag 'TrentaL.png', :size =>'100x100'%>
-    </a>
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      <% if user_signed_in? %>
-      <a class="mr-5 hover:text-gray-900">
-        <%= link_to "トレーナーを探す", trainers_path %>
+<header class="bg-purple-500">
+  <div class="flex">
+      <a class="flex title-font font-medium items-center text-gray-900 md:mb-0" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span class="ml-3 text-xl">TRENTAL</span>
       </a>
-      <a class="mr-5 hover:text-gray-900">
+		<input id="menu-checkbox" type="checkbox" />
+		  <label class="menu-btn my-auto ml-auto" for="menu-checkbox">
+			  <i class="fas fa-bars"></i>
+		  </label>
+	<div class="nav-content">
+		<input id="menu-checkbox" type="checkbox" />
+		<label class="menu-btn" for="menu-checkbox">
+		  <i class="fas fa-times"></i>
+		</label>
+	  <nav class="nav-menu">
+			<ul>
+			<% if user_signed_in? %>
+      <% if current_user.present? %>
+			<p class="text-center">Welcome to <%= current_user.name %>！</p>
+      <% end %>
+      <li class="mr-5 hover:text-gray-900">
+        <%= link_to "トレーナーを探す", trainers_path %>
+      </li>
+      <li class="mr-5 hover:text-gray-900">
         <%= link_to "マイページ", user_path(current_user) %>
-      </a>
-       <a class="mr-5 hover:text-gray-900">
+      </li>
+       <li class="mr-5 hover:text-gray-900">
         <%= link_to "チャット履歴", chats_path %>
-      </a>
-       <a class="mr-5 hover:text-gray-900">
+      </li>
+      <li class="mr-5 hover:text-gray-900">
+        <%= link_to "お気に入り", user_followings_path(current_user) %>
+      </li>
+       <li class="mr-5 hover:text-gray-900">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </a>
-    <% elsif trainer_signed_in? %>
-      <a class="mr-5 hover:text-gray-900">
+      </li>
+      <% elsif trainer_signed_in? %>
+      <li class="mr-5 hover:text-gray-900">
         <%= link_to "マイページ", trainer_path(current_trainer) %>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
+      </li>
+      <li class="mr-5 hover:text-gray-900">
         <%= link_to "チャット履歴", trainer_chats_path %>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
+      </li>
+      <li class="mr-5 hover:text-gray-900">
         <%= link_to "ジムを登録", new_map_path %>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
+      </li>
+      <li class="mr-5 hover:text-gray-900">
         <%= link_to "ログアウト", destroy_trainer_session_path, method: :delete %>
-      </a>
-    <% elsif admin_signed_in? %>
-      <a class="mr-5 hover:text-gray-900">
+      </li>
+      <% elsif admin_signed_in? %>
+      <li class="mr-5 hover:text-gray-900">
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </a>
-    <% else %>
-      <a class="mr-5 hover:text-gray-900">
-        <%= link_to "トレーナーを探す", trainers_path %>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
-        <%= link_to "会員登録", new_user_registration_path %>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
+      </li>
+      <% else %>
+      <li class="flex">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 my-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+        <%= link_to "トレーナーを見つける", trainers_path %>
+      </li>
+      <li class="flex">
+        <svg class="h-5 w-5 text-blue-500 my-auto"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <path d="M16 11h6m-3 -3v6" /></svg>
+        <%= link_to "ユーザー登録", new_user_registration_path %>
+      </li>
+      <li class="ml-5">
+        <%= link_to "Login", new_user_session_path %>
+      </li>
+      <li class="flex">
+        <svg class="h-5 w-5 text-purple-500 my-auto"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <path d="M16 11h6m-3 -3v6" /></svg>
         <%= link_to "トレーナー登録", new_trainer_registration_path %>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
-        <%= link_to "ユーザーログイン", new_user_session_path %>
-      </a>
-      <a class="mr-5 hover:text-gray-900">
-        <%= link_to "トレーナーログイン", new_trainer_session_path %>
-      </a>
-    <% end %>
-    </nav>
+      </li>
+      <li class="ml-5">
+        <%= link_to "Login", new_trainer_session_path %>
+      </li>
+      <% end %>
+			</ul>
+		</nav>
+	</div>
+	<label class="nav-close" for="menu-checkbox"> </label>
   </div>
 </header>
+

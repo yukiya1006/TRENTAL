@@ -1,10 +1,8 @@
 class LikesController < ApplicationController
 
   def create
-    map = Map.find(params[:map_id])
-    @like = current_user.likes.new(map_id: map.id)
-    @map.save
-    render 'replace_btn'
+  　Like.create(user_id: current_user.id,trainer_id: params[:trainer_id])
+    redirect_to root_path
   end
 
   def destroy

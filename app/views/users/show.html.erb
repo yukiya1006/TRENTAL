@@ -1,11 +1,17 @@
-<div class="text-6xl">ユーザーマイページ</div>
-<% if current_user.present? %>
-  <p>こんにちは、<%= @user.name %>さん！</p>
-<% else %>
-  <p>こんにちは、ゲストさん！</p>
-<% end %>
-
-
-<%= link_to @user.followings.count, user_followings_path(@user) %>
-
+<div class="grid-cols-1 mx-auto my-auto text-center">
+  <%= @user.name %>
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, size:'200x200', class: "rounded-full mt-2" %>
+  <% else %>
+    <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full mt-2" %>
+  <% end %>
+</div>
+<div class="flex justify-center mt-2 gap-4 ml-8">
+  <div class="my-auto">
+    <%= @user.email %>
+  </div>
+  <button class="btn btn-accent">
+    <%= link_to 'Edit', edit_user_path(@user) %>
+  </button>
+</div>
 

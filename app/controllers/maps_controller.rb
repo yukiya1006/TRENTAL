@@ -10,6 +10,7 @@ class MapsController < ApplicationController
          # クエリ検索が空だったら
       if params[:q].blank?
         @maps = Map.all
+        @tags = @map.tag_counts_on(:tags)
       else
         # クエリ検索でアドレスの情報を持ったmapを探す
         @maps = Map.where(address: params[:q])
@@ -38,6 +39,6 @@ class MapsController < ApplicationController
 
     private
     def map_params
-    params.require(:map).permit(:address, :body, :trainer_id, :latitude, :longitude)
+    params.require(:map).permit(:address, :body, :trainer_id, :latitude, :longitude, :tag_list)
     end
 end

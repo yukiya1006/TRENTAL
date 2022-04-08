@@ -1,5 +1,6 @@
 <div class="text-4xl text-center pt-4">Trainers</div>
-<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
+
+<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12">
 
 <div class="relative inset-x-0 bottom-0">
 <!--<div class="py-4">マップからも検索可能です！</div>-->
@@ -7,18 +8,18 @@
 <%= render 'maps/map' %>
 </div>
 
-<div class="">
-  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
+<div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
+  <div class="grid grid-cols-2 sm:grid-cols-2 md:col-span-2 md:grid-cols-4 gap-4 lg:gap-20 mx-auto">
     <% @trainer.each do |trainer| %>
-    <div class="col-span-1">
+    <div class="overflow-hidden">
       <% if trainer.image.attached? %>
         <%= link_to trainer_path(trainer.id) do %>
           <!--mx-autoでイメージを中央に配置-->
-        <%= image_tag trainer.image, size:'200x200', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+        <%= image_tag trainer.image, size:'100x100', class: "rounded-full overflow-hidden mx-auto mt-8" %>
         <% end %>
       <% else %>
         <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+          <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full overflow-hidden mx-auto mt-8 shadow-lg" %>
         <% end %>
       <% end %>
         <div class="text-center md:text-left">
@@ -31,4 +32,3 @@
   </div>
 </div>
 </div>
-

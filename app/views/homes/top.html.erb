@@ -38,27 +38,27 @@
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-gray-900 text-lg title-font font-medium mb-2">パーソナルを受けてみたいけど値段が高くて躊躇している方</h2>
-        <p class="leading-relaxed text-base">1時間/3000円からレンタルが可能です</p>
+        <p class="leading-relaxed text-base">個人のトレーナーが在籍しているので低価格でトレーニングを受けられます</p>
       </div>
     </div>
-    <button class="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+    <button class="flex mx-auto mt-20 btn btn-active btn-primary">
       <%= link_to "検索してみる", trainers_path %>
     </button>
   </div>
 </section>
 
 <div class="py-10">
-  <h1 class="text-center text-2xl font-sans font-bold mb-5">新着トレーナー</h1>
+  <div class="text-center mb-6 text-2xl font-bold">新着トレーナー</div>
 <div class="flex flex-wrap justify-center space-x-10 font-sans">
   <% @trainer.each do |trainer| %>
 <div>
   <% if trainer.image.attached? %>
     <%= link_to trainer_path(trainer.id) do %>
-    <%= image_tag trainer.image, size:'150x150', class: "rounded-full overflow-hidden" %>
+    <%= image_tag trainer.image, size:'100x100', class: "rounded-full overflow-hidden" %>
   <% end %>
   <% else %>
     <%= link_to trainer_path(trainer.id) do %>
-    <%= image_tag ("noimage.jpg"), size: '150x150', class: "rounded-full overflow-hidden" %>
+    <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full overflow-hidden" %>
     <% end %>
   <% end %>
     <%= trainer.name %>

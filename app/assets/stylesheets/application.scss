@@ -18,13 +18,168 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+// slick画像
 .slider img {
 　width: 100%;
-　height: 30vw;
+　height: 50%;
 　object-fit: cover;
 }
 
-main {
-  background-image: url("/images/トレーナーログイン.jpg");
+
+// ヘッダー
+header {
+	background-color: #f9fafb;
+}
+header > div {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 8px;
+	text-align: right;
 }
 
+.menu-btn > i {
+	display: inline-block;
+	padding: 12px;
+	cursor: pointer;
+	border-radius: 50%;
+}
+.menu-btn > i:hover {
+	background-color: #f3f4f6;
+}
+
+.nav-content {
+	background-color: white;
+	width: 80%;
+	max-width: 450px;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 50;
+	padding: 8px;
+	overflow: auto;
+	transform: translateX(100%);
+	transition-duration: 300ms;
+}
+.nav-menu ul {
+	list-style: none;
+	text-align: left;
+}
+.nav-menu li > a {
+	text-decoration: none;
+	color: black;
+	padding: 12px;
+	display: block;
+}
+.nav-menu li > a:hover {
+	background-color: #f3f4f6;
+}
+
+.nav-close {
+	display: none;
+	background-color: black;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 40;
+	transition-duration: 300ms;
+}
+
+#menu-checkbox {
+	display: none;
+}
+#menu-checkbox:checked ~ .nav-close {
+	display: block;
+	opacity: 0.5;
+}
+#menu-checkbox:checked ~ .nav-content {
+	transform: translateX(0%);
+}
+
+
+
+
+// チャット
+.rooms{
+  margin:0 auto;
+  background-color:#fdfdfd;
+  border: 2px solid #eee;
+  padding:1em 2em;
+}
+#chats{
+  padding: 20px 10px;
+  max-width: 800px;
+  margin: 15px auto;
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+}
+.fukidasi {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.fukidasi .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+.fukidasi .faceicon img{
+  width: 90%;
+  height: auto;
+  border-radius: 50%;
+}
+.fukidasi .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}

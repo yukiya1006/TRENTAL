@@ -11,6 +11,11 @@
         <%= f.text_field :address, placeholder: "ジムの正式名称＋〇〇店 ※スペースなし", class: "w-full bg-white rounded border border-gray-300 py-1 px-3" %>
         <%= f.label :料金設定 %>
         <%= f.text_field :body, placeholder: "例: １時間/５０００円", class: "w-full bg-white rounded border border-gray-300 py-1 px-3" %>
+
+      　<%= f.label :tag_list %>
+      　<%= f.text_field :tag_list, value: @map.tag_list.join(','), class: "form-control" %>
+
+
       　<%= f.submit "Register", class: "text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" %>
     　　<% end %>
       </div>
