@@ -15,12 +15,15 @@ Rails.application.routes.draw do
   # ユーザー側
   resources :users, only: [:show, :edit, :update] do
     get 'followings' => 'relationships#followings', as: 'followings'
+    get 'likings' => 'like_relationships#likings', as: 'likings'
   end
 
   # トレーナー側
   resources :trainers, only: [:index, :show, :edit, :update] do
     post 'followers' => 'relationships#create', as: 'follow'
     delete 'followers' => 'relationships#destroy', as: 'unfollow'
+    post 'likers' => 'like_relationships#create', as: 'like'
+    delete 'likers' => 'like_relationships#destroy', as: 'dislike'
     resources :likes, only: :create
     resources :dislikes, only: :create
 

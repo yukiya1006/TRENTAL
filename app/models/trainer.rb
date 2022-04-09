@@ -8,17 +8,18 @@ class Trainer < ApplicationRecord
   has_many :chat_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :maps
-  has_many :likes
-  has_many :dislikes
+  # has_many :likes
+  # has_many :dislikes
 
   validates :name, presence: true
 
   # トレーナーはrelationshipsを通してfollowd_id(フォローされた)を複数持つ
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-
+  has_many :reverse_of_relationships, class_name: "LikeRelationship", foreign_key: "liked_id", dependent: :destroy
+ 
   # 全てのfollower（フォローした人）を見つける
   has_many :followers, through: :reverse_of_relationships, source: :follower
-
+  has_many :likers, through: :reverse_of_relationships, source: :liker
 
   enum activity_area: { 東京都:0,神奈川県:1,千葉:2,埼玉:3 }
 
@@ -30,7 +31,11 @@ class Trainer < ApplicationRecord
   def followers?(user)
     followers.include?(user)
   end
-
+  
+  def likers?(user)
+    likers.include?(user)
+  end
+  
   def get_board_image(width, height)
   end
 

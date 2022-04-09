@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
 
   def create
-  　Like.create(user_id: current_user.id,trainer_id: params[:trainer_id])
-    redirect_to root_path
+  　current_user.like(params[:trainer_id])
+    redirect_to request.referer
   end
 
   def destroy
