@@ -1,18 +1,33 @@
 class TrainersController < ApplicationController
 
   def index
-    @trainer = Trainer.all
-    @maps = Map.all
-  # 　@trainers = Trainer.order(id: :desc).search(params[:age],[:gender],[:activity_area])
+
+    if params[:gender].present?
+      gender = "gender = '#{params[:gender]}'"
+    else
+      gender = "gender is not null"
+    end
+
+    if params[:age].present?
+      age = "age = '#{params[:age]}'"
+    else
+      age = "age is not null"
+    end
+
+    if params[:activity_area].present?
+      activity_area = "activity_area = '#{params[:activity_area]}'"
+    else
+      activity_area = "activity_area is not null"
+    end
+
+    @search = Trainer.where("#{gender} AND #{age} AND #{activity_area}")
+
+    @age = params[:age]
   end
+
 
   def show
     @trainer = Trainer.find(params[:id])
-    # @user_likes = @trainer.id
-    # @likes_count = 0
-    # @likes_count = @trainer.good_evaluation_count
-    # @dislikes_count = 0
-    # @dislikes_count = @trainer.good_evaluation_count
   end
 
   def edit
@@ -37,10 +52,16 @@ class TrainersController < ApplicationController
     :email,
     :name,
     :biography,
-    :board_image)
+    :guidance_content,
+    :image)
     .merge(activity_area: params[:trainer][:activity_area].to_i)
     .merge(gender: params[:trainer][:gender].to_i)
     .merge(age: params[:trainer][:age].to_i)
+    .merge(session_fee: params[:trainer][:session_fee].to_i)
+    .merge(training_history: params[:trainer][:training_history].to_i)
+    .merge(teaching_history: params[:trainer][:teaching_history].to_i)
+    .merge(qualification: params[:trainer][:qualification].to_i)
+
   end
 
 end

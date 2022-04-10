@@ -1,10 +1,10 @@
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex justify-center items-center mb-8">
     <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-md mt-10 md:mt-0">
-
       <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Edit</h2>
       <%= form_with model: @trainer, local: true do |f| %>
 　　　<%= render 'layouts/error', obj: @trainer %>
+　　　
 
         <div class="relative mb-4">
           <%= f.label :email, class: "leading-7 text-sm text-gray-600" %><br />
@@ -12,7 +12,7 @@
         </div>
         <div class="relative mb-4">
           <%= f.label :name, class: "leading-7 text-sm text-gray-600" %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
+          <%= f.text_field :name, autofocus: true, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
         </div>
         <div class="relative mb-4">
           <%= f.label :image, class: "leading-7 text-sm text-gray-600" %><br />
@@ -20,16 +20,36 @@
         </div>
         <div class="relative mb-4">
           <%= f.label :gender, class: "leading-7 text-sm text-gray-600" %><br />
-          <%= f.select :gender, options_for_select(Trainer.genders) %><br />
+          <%= f.select :gender, options_for_select(Trainer.genders), {include_blank: '選択してください'} %><br />
         </div>
         <div class="relative mb-4">
           <%= f.label :age, class: "leading-7 text-sm text-gray-600" %><br />
-          <%= f.select :age, options_for_select(Trainer.ages) %><br />
+          <%= f.select :age, options_for_select(Trainer.ages), {include_blank: '選択してください'} %><br />
         </div>
         <div class="relative mb-4">
           <%= f.label :activity_area, class: "leading-7 text-sm text-gray-600" %><br />
-          <%= f.select :activity_area, options_for_select(Trainer.activity_areas) %><br />
+          <%= f.select :activity_area, options_for_select(Trainer.activity_areas), {include_blank: '選択してください'} %><br />
         </div>
+        <div class="relative mb-4">
+          <%= f.label :セッション料金, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.select :session_fee, options_for_select(Trainer.session_fees), {include_blank: '選択してください'} %><br />
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :トレーニング歴, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.select :training_history, options_for_select(Trainer.training_histories), {include_blank: '選択してください'} %><br />
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :指導歴, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.select :teaching_history, options_for_select(Trainer.teaching_histories), {include_blank: '選択してください'} %><br />
+        </div>
+        <div class="relative mb-4">
+          <%= f.label :保有資格, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.select :qualification, options_for_select(Trainer.qualifications), {include_blank: '選択してください'} %><br />
+        </div>
+        <!-- <div class="relative mb-4">-->
+            <%#= f.check_box :guidance_content, checked: false %>
+            <%#= f.label :初心者歓迎, class: "job_type_label" %>
+        <!--</div>-->
         <div class="relative mb-4">
           <%= f.label :biography, class: "leading-7 text-sm text-gray-600" %><br />
           <%= f.text_area :biography, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />

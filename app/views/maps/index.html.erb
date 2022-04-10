@@ -11,13 +11,9 @@
       <% end %>
     </p>
     <p>Gym : <%= t.address %></p>
-    <!--<p>Trainer : <%#= link_to t.trainer.name, trainer_path(current_trainer) %> </p>-->
     <p>Price : <%= t.body %> </p>
-    <p class="btn btn-primary"> <%= t.tag_list %></p>
-    <%# if @trainer ==  current_trainer %>
     <p><%= link_to "Delete", map_path(t.id), method: :delete %></p>
     <%# end %>
     <hr>
   <% end %>
-     <%#= render "maps/btn", map: @map %>
 </div>

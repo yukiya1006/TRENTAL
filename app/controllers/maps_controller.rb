@@ -10,7 +10,6 @@ class MapsController < ApplicationController
          # クエリ検索が空だったら
       if params[:q].blank?
         @maps = Map.all
-        @tags = @map.tag_counts_on(:tags)
       else
         # クエリ検索でアドレスの情報を持ったmapを探す
         @maps = Map.where(address: params[:q])
@@ -25,7 +24,7 @@ class MapsController < ApplicationController
         map = Map.new(map_params)
         map.trainer_id = current_trainer.id
         if map.save
-            redirect_to maps_path(@map), notice: "You have created successfully."
+            redirect_to maps_path(@map), notice: "ジムが登録されました"
         else
             redirect_to :action => "index"
         end
@@ -39,6 +38,6 @@ class MapsController < ApplicationController
 
     private
     def map_params
-    params.require(:map).permit(:address, :body, :trainer_id, :latitude, :longitude, :tag_list)
+      params.require(:map).permit(:address, :body, :trainer_id, :latitude, :longitude)
     end
 end

@@ -20,18 +20,22 @@
 
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
-      <main class="h-full">
+  <body class="Page">
+    <div class="BodyLayer bg-gray-200">
+      <main class="MainSection">
+        <%= render 'layouts/header' %>
         <p id="notice" class="text-center bg-blue-300"><%= notice %></p>
         <%= yield %>
-      <%= render 'layouts/footer' %>
       </main>
-　    <script>
-      $(function() {
-        setTimeout("$('#notice').fadeOut('slow')", 2000);
-      });
-　  </script>
+      <div class="FooterSection">
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+  //   <script>
+  //     $(function() {
+  //       setTimeout("$('#notice').fadeOut('slow')", 2000);
+  //     });
+　 // </script>
   </body>
 
 </html>

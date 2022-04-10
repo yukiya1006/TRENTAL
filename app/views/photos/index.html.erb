@@ -1,0 +1,29 @@
+<div class="card w-96 my-6 mx-auto">
+     <% @photos. each do |photos| %>
+      <p>
+      <% if photos.trainer.image.attached? %>
+      <%= link_to trainer_path(photos.trainer.id) do %>
+      <%= image_tag photos.trainer.image, size:'50x50', class: "rounded-full" %>
+      <% end %>
+      <% else %>
+      <%= image_tag ("noimage.jpg"), size: '50x50' %>
+      <% end %>
+    </p>
+    <P><%= photos.trainer.name%></P>
+    <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
+  <figure><%= image_tag photos.image, size:'300x300', class: "rounded-md" %></figure>
+  <div class="card-body">
+    <p><%= photos.caption %></p>
+    <p></p>
+    <% if trainer_signed_in? %>
+    <p><%= link_to "Delete", photo_path(photos.id), method: :delete %></p>
+    <p><%= link_to "Edit", edit_photo_path(photos.id), method: :post %></p>
+    <% end %>
+    <div class="card-actions justify-end">
+      <button class="btn btn-accent">
+      　<%= link_to "Chat", chat_path(photos.trainer.id) %>
+      </button>
+    </div>
+  </div>
+  <% end %>
+</div>

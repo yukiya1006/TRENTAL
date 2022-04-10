@@ -1,17 +1,13 @@
-<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
-
-<div class="">
-  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
-    <% @trainers.each do |trainer| %>
-    <div class="col-span-1">
+<div class="bg-gray-100 m-6">
+  <% @trainers.each do |trainer| %>
+  <div class="flex justify-center overflow-hidden border-b border-gray-300 w-full mb-6 mt-6 p-6">
       <% if trainer.image.attached? %>
         <%= link_to trainer_path(trainer.id) do %>
-          <!--mx-autoでイメージを中央に配置-->
-        <%= image_tag trainer.image, size:'200x200', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+        <%= image_tag trainer.image, size:'100x100', class: "rounded-full overflow-hidden mx-auto mt-8" %>
         <% end %>
       <% else %>
         <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+          <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full overflow-hidden mx-auto mt-8" %>
         <% end %>
       <% end %>
         <div class="text-center md:text-left">
@@ -20,6 +16,4 @@
     </div>
     <% end %>
   </div>
-</div>
-
 

@@ -1,25 +1,27 @@
-<div class="text-4xl text-center pt-4">Trainers</div>
 
-<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12">
 
-<div class="relative inset-x-0 bottom-0">
-<!--<div class="py-4">マップからも検索可能です！</div>-->
-<div id='map' class="opacity-25 bg-gray-500"></div>
-<%= render 'maps/map' %>
+<div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12">
+
+<div class="bg-blue-500 flex justify-center py-2 mt-2">
+  <%= form_tag trainers_path, method: :get do %>
+  <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender}), include_blank: "未選択" %>
+  <%= select_tag :age, options_for_select(Trainer.ages, {:selected => @age}), include_blank: "未選択" %>
+  <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area}), include_blank: "未選択" %>
+  <%= submit_tag 'Search', class: "btn btn-primary" %>
+<% end %>
 </div>
 
 <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
-  <div class="grid grid-cols-2 sm:grid-cols-2 md:col-span-2 md:grid-cols-4 gap-4 lg:gap-20 mx-auto">
-    <% @trainer.each do |trainer| %>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-20 mx-auto">
+    <% @search.each do |trainer| %>
     <div class="overflow-hidden">
       <% if trainer.image.attached? %>
         <%= link_to trainer_path(trainer.id) do %>
-          <!--mx-autoでイメージを中央に配置-->
-        <%= image_tag trainer.image, size:'100x100', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+        <%= image_tag trainer.image, size:'200x200', class: "rounded-full overflow-hidden mx-auto mt-8 shadow-xl" %>
         <% end %>
       <% else %>
         <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full overflow-hidden mx-auto mt-8 shadow-lg" %>
+          <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full overflow-hidden mx-auto mt-8 shadow-lg" %>
         <% end %>
       <% end %>
         <div class="text-center md:text-left">

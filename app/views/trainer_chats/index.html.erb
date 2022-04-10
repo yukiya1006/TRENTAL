@@ -1,13 +1,18 @@
-<div class="text-4xl font-bold text-center py-6">Chat list</div>
-<div class="py-10 px-10 md:flex md:flex-wrap justify-center">
-<% @rooms.each do |room| %>
-    <p>
-     <% if room.trainer.image.attached? %>
-     <%= image_tag room.trainer.image, size:'50x50', class: "rounded-full" %>
+<div class="bg-gray-100 m-6">
+  <% @rooms.each do |room| %>
+    <div class="flex justify-center overflow-hidden border-b border-gray-300 w-full mb-6 mt-6 p-6">
+     <% if room.user.image.attached? %>
+     <%= image_tag room.user.image, size:'100x100', class: "rounded-full" %>
      <% else %>
-     <%= image_tag ("noimage.jpg"), size: '50x50' %>
+     <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full" %>
      <% end %>
-    </p>
-    <p><%= link_to room.user.name, chat_path(room.id), class: "mr-4" %></p>
-<% end %>
+     <%= room.user.name %>
+     <%= link_to chat_path(room.id) do %>
+       <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+        <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+      </svg>
+     <% end %>
+    </div>
+    <% end %>
 </div>

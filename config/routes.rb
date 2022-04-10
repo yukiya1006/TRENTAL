@@ -16,18 +16,21 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'likings' => 'like_relationships#likings', as: 'likings'
+    get 'badings' => 'bad_relationships#badings', as: 'badings'
   end
 
   # トレーナー側
   resources :trainers, only: [:index, :show, :edit, :update] do
+
     post 'followers' => 'relationships#create', as: 'follow'
     delete 'followers' => 'relationships#destroy', as: 'unfollow'
     post 'likers' => 'like_relationships#create', as: 'like'
     delete 'likers' => 'like_relationships#destroy', as: 'dislike'
-    resources :likes, only: :create
-    resources :dislikes, only: :create
-
+    post 'baders' => 'bad_relationships#create', as: 'make_bad'
+    delete 'baders' => 'bad_relationships#destroy', as: 'was_bad'
   end
+  
+  resources :photos
 
   resources :maps
   # マップの検索クエリ

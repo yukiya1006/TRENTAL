@@ -26,10 +26,6 @@ class ChatsController < ApplicationController
 
     # Chat New
     @chat = Chat.new(room_id: @room.id, trainer_id: @trainer.id)
-
-
-    # binding.irb
-
   end
 
   def create

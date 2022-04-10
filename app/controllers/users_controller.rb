@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to user_path(current_user), notice: "会員の情報が更新されました"
+      redirect_to user_path(current_user), notice: "プロフィールが更新されました"
     else
       render edit_user_path
     end

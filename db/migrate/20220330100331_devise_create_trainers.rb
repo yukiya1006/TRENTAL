@@ -10,6 +10,18 @@ class DeviseCreateTrainers < ActiveRecord::Migration[6.1]
       t.integer :age
       t.integer :gender
       t.integer :activity_area
+      t.integer :session_fee
+      t.integer :training_history
+      t.integer :teaching_history
+      t.integer :qualification
+      t.boolean :guidance_content
+      t.boolean :online_instruction
+      t.integer :chest
+      t.integer :leg
+      t.integer :shoulder
+      t.integer :arm
+      t.integer :back
+
       t.text :biography
 
       ## Recoverable

@@ -25,6 +25,9 @@
         <%= link_to "トレーナーを探す", trainers_path %>
       </li>
       <li class="mr-5 hover:text-gray-900">
+        <%= link_to "投稿を見る", photos_path %>
+      </li>
+      <li class="mr-5 hover:text-gray-900">
         <%= link_to "マイページ", user_path(current_user) %>
       </li>
        <li class="mr-5 hover:text-gray-900">
@@ -45,6 +48,9 @@
       </li>
       <li class="mr-5 hover:text-gray-900">
         <%= link_to "ジムを登録", new_map_path %>
+      </li>
+       <li class="mr-5 hover:text-gray-900">
+        <%= link_to "投稿", new_photo_path %>
       </li>
       <li class="mr-5 hover:text-gray-900">
         <%= link_to "ログアウト", destroy_trainer_session_path, method: :delete %>
