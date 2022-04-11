@@ -1,4 +1,4 @@
-<div class="sliderwide">
+<div class="sliderwide relative">
   <div class="slider">
     <div><%= image_tag 'shutterstock_1660419805.jpg' %></div>
     <div><%= image_tag 'shutterstock_586825982.jpg'%></div>
@@ -51,7 +51,7 @@
 <div class="py-10 grid grid-cols-1">
   <div class="text-center mb-6 text-2xl font-bold">最近登録したトレーナー</div>
 <div class="grid grid-cols-2 lg:grid-cols-4 mx-auto gap-6">
-  <% @trainer.each do |trainer| %>
+  <% @trainers.each do |trainer| %>
 <div>
   <% if trainer.image.attached? %>
     <%= link_to trainer_path(trainer.id) do %>

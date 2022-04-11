@@ -20,7 +20,8 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :likings, through: :like_relationships, source: :liked
   has_many :badings, through: :bad_relationships, source: :baded
-
+  
+  validates :name, presence: true
 
 # フォローしたときの処理
 def follow(trainer_id)  # 引数にフォロー相手を指定

@@ -2,9 +2,11 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    @trainer = current_trainer
   end
 
   def create
+    @trainer = current_trainer
     @photo = Photo.new(photo_params)
     if @photo.save
       redirect_to photos_path
@@ -36,7 +38,9 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all()
+    @photos = Photo.all
+    @user = current_user
+    @trainer = current_trainer
   end
 
   def show

@@ -2,6 +2,9 @@ class TrainersController < ApplicationController
 
   def index
 
+    @user = current_user
+
+    # genderの値が渡ってくればパラムスを返し、elseの場合nullを返す
     if params[:gender].present?
       gender = "gender = '#{params[:gender]}'"
     else
@@ -20,14 +23,20 @@ class TrainersController < ApplicationController
       activity_area = "activity_area is not null"
     end
 
-    @search = Trainer.where("#{gender} AND #{age} AND #{activity_area}")
+    if params[:teaching_history].present?
+      teaching_history = "teaching_history = '#{params[:teaching_history]}'"
+    else
+      teaching_history = "teaching_history is not null"
+    end
 
-    @age = params[:age]
+    @search = Trainer.where("#{gender} AND #{age} AND #{activity_area} AND #{teaching_history}" )
+
   end
 
 
   def show
     @trainer = Trainer.find(params[:id])
+    @user = current_user
   end
 
   def edit

@@ -17,6 +17,7 @@ class RelationshipsController < ApplicationController
   def followings
     user = User.find(params[:user_id])
     @trainers = user.followings
+    @user = current_user
   end
 
   # トレーナー側

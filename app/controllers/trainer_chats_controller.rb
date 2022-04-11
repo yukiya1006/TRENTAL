@@ -2,6 +2,7 @@ class TrainerChatsController < ApplicationController
   
   def index
     @rooms = ChatRoom.where(trainer_id: current_trainer.id)
+    @trainer = current_trainer
   end
 
   def show

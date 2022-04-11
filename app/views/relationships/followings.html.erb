@@ -3,11 +3,11 @@
   <div class="flex justify-center overflow-hidden border-b border-gray-300 w-full mb-6 mt-6 p-6">
       <% if trainer.image.attached? %>
         <%= link_to trainer_path(trainer.id) do %>
-        <%= image_tag trainer.image, size:'100x100', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+        <%= image_tag trainer.image, size:'100x100', class: "rounded-full overflow-hidden mx-auto" %>
         <% end %>
       <% else %>
         <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full overflow-hidden mx-auto mt-8" %>
+          <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full overflow-hidden mx-auto" %>
         <% end %>
       <% end %>
         <div class="text-center md:text-left">

@@ -1,4 +1,4 @@
-<section class="text-gray-600 body-font">
+<section class="text-gray-600 body-font py-3">
   <div class="container mx-auto flex justify-center items-center mb-8">
     <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-md mt-10 md:mt-0">
 
@@ -23,8 +23,8 @@
       <div class="relative mb-4">
         <%= f.submit "Log in", class: "text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" %>
         <% end %>
-        <div>登録がお済でない方</div>
-        <p><%= link_to "こちら", new_trainer_registration_path %> からログインしてください。</p>
+        <div class="mt-2">登録がお済でない方</div>
+        <p><%= link_to "こちら", new_trainer_registration_path, class: "text-blue-900 font-bold" %> からログインしてください。</p>
       </div>
 
     </div>

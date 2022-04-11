@@ -2,9 +2,12 @@ class ChatsController < ApplicationController
 
   def index
     @rooms = ChatRoom.where(user_id: current_user.id)
+    @user = current_user
+    @trainer = current_trainer
   end
 
   def show
+    @user = current_user
     @trainer = Trainer.find(params[:id])
     rooms = current_user.chat_rooms.pluck(:room_id)
     # 左辺にChatRoomからuser,trainerに紐づいたroom.idを持ったroom見つけそれを代入
@@ -20,11 +23,7 @@ class ChatsController < ApplicationController
       # Return Room ID
       @room = trainer_rooms.room
     end
-
-    # Recent Chat
     @chats = @room.chats
-
-    # Chat New
     @chat = Chat.new(room_id: @room.id, trainer_id: @trainer.id)
   end
 

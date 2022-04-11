@@ -1,3 +1,22 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* 入力エラーのスタイル */
+input[type=email]:required,
+input[type=email]:invalid,
+
+textarea:required {
+	color: #630015;
+	border-color: #c20c33;
+	background-color: #ffd9e1;
+}
+
+/* 入力値が正常な時のスタイル */
+input[type=name]:valid,
+input[type=email]:valid,
+textarea:valid {
+	color: #333;
+	border-color: #ccc;
+	background: #fff;
+}

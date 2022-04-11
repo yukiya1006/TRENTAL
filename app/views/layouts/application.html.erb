@@ -17,25 +17,24 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
-
   </head>
 
   <body class="Page">
-    <div class="BodyLayer bg-gray-200">
+        <div clas="HeaderSection">
+          <%= render 'layouts/header' %>
+        </div>
       <main class="MainSection">
-        <%= render 'layouts/header' %>
-        <p id="notice" class="text-center bg-blue-300"><%= notice %></p>
-        <%= yield %>
+        <!--<p id="notice" class="text-center bg-blue-300"><%#= notice %></p>-->
+        <%= yield%>
       </main>
       <div class="FooterSection">
         <%= render 'layouts/footer' %>
       </div>
-    </div>
-  //   <script>
-  //     $(function() {
-  //       setTimeout("$('#notice').fadeOut('slow')", 2000);
-  //     });
-　 // </script>
+     <script>
+      $(function() {
+        setTimeout("$('#notice').fadeOut('slow')", 2000);
+      });
+　  </script>
   </body>
 
 </html>
