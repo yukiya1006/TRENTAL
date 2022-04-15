@@ -4,7 +4,6 @@ class CreateMaps < ActiveRecord::Migration[6.1]
 
       t.float :latitude
       t.float :longitude
-      t.integer :post_id
       t.string :address
       t.string :body
       t.integer :trainer_id

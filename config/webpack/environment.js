@@ -6,7 +6,8 @@ environment.plugins.append(
 'Provide',
 new webpack.ProvidePlugin({
   $: 'jquery/src/jquery',
-  jQuery: 'jquery/src/jquery'
+  jQuery: 'jquery/src/jquery',
+  Popper: 'popper.js'
   })
 )
 
@@ -29,4 +30,3 @@ environment.loaders.keys().forEach(loaderName => {
   const loader = environment.loaders.get(loaderName);
   loader.use.forEach(hotfixPostcssLoaderConfig);
 });
-

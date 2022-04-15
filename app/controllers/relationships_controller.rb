@@ -3,14 +3,15 @@ class RelationshipsController < ApplicationController
   # フォローするとき
   def create
     current_user.follow(params[:trainer_id])
-    redirect_to request.referer
+    @trainer = Trainer.find(params[:trainer_id])
+    # redirect_to request.referer
   end
 
   # フォロー外すとき
   def destroy
     current_user.unfollow(params[:trainer_id])
-    # current_user.dislike(params[:trainer_id])
-    redirect_to request.referer
+    @trainer = Trainer.find(params[:trainer_id])
+    # redirect_to request.referer
   end
 
   # ユーザー側

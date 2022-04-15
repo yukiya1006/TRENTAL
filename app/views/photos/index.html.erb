@@ -1,29 +1,27 @@
-<div class="card h-auto w-96 my-6 mx-auto">
-     <% @photos. each do |photos| %>
-      <p>
+<div class="grid grid-cols-1 card h-auto w-full my-6 mx-auto">
+  <% @photos. each do |photos| %>
+    <div class="text-center">
+      <div class="flex justify-center mb-1">
       <% if photos.trainer.image.attached? %>
-      <%= link_to trainer_path(photos.trainer.id) do %>
-      <%= image_tag photos.trainer.image, size:'50x50', class: "rounded-full" %>
+        <%= link_to trainer_path(photos.trainer.id) do %>
+        <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12" %>
       <% end %>
       <% else %>
-      <%= image_tag ("noimage.jpg"), size: '50x50' %>
+        <%= image_tag ("noimage.jpg"), clas: "rounded-full w-12 h-12" %>
       <% end %>
-    </p>
-    <P><%= photos.trainer.name%></P>
-    <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
-  <figure><%= image_tag photos.image, size:'300x300', class: "rounded-md" %></figure>
-  <div class="card-body">
-    <p><%= photos.caption %></p>
-    <p></p>
-    <% if trainer_signed_in? %>
-    <p><%= link_to "Delete", photo_path(photos.id), method: :delete %></p>
-    <p><%= link_to "Edit", edit_photo_path(photos.id), method: :post %></p>
-    <% end %>
-    <div class="card-actions justify-end">
-      <button class="btn btn-accent">
-      　<%= link_to "Chat", chat_path(photos.trainer.id) %>
-      </button>
-    </div>
-  </div>
+        <%= photos.trainer.name%>
+      </div>
+      <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
+      </div>
+      <figure><%= image_tag photos.image, class: "rounded-md h-auto w-auto p-2" %></figure>
+      <div class="card-body text-center">
+        <p><%= photos.caption %></p>
+        <% if trainer_signed_in? %>
+        <p><%= link_to "Edit", edit_photo_path(photos.id) %></p>
+        <% end %>
+        <% if user_signed_in? %>
+      </div>
+      <% end %>
+      </div>
   <% end %>
 </div>

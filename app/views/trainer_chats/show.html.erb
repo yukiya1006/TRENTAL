@@ -1,4 +1,4 @@
-<div id="chats">
+<div id="chats" class="">
 <div class="text-center"><%="#{@chat.user.name}さんとのチャット"%></div>
 <% @chats.each do |chat| %>
   <% if chat.is_trainer %>
@@ -8,7 +8,7 @@
   <% else %>
     <div class="fukidasi">
       <div class="faceicon">
-        <%= chat.user.name %>
+        <%= image_tag chat.user.image %>
       </div>
       <div class="chatting">
         <div class="says">
@@ -18,9 +18,8 @@
     </div>
   <% end %>
 <% end %>
-
 <div class=" text-center">
-  <%= form_with model: @chat do |f| %>
+  <%= form_with model: @chat, url: trainer_chats_path(@room.id), method: :post do |f| %>
   <%= f.text_field :message %>
   <%= f.hidden_field :room_id %>
   <%= f.hidden_field :user_id %>

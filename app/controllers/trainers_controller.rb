@@ -1,10 +1,12 @@
 class TrainersController < ApplicationController
 
   def index
-
+    @trainers = Trainer.all
+    @trainer = current_trainer
     @user = current_user
-
-    # genderの値が渡ってくればパラムスを返し、elseの場合nullを返す
+    @map = Map.new
+    @maps = Map.all
+    # 値が渡ってくればパラムスを返し、elseの場合nullを返す
     if params[:gender].present?
       gender = "gender = '#{params[:gender]}'"
     else
@@ -29,14 +31,23 @@ class TrainersController < ApplicationController
       teaching_history = "teaching_history is not null"
     end
 
-    @search = Trainer.where("#{gender} AND #{age} AND #{activity_area} AND #{teaching_history}" )
+    if params[:strong_part].present?
+      strong_part = "strong_part = '#{params[:strong_part]}'"
+    else
+      strong_part = "strong_part is not null"
+    end
+
+
+    @search = Trainer.where("#{gender} AND #{age} AND #{activity_area} AND #{teaching_history} AND #{strong_part}" )
 
   end
 
-
   def show
     @trainer = Trainer.find(params[:id])
+    @date = {"GOOD" => @trainer.likers.count, "BAD    " => @trainer.baders.count }
     @user = current_user
+    @photo = Photo.new
+    @photos = Photo.where(trainer_id: @trainer.id).all
   end
 
   def edit
@@ -70,7 +81,7 @@ class TrainersController < ApplicationController
     .merge(training_history: params[:trainer][:training_history].to_i)
     .merge(teaching_history: params[:trainer][:teaching_history].to_i)
     .merge(qualification: params[:trainer][:qualification].to_i)
-
+    .merge(strong_part: params[:trainer][:strong_part].to_i)
   end
 
 end

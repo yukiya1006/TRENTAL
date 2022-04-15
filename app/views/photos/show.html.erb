@@ -1,0 +1,6 @@
+<div class="flex justify-center bg-gray-300">
+<%= image_tag @photo.image, size:'200x200', class: "rounded-md mt-2 shadow-2xl" %>
+<div>投稿内容</div><br>
+<%= @photo.caption %><br>
+<%= link_to "編集する", edit_photo_path(@trainer.id) %>
+</div>

@@ -2,20 +2,20 @@
   <div class="container flex justify-center py-10">
     <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-md mt-10 md:mt-0">
 
-      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Edit</h2>
+      <h2 class="text-gray-900 text-2xl font-medium title-font mb-5">Edit</h2>
       <%= form_with model: @user, local: true do |f| %>
 　　　<%= render 'layouts/error', obj: @user %>
 
         <div class="relative mb-4">
-          <%= f.label :email, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.label :メールアドレス, class: "leading-7 text-sm text-gray-600" %><br />
           <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
         </div>
         <div class="relative mb-4">
-          <%= f.label :name, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.label :名前, class: "leading-7 text-sm text-gray-600" %><br />
           <%= f.text_field :name, autofocus: true, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
         </div>
         <div class="relative mb-4">
-          <%= f.label :image, class: "leading-7 text-sm text-gray-600" %><br />
+          <%= f.label :プロフィール画像, class: "leading-7 text-sm text-gray-600" %><br />
           <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
         </div>
 

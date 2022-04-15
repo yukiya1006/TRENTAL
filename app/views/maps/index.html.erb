@@ -1,19 +1,24 @@
-<div class="text-3xl font-bold text-center">Trainers</div>
-<div class="py-10 px-10">
-  <% @maps.each do |t| %>
-    <p>
-      <% if t.trainer.image.attached? %>
-      <%= link_to trainer_path(t.trainer.id) do %>
-      <%= image_tag t.trainer.image, size:'50x50', class: "rounded-full" %>
-      <% end %>
-      <% else %>
-      <%= image_tag ("noimage.jpg"), size: '50x50' %>
-      <% end %>
-    </p>
-    <p>Gym : <%= t.address %></p>
-    <p>Price : <%= t.body %> </p>
-    <p><%= link_to "Delete", map_path(t.id), method: :delete %></p>
-    <%# end %>
-    <hr>
+
+<div class="text-center text-3xl mt-6">選択エリアのトレーナー</div>
+<div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12 p-8">
+  <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-20 mx-auto">
+      <% @maps.each do |t| %>
+      <div class="overflow-hidden">
+        <% if t.trainer.image.attached? %>
+    <%= link_to trainer_path(t.trainer.id) do %>
+    <%= image_tag t.trainer.image, class: "rounded-md sm:h-auto sm:w-auto" %> <br>
   <% end %>
+  <% else %>
+    <%= image_tag ("noimage.jpg"), size: '50x50' %>
+  <% end %>
+    <%#= link_to "Delete", map_path(t.id), method: :delete %>
+          <div class="text-center md:text-left">
+            <h2 class="text-lg"><%= t.address %></h2>
+            <div class="text-purple-500"><%= t.body %></div>
+          </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>

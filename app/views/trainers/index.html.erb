@@ -1,22 +1,25 @@
 <div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12">
-
-  <div class="flex justify-center bg-blue-500 py-2">
+  <div class="flex justify-center my-auto bg-blue-500 py-4 pl-7">
     <%= form_tag trainers_path, method: :get do %>
       <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender}), include_blank: "性別", class: "mr-1" %>
       <%= select_tag :age, options_for_select(Trainer.ages, {:selected => @age}), include_blank: "年齢", class: "mr-1" %>
-      <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area}), include_blank: "登録エリア", class: "mr-1" %>
+      <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area}), include_blank: "エリア", class: "mr-1" %>
       <%= select_tag :teaching_history, options_for_select(Trainer.teaching_histories, {:selected => @teaching_history}), include_blank: "指導歴", class: "mr-1" %>
+      <%= select_tag :strong_part, options_for_select(Trainer.strong_parts, {:selected => @strong_part}), include_blank: "部位", class: "mr-1" %>
       <%= submit_tag '検索', class: "btn btn-primary" %>
+      <%= link_to 'マップ検索はこちら', map_searches_path, class: "text-gray-200 hover:text-white" %>
     <% end %>
   </div>
-
+  <div class="text-center">
+    該当のトレーナー<span class="text-2xl text-bold px-1"><%= @search.count%></span>名
+  </div>
   <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-20 mx-auto">
       <% @search.each do |trainer| %>
       <div class="overflow-hidden">
         <% if trainer.image.attached? %>
           <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag trainer.image, size:'200x200', class: "rounded-full overflow-hidden mx-auto mt-8 shadow-xl" %>
+          <%= image_tag trainer.image, size:'200x200', class: "rounded-xl overflow-hidden mx-auto mt-8 shadow-xl" %>
           <% end %>
         <% else %>
           <%= link_to trainer_path(trainer.id) do %>

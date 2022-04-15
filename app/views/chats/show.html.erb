@@ -1,14 +1,14 @@
-<div id="chats">
-<div class="text-center"><%="#{@chat.trainer.name}さんとのチャット"%></div>
+<div id="chats" class="h-screen w-screen">
+<div class="text-center"><%="#{@chat.trainer.name}トレーナーとのチャット"%></div>
 <% @chats.each do |chat| %>
   <% unless chat.is_trainer %>
-      <div class="mycomment">
-        <p><%=chat.message%></p>
-      </div>
+    <div class="mycomment">
+      <p><%=chat.message%></p>
+    </div>
   <% else %>
     <div class="fukidasi">
       <div class="faceicon">
-        <%= chat.trainer.name %>
+        <%= image_tag chat.trainer.image %>
       </div>
       <div class="chatting">
         <div class="says">
@@ -18,7 +18,6 @@
     </div>
   <% end %>
 <% end %>
-
 <div class=" text-center">
   <%= form_with model: @chat do |f| %>
   <%= f.text_field :message %>

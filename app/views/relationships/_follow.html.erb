@@ -1,0 +1,9 @@
+  <div>
+    <% if user_signed_in? %>
+    <% if current_user.following?(trainer) %>
+      <%= link_to "Unfollow", trainer_unfollow_path(trainer.id), class: "btn btn-primary", method: :delete, remote: true %>
+    <% else %>
+      <%= link_to "Follow", trainer_follow_path(trainer.id), class: "btn btn-secondary", method: :post, remote: true %>
+    <% end %>
+    <% end %>
+  </div>

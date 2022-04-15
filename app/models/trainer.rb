@@ -36,6 +36,8 @@ class Trainer < ApplicationRecord
 
   enum qualification: { あり:0,なし:1 }
 
+  enum strong_part: { 脚:0,お尻:1,胸:2,背中:3,腕:4,肩:5}
+
 
 
   def followers?(user)

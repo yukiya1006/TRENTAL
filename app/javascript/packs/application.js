@@ -12,14 +12,12 @@ import 'jquery'
 import 'slick.js'
 import 'image_preview.js'
 import 'jquery.jpostal.js'
+import "chartkick/chart.js"
 // import 'trainer.coffee'
-
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-
 
 //= require underscore
 //= require gmaps/google

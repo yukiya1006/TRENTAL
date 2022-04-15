@@ -14,14 +14,7 @@ class DeviseCreateTrainers < ActiveRecord::Migration[6.1]
       t.integer :training_history
       t.integer :teaching_history
       t.integer :qualification
-      t.boolean :guidance_content
-      t.boolean :online_instruction
-      t.integer :chest
-      t.integer :leg
-      t.integer :shoulder
-      t.integer :arm
-      t.integer :back
-
+      t.integer :strong_part
       t.text :biography
 
       ## Recoverable

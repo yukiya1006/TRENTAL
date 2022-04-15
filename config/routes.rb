@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
 
-  # get 'relationships/followings'
-  # get 'relationships/followers'
-
-
   root to: 'homes#top'
   devise_for :admins,skip:[:registrations, :passwords],controllers:{ sessions: "admins/sessions" }
   devise_for :users,skip:[:passwords],controllers:{ registrations: "users/registrations", sessions: 'users/sessions' }
   devise_for :trainers,skip:[:passwords],controllers:{ registrations: "trainers/registrations", sessions: 'trainers/sessions' }
 
   resources :chats, only: [:index, :show, :create]
-  resources :trainer_chats, only: [:index, :show]
+  resources :trainer_chats, only: [:index, :show, :create]
 
   # ユーザー側
   resources :users, only: [:show, :edit, :update] do
@@ -29,15 +25,15 @@ Rails.application.routes.draw do
     post 'baders' => 'bad_relationships#create', as: 'make_bad'
     delete 'baders' => 'bad_relationships#destroy', as: 'was_bad'
   end
-  
+
   resources :photos
 
   resources :maps
   # マップの検索クエリ
   get '/map_request', to: 'maps#map', as: 'map_request'
 
-  get 'search' => 'trainers#search'
-  get 'tags/:tag', to: 'maps#index', as: :tag
+  get 'map_searches', to: 'map_searches#index'
+
 
 
 
@@ -48,10 +44,6 @@ Rails.application.routes.draw do
   # end
 
 
-
-
-
-  # get 'latlngsearch/:lat/:lng' => 'posts#search', constraints: { lat: /\d+\.\d+/, lng: /\d+\.\d+/ }
 
 
 

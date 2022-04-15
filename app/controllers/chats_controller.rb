@@ -23,8 +23,8 @@ class ChatsController < ApplicationController
       # Return Room ID
       @room = trainer_rooms.room
     end
-    @chats = @room.chats
-    @chat = Chat.new(room_id: @room.id, trainer_id: @trainer.id)
+      @chats = @room.chats
+      @chat = Chat.new(room_id: @room.id, trainer_id: @trainer.id)
   end
 
   def create

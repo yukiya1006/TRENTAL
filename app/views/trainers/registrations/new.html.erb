@@ -1,14 +1,17 @@
-<section class="text-gray-600 body-font py-3">
+<section class="text-gray-600 body-font py-3" id="trainer_new">
   <div class="container mx-auto flex justify-center items-center">
     <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-md mt-10 md:mt-0">
     <div class="text-red-900 text-md bg-red-100 mb-2">
       <%= render "trainers/shared/error_messages", resource: resource %>
-    </div>  
+    </div>
 
       <h2 class="text-gray-900 text-lg font-medium title-font mb-5">トレーナー登録</h2>
-      <!--<div class="w-full rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
-      <!--  <p class=" mb-1">プロフィールを開設しましょう。</p>-->
-      <!--</div>-->
+      <div class="w-full text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        <p class=" mb-1">登録すると以下の機能がご利用頂けます。</p>
+        <p class=" title-font mb-1">● ユーザーとのDM</p>
+        <p class=" title-font mb-1">● 活動の投稿</p>
+        <p class=" title-font mb-1">● エリアの登録</p>
+      </div>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
@@ -37,31 +40,35 @@
       </div>
       <div class="relative mb-4">
         <%= f.label :性別, class: "leading-7 text-sm text-gray-600" %><br />
-        <%= f.select :gender, options_for_select(Trainer.genders), {include_blank: '選択してください'} %>
+        <%= f.select :gender, options_for_select(Trainer.genders.keys), {include_blank: '選択してください'} %>
       </div>
       <div class="relative mb-4">
         <%= f.label :年齢, class: "leading-7 text-sm text-gray-600" %><br />
-        <%= f.select :age, options_for_select(Trainer.ages), {include_blank: '選択してください'} %>
+        <%= f.select :age, options_for_select(Trainer.ages.keys), {include_blank: '選択してください'} %>
       </div>
       <div class="relative mb-4">
         <%= f.label :活動エリア, class: "leading-7 text-sm text-gray-600" %><br />
-        <%= f.select :activity_area, options_for_select(Trainer.activity_areas), {include_blank: '選択してください'} %>
+        <%= f.select :activity_area, options_for_select(Trainer.activity_areas.keys), {include_blank: '選択してください'} %>
       </div>
        <div class="relative mb-4">
         <%= f.label :トレーニング経験, class: "leading-7 text-sm text-gray-600" %><br />
-        <%= f.select :training_history, options_for_select(Trainer.training_histories), {include_blank: '選択してください'} %>
+        <%= f.select :training_history, options_for_select(Trainer.training_histories.keys), {include_blank: '選択してください'} %>
       </div>
       <div class="relative mb-4">
         <%= f.label :指導経験, class: "leading-7 text-sm text-gray-600" %><br />
-        <%= f.select :teaching_history, options_for_select(Trainer.teaching_histories), {include_blank: '選択してください'} %>
+        <%= f.select :teaching_history, options_for_select(Trainer.teaching_histories.keys), {include_blank: '選択してください'} %>
       </div>
       <div class="relative mb-4">
         <%= f.label :保有資格, class: "leading-7 text-sm text-gray-600" %><br />
-        <%= f.select :qualification, options_for_select(Trainer.qualifications), {include_blank: '選択してください'} %>
+        <%= f.select :qualification, options_for_select(Trainer.qualifications.keys), {include_blank: '選択してください'} %>
       </div>
       <div class="relative mb-4">
         <%= f.label :セッション料金, class: "leading-7 text-sm text-gray-600" %><br />
-        <%= f.select :session_fee, options_for_select(Trainer.session_fees), {include_blank: '選択してください'} %>
+        <%= f.select :session_fee, options_for_select(Trainer.session_fees.keys), {include_blank: '選択してください'} %>
+      </div>
+      <div class="relative mb-4">
+        <%= f.label :得意部位, class: "leading-7 text-sm text-gray-600" %><br />
+        <%= f.select :strong_part, options_for_select(Trainer.strong_parts.keys), {include_blank: '選択してください'} %>
       </div>
       <div class="relative mb-4">
         <%= f.label :紹介文, class: "leading-7 text-sm text-gray-600" %><br />

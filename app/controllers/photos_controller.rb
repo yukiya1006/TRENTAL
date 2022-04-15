@@ -1,5 +1,12 @@
 class PhotosController < ApplicationController
 
+  def index
+    @photo = Photo.new
+    @photos = Photo.all
+    @user = current_user
+    @trainer = current_trainer
+  end
+
   def new
     @photo = Photo.new
     @trainer = current_trainer
@@ -8,6 +15,7 @@ class PhotosController < ApplicationController
   def create
     @trainer = current_trainer
     @photo = Photo.new(photo_params)
+    @photo.trainer_id = current_trainer.id
     if @photo.save
       redirect_to photos_path
     else
@@ -16,16 +24,14 @@ class PhotosController < ApplicationController
   end
 
   def edit
+    @trainer = current_trainer
     @photo = Photo.find(params[:id])
-    if @photo != current_trainer
-    redirect_to photos_path
-    end
   end
 
   def update
-     @photo = current_trainer
+     @photo = Photo.find(params[:id])
     if @photo.update(photo_params)
-      redirect_to photo_path(@photo.id), notice: "プロフィールが更新されました"
+      redirect_to photos_path, notice: "プロフィールが更新されました"
     else
       redirect_to edit_photo_path
     end
@@ -37,14 +43,6 @@ class PhotosController < ApplicationController
     redirect_to photos_path
   end
 
-  def index
-    @photos = Photo.all
-    @user = current_user
-    @trainer = current_trainer
-  end
-
-  def show
-  end
 
   private
 

@@ -19,6 +19,57 @@
 @import "tailwindcss/utilities";
 
 
+.content01 {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  background-image: image-url('shutterstock_1792469146.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 0;
+  padding-top: 66.6666666667%;
+}
+
+.content03 {
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+  background-image: image-url('shutterstock_1028109844.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 0;
+  padding-top: 66.6666666667%;
+}
+
+
+.title1 {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.title2 {
+  position: absolute;
+  top: 33%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.title3 {
+  position: absolute;
+  top: 46%;
+  left: 28%;
+  transform: translate(-50%, -50%);
+}
+
+
+html{
+  height: 100%;
+  background-image: image-url('shutterstock_749969473.jpg');
+  background-size: cover;
+}
+
 .HeaderSection{
   position: fixed;
   top: 0;
@@ -28,105 +79,19 @@
 }
 
 .FooterSection{
-  position: fixed; /* フッターを固定する */
-  bottom: 0; /* 上部から配置の基準位置を決める */
-  left: 0; /* 左から配置の基準位置を決める */
-  width: 100%; /* フッターの横幅を指定する */
-  height: 70px; /* フッターの高さを指定する */
-  color: #FFFFFF; /* フッターのフォントの色を指定する */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  color: #FFFFFF;
 }
 
 .MainSection{
-  padding-top: 62px;
-  padding-bottom: 100px;
+  padding-top: 72px;
+  padding-bottom: 70px;
 }
 
-// slick画像
-.slider img {
-  width: 100%;
-  height: 60%;
-  object-fit: cover;
-  margin-tom: 50px;
-}
-
-
-// ヘッダー
-header {
-	background-color: #f9fafb;
-}
-header > div {
-	max-width: 980px;
-	margin: 0 auto;
-	padding: 8px;
-	text-align: right;
-}
-
-.menu-btn > i {
-	display: inline-block;
-	padding: 12px;
-	cursor: pointer;
-	border-radius: 50%;
-}
-.menu-btn > i:hover {
-	background-color: #f3f4f6;
-}
-
-.nav-content {
-	background-color: white;
-	width: 80%;
-	max-width: 450px;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 50;
-	padding: 8px;
-	overflow: auto;
-	transform: translateX(100%);
-	transition-duration: 300ms;
-}
-.nav-menu ul {
-	list-style: none;
-	text-align: left;
-}
-.nav-menu li > a {
-	text-decoration: none;
-	color: black;
-	padding: 12px;
-	display: block;
-}
-.nav-menu li > a:hover {
-	background-color: #f3f4f6;
-}
-
-.nav-close {
-	display: none;
-	background-color: black;
-	opacity: 0;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 40;
-	transition-duration: 300ms;
-}
-
-#menu-checkbox {
-	display: none;
-}
-#menu-checkbox:checked ~ .nav-close {
-	display: block;
-	opacity: 0.5;
-}
-#menu-checkbox:checked ~ .nav-content {
-	transform: translateX(0%);
-}
-
-
-
-
-// チャット
 .rooms{
   margin:0 auto;
   background-color:#fdfdfd;
@@ -136,7 +101,6 @@ header > div {
 }
 #chats{
   padding: 20px 10px;
-  max-width: 800px;
   text-align: right;
   font-size: 14px;
   background: #7da4cd;
@@ -208,3 +172,74 @@ header > div {
   transform: rotate(-35deg);
 }
 
+.animoBorderLeftRight{
+  display:inline-block;
+  position:relative;cursor:pointer}
+
+.animoBorderLeftRight::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  transform:scaleX(0);
+  height:2px;
+  bottom:0;
+  left:0;
+  background-color:#f39c12;
+  transform-origin:bottom right;
+  transition:transform .4s cubic-bezier(.86,0,.07,1)}.animoBorderLeftRight:hover::after{transform:scaleX(1);
+  transform-origin:bottom left}
+
+.fade-in{
+  // font-size:40px;
+　opacity:0;
+  animation-name:sample02;
+  animation-duration:8s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+@keyframes sample02 {
+0% {
+ opacity: 0;
+ transform: translateX(-100px);
+}
+  50%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+ 100% {
+ opacity:0;
+ transform: translateX(50px);
+ }
+}
+
+
+.Headline-right{
+  animation: SlideIn01 1.6s;
+}
+
+/* CSSアニメーションの設定 */
+@keyframes SlideIn01 {
+  0% {
+    opacity: 0;/*初期状態では透明に*/
+    transform: translateX(64px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.Headline-left{
+  animation: SlideIn02 1.6s;
+}
+@keyframes SlideIn02 {
+  0% {
+    opacity: 0;
+    transform: translateX(-64px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
