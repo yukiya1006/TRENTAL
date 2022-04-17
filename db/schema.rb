@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_10_100403) do
+ActiveRecord::Schema.define(version: 2022_04_16_055038) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -94,6 +94,17 @@ ActiveRecord::Schema.define(version: 2022_04_10_100403) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.boolean "checked", default: false, null: false
+    t.integer "chat_id"
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "user_id"
+    t.integer "trainer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.integer "trainer_id"
     t.string "caption"
@@ -126,6 +137,7 @@ ActiveRecord::Schema.define(version: 2022_04_10_100403) do
     t.integer "qualification"
     t.integer "strong_part"
     t.text "biography"
+    t.boolean "is_tra_deleted", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -139,6 +151,7 @@ ActiveRecord::Schema.define(version: 2022_04_10_100403) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
+    t.boolean "is_user_deleted", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

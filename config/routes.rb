@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+
   root to: 'homes#top'
+  get 'about' => 'homes#about'
   devise_for :admins,skip:[:registrations, :passwords],controllers:{ sessions: "admins/sessions" }
   devise_for :users,skip:[:passwords],controllers:{ registrations: "users/registrations", sessions: 'users/sessions' }
   devise_for :trainers,skip:[:passwords],controllers:{ registrations: "trainers/registrations", sessions: 'trainers/sessions' }
@@ -31,8 +33,10 @@ Rails.application.routes.draw do
   resources :maps
   # マップの検索クエリ
   get '/map_request', to: 'maps#map', as: 'map_request'
-
   get 'map_searches', to: 'map_searches#index'
+
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
 
 
 

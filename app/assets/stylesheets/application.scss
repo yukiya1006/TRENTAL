@@ -31,7 +31,7 @@
 }
 
 .content03 {
-  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
   background-image: image-url('shutterstock_1028109844.jpg');
   background-repeat: no-repeat;
   background-position: center center;
@@ -63,13 +63,6 @@
   transform: translate(-50%, -50%);
 }
 
-
-html{
-  height: 100%;
-  background-image: image-url('shutterstock_749969473.jpg');
-  background-size: cover;
-}
-
 .HeaderSection{
   position: fixed;
   top: 0;
@@ -89,7 +82,7 @@ html{
 
 .MainSection{
   padding-top: 72px;
-  padding-bottom: 70px;
+  padding-bottom: 70px
 }
 
 .rooms{
@@ -189,15 +182,14 @@ html{
   transition:transform .4s cubic-bezier(.86,0,.07,1)}.animoBorderLeftRight:hover::after{transform:scaleX(1);
   transform-origin:bottom left}
 
-.fade-in{
-  // font-size:40px;
+.fade-in01{
 　opacity:0;
-  animation-name:sample02;
+  animation-name:fade-in01;
   animation-duration:8s;
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
 }
-@keyframes sample02 {
+@keyframes fade-in01 {
 0% {
  opacity: 0;
  transform: translateX(-100px);
@@ -211,6 +203,52 @@ html{
  transform: translateX(50px);
  }
 }
+
+.fade-in02{
+　opacity:0;
+  animation-name:fade-in02;
+  animation-duration:9s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+@keyframes fade-in02 {
+0% {
+ opacity: 0;
+ transform: translateX(-100px);
+}
+  50%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+ 100% {
+ opacity:0;
+ transform: translateX(50px);
+ }
+}
+
+.fade-in03{
+　opacity:0;
+  animation-name:fade-in03;
+  animation-duration:10s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+@keyframes fade-in03 {
+0% {
+ opacity: 0;
+ transform: translateX(-100px);
+}
+  50%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+ 100% {
+ opacity:0;
+ transform: translateX(50px);
+ }
+}
+
+
 
 
 .Headline-right{
@@ -243,3 +281,18 @@ html{
     transform: translateX(0);
   }
 }
+
+
+.fade {
+  transition: all 2000ms;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0px, 50px);
+}
+
+.fadein {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, 0px);
+}
+

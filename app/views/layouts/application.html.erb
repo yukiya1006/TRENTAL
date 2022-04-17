@@ -8,6 +8,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= include_gon %>
 
@@ -36,7 +37,7 @@
       $(function() {
         setTimeout("$('#notice').fadeOut('slow')", 2000);
       });
-　  </script>
+    </script>
   </body>
 
 </html>

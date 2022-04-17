@@ -1,19 +1,25 @@
-<div class="bg-gray-100 m-6">
-  <% @trainers.each do |trainer| %>
-  <div class="flex justify-center overflow-hidden border-b border-gray-300 w-full mb-6 mt-6 p-6">
-      <% if trainer.image.attached? %>
-        <%= link_to trainer_path(trainer.id) do %>
-        <%= image_tag trainer.image, size:'100x100', class: "rounded-full overflow-hidden mx-auto" %>
+<div class="bg-gray-700 h-screen py-6 sm:py-8 lg:py-12">
+  <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12">
+      <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
+        <div class="w-24 md:w-32 h-24 md:h-32 bg-gray-100 rounded-full overflow-hidden shadow-lg">
+          <% @trainers.each do |trainer| %>
+        <% if trainer.image.attached? %>
+          <%= link_to trainer_path(trainer.id) do %>
+          <%= image_tag trainer.image, class: "w-full h-full object-cover object-center" %>
         <% end %>
-      <% else %>
+        <% else %>
         <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag ("noimage.jpg"), size: '100x100', class: "rounded-full overflow-hidden mx-auto" %>
+          <%= image_tag ("noimage.jpg"), class: "w-full h-full object-cover object-center" %>
+          <% end %>
         <% end %>
-      <% end %>
-        <div class="text-center md:text-left">
-          <h2 class="text-lg"><%= trainer.name %></h2>
+        <%= trainer.name %>
+        <div>
         </div>
+      </div>
+          <div class="text-white md:text-lg font-bold text-center sm:text-left"><%= trainer.name %></div>
+        <% end %>
     </div>
-    <% end %>
   </div>
-
+</div>
+</div>

@@ -7,17 +7,12 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 // import "channels"
-import '../../assets/stylesheets/application.scss'
 import 'jquery'
 import 'slick.js'
 import 'image_preview.js'
 import 'jquery.jpostal.js'
 import "chartkick/chart.js"
-// import 'trainer.coffee'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-//= require underscore
-//= require gmaps/google

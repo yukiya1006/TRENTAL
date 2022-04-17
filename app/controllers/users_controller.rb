@@ -25,6 +25,20 @@ class UsersController < ApplicationController
     @trainers = user.followings
   end
 
+  def withdrawal
+    @user = current_user
+    @user = User.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_user_deleted: true)
+    sign_out
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+
+  def unsubscribe
+    @user = current_user
+  end
+
   private
 
   def user_params

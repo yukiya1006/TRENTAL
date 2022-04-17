@@ -7,4 +7,9 @@ class HomesController < ApplicationController
     @user = current_user
     @trainer = current_trainer
   end
+
+  def about
+    @trainer = current_trainer
+    @user = current_user
+  end
 end

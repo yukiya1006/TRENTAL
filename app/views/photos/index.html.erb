@@ -1,7 +1,8 @@
-<div class="grid grid-cols-1 card h-auto w-full my-6 mx-auto">
+<div class="grid grid-cols-1 mx-auto w-full bg-gray-700 h-screen">
+  <div class="grid grid-cols-1">
   <% @photos. each do |photos| %>
     <div class="text-center">
-      <div class="flex justify-center mb-1">
+      <div class="flex justify-center my-2">
       <% if photos.trainer.image.attached? %>
         <%= link_to trainer_path(photos.trainer.id) do %>
         <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12" %>
@@ -13,8 +14,8 @@
       </div>
       <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
       </div>
-      <figure><%= image_tag photos.image, class: "rounded-md h-auto w-auto p-2" %></figure>
-      <div class="card-body text-center">
+      <%= image_tag photos.image, class: "rounded-md h-auto w-auto mx-auto" %>
+      <div class="text-center">
         <p><%= photos.caption %></p>
         <% if trainer_signed_in? %>
         <p><%= link_to "Edit", edit_photo_path(photos.id) %></p>
@@ -22,6 +23,6 @@
         <% if user_signed_in? %>
       </div>
       <% end %>
-      </div>
   <% end %>
+  </div>
 </div>
