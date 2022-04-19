@@ -6,12 +6,15 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
-// import "channels"
+import "channels"
 import 'jquery'
+import 'jquery.jscroll.min.js'
 import 'slick.js'
-import 'image_preview.js'
+// import 'image_preview.js'
 import 'jquery.jpostal.js'
-import "chartkick/chart.js"
+import 'chartkick/chart.js'
+import 'ham.js'
+import 'mscroll.js'
 
 Rails.start()
 Turbolinks.start()

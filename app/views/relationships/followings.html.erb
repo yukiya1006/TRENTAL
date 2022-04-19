@@ -1,25 +1,22 @@
-<div class="bg-gray-700 h-screen py-6 sm:py-8 lg:py-12">
-  <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12">
-      <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
-        <div class="w-24 md:w-32 h-24 md:h-32 bg-gray-100 rounded-full overflow-hidden shadow-lg">
-          <% @trainers.each do |trainer| %>
-        <% if trainer.image.attached? %>
-          <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag trainer.image, class: "w-full h-full object-cover object-center" %>
-        <% end %>
-        <% else %>
-        <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag ("noimage.jpg"), class: "w-full h-full object-cover object-center" %>
-          <% end %>
-        <% end %>
-        <%= trainer.name %>
-        <div>
-        </div>
+<div class="bg-gray-600 bg-opacity-75 text-gray-100" style="height: 90vh;">
+
+<div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12 p-8">
+  <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-20 mx-auto">
+      <% @trainers.each do |trainers| %>
+      <div class="overflow-hidden">
+        <% if trainers.image.attached? %>
+    <%= link_to trainer_path(trainers.id) do %>
+    <%= image_tag trainers.image, class: "rounded-md sm:h-auto sm:w-auto" %> <br>
+  <% end %>
+  <% else %>
+    <%= image_tag ("noimage.jpg"), size: '50x50' %>
+  <% end %>
+      <%= trainers.name %>
       </div>
-          <div class="text-white md:text-lg font-bold text-center sm:text-left"><%= trainer.name %></div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
 </div>
+

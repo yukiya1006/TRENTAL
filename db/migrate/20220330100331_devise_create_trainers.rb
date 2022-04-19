@@ -16,8 +16,8 @@ class DeviseCreateTrainers < ActiveRecord::Migration[6.1]
       t.integer :qualification
       t.integer :strong_part
       t.text :biography
-      t.boolean :is_tra_deleted, default: :false
-      
+      t.boolean :is_trainer_deleted, default: :false
+
 
       ## Recoverable
       t.string   :reset_password_token

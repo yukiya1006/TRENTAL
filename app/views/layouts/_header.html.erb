@@ -13,47 +13,27 @@
 				</svg>
 			</button>
 		</div>
-		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-2 ">
+		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:gap-5 text-sm ">
 		    <% if user_signed_in? %>
 				<li>
 					<a>
 					  <%= link_to 'トレーナーを探す', trainers_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 					</a>
 				</li>
-				<li class="text-gray-300">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-					</svg>
+				<li>
+					<a>
+					  <%= link_to '投稿', photos_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
 				</li>
 				<li>
 					<a>
-					  <%= link_to '投稿一覧', photos_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					  <%= link_to 'DM履歴', chats_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 					</a>
-				</li>
-				<li class="text-gray-300">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-					</svg>
-				</li>
-				<li>
-					<a>
-					  <%= link_to 'チャット履歴', chats_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-					</a>
-				</li>
-		        <li class="text-gray-300">
-				  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-				  </svg>
 				</li>
 				<li>
 					<a>
 					  <%= link_to 'お気に入り', user_followings_path(current_user), class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 					</a>
-				</li>
-				<li class="text-gray-300">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-					</svg>
 				</li>
 				<li>
 					<a>
@@ -66,40 +46,20 @@
 				  <%= link_to '投稿する', new_photo_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
 			</li>
-			<li class="text-gray-300">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-				</svg>
-			</li>
 			<li>
 				<a>
 				  <%= link_to '投稿一覧', photos_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
-			</li>
-			<li class="text-gray-300">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-				</svg>
 			</li>
 			<li>
 				<a>
 				  <%= link_to 'チャット履歴', trainer_chats_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
 			</li>
-	        <li class="text-gray-300">
-			  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-			  </svg>
-			</li>
 			<li>
 				<a>
 				  <%= link_to 'エリア登録', new_map_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
-			</li>
-			<li class="text-gray-300">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-				</svg>
 			</li>
 			<li>
 				<a>
@@ -112,43 +72,41 @@
 				  <%= link_to 'メンバー登録', new_user_registration_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
 			</li>
-			<li class="text-gray-300">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-				</svg>
-			</li>
 			<li>
 				<a>
 				  <%= link_to 'トレーナー登録', new_trainer_registration_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
-			</li>
-			<li class="text-gray-300">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-				</svg>
 			</li>
 			<li>
 				<a>
 				  <%= link_to 'トレーナーを見つける', trainers_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
 			</li>
+			<li>
+				<a>
+				  <%= link_to 'トレーナーログイン', new_trainer_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+				</a>
+			</li>
+			<li>
+				<a>
+				  <%= link_to 'メンバーログイン', new_user_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+				</a>
+			</li>
 			<% end %>
 		</ul>
-		<% if user_signed_in? %>
+	<% if user_signed_in? %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "mr-5 hover:text-gray-900 hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" %>
 		<% elsif trainer_signed_in? %>
           <%= link_to "Sign out", destroy_trainer_session_path, method: :delete, class: "mr-5 hover:text-gray-900 hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" %>
 		<% else %>
-		  <a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold  rounded-xl transition duration-200" href="/trainers/sign_in">Trainer Login</a>
-		  <a class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="/users/sign_in" >Member Login</a>
 	    <% end %>
 	</nav>
 	<div class="navbar-menu relative z-50 hidden">
 		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50"></div>
-		<nav class="fixed top-0 right-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-gray-100 border-r overflow-y-auto">
+		<nav class="fixed top-0 right-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-gray-400 bg-opacity-75 border-r overflow-y-auto">
 			<div class="flex items-center">
 				<button class="navbar-close right-0">
-					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg class="h-6 w-6 text-gray-200 cursor-pointer hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
 					</svg>
 				</button>
@@ -156,78 +114,60 @@
 			<div>
 			  <ul>
 			  	<% if user_signed_in? %>
-			  	   <li class="mb-10 mt-10">
-			  	    <a>
-			          <%= link_to 'トレーナーを探す', trainers_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-			        </a>
+			  	  <li class="mb-10 mt-10">
+			        <%= link_to 'トレーナーを探す', trainers_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
-				  	  <a>
-				        <%= link_to '投稿一覧', photos_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
+				      <%= link_to '投稿を見る', photos_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
-				  		<a>
-				        <%= link_to 'チャット履歴', chats_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
+				    	<%= link_to 'DM履歴', chats_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
+				  	</li>
+				  	<li class="mb-10">
+				      <%= link_to 'お気に入り', user_followings_path(current_user), class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li>
-				  		<a>
-				        <%= link_to 'お気に入り', user_followings_path(current_user), class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
+				      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 			  	<% elsif trainer_signed_in? %>
 			      <li class="mb-10 mt-10">
-			  	    <a>
-			          <%= link_to '投稿する', new_photo_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-			        </a>
+			        <%= link_to '投稿する', new_photo_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
-				  	  <a>
-				        <%= link_to '投稿一覧', photos_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
+				      <%= link_to '投稿一覧', photos_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
-				  		<a>
-				        <%= link_to 'チャット履歴', trainer_chats_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
-				  	</li>
-				  	<li>
-				  		<a>
-				        <%= link_to 'ジム登録', new_map_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
-				  	</li>
-				  	<% else  %>
-				  	<li class="mb-10 mt-10">
-				  		<a>
-				        <%= link_to 'Member sign up', new_user_registration_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
+				      <%= link_to 'チャット履歴', trainer_chats_path, class: "font-bold text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
-				  	  <a>
-				        <%= link_to 'Trainer sing up', new_trainer_registration_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
+				      <%= link_to 'ジム登録', new_map_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
-				  	<li>
-				  		<a>
-				        <%= link_to 'Trainers', trainers_path, class: "font-bold text-md text-gray-500 hover:text-black" %>
-				      </a>
+				  		<li>
+				      <%= link_to 'ログアウト', destroy_trainer_session_path, method: :delete, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
+
+				  <% else  %>
+				 	  <li class="mb-10 mt-10">
+			        <%= link_to 'トレーナーを見つける', trainers_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
+				  	</li>
+				  	<li class="mb-10">
+				      <%= link_to 'ユーザー登録', new_user_registration_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
+				  	</li>
+				  	<li class="mb-10">
+				      <%= link_to 'ユーザーログイン', new_user_session_path, class: "font-bold text-gray-200 hover:text-white animoBorderLeftRight" %>
+				  	</li>
+				  	<li class="mb-10">
+				      <%= link_to 'トレーナー登録', new_trainer_registration_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
+				  	</li>
+				  		<li>
+				      <%= link_to 'トレーナーログイン', new_trainer_session_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
+				  	</li>
+
 			  	<% end %>
 			  </ul>
 			</div>
-			<div class="mt-auto">
-				<div class="pt-6">
-					<% if user_signed_in? %>
-			          	<%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none text-white bg-blue-500 hover:bg-blue-600 rounded-xl" %>
-					<% elsif trainer_signed_in? %>
-			          	<%= link_to "Sign out", destroy_trainer_session_path, method: :delete, class: "block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none text-white bg-blue-500 hover:bg-blue-600 rounded-xl" %>
-					<% else %>
-						<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none text-white bg-blue-500 hover:bg-blue-600 rounded-xl" href="/trainers/sign_in">Trainer Login</a>
-						<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-500 hover:bg-blue-600  rounded-xl" href="/users/sign_in">Member Login</a>
-					<% end %>
-				</div>
-				<p class="my-4 text-xs text-center text-gray-400">
+			<div class="">
+				<p class="my-4 text-xs text-center text-gray-100">
 					<span>Copyright © 2021</span>
 				</p>
 			</div>
@@ -235,46 +175,4 @@
 	</div>
 </header>
 
-<script>
-  // Burger menus
-  document.addEventListener('DOMContentLoaded', function() {
-    // open
-    const burger = document.querySelectorAll('.navbar-burger');
-    const menu = document.querySelectorAll('.navbar-menu');
-
-    if (burger.length && menu.length) {
-        for (var i = 0; i < burger.length; i++) {
-            burger[i].addEventListener('click', function() {
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
-        }
-    }
-
-    // close
-    const close = document.querySelectorAll('.navbar-close');
-    const backdrop = document.querySelectorAll('.navbar-backdrop');
-
-    if (close.length) {
-        for (var i = 0; i < close.length; i++) {
-            close[i].addEventListener('click', function() {
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
-        }
-    }
-
-    if (backdrop.length) {
-        for (var i = 0; i < backdrop.length; i++) {
-            backdrop[i].addEventListener('click', function() {
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
-        }
-    }
-  });
-</script>
 

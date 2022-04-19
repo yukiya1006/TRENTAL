@@ -21,36 +21,38 @@ trainers = Trainer.create!(
     {name: 'トレーナー７', email: 'trainer7@example.com', password: 'password', biography: "よろしくお願いします", gender: 0, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/マイケル.jpg"), filename:" マイケル.jpg")},
     {name: 'トレーナー８', email: 'trainer8@example.com', password: 'password', biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ミランダ.jpg"), filename:" ミランダ.jpg")},
     {name: 'トレーナー９', email: 'trainer9@example.com', password: 'password', biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/リサ.jpg"), filename:" リサ.jpg")},
-    {name: 'トレーナー１０', email: 'trainer10@example.com', password: 'password',biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ワトソン.jpg"), filename:" ワトソン.jpg")}
+    {name: 'トレーナー１０', email: 'trainer10@example.com', password: 'password',biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ワトソン.jpg"), filename:" ワトソン.jpg")},
+    {name: 'トレーナー１１', email: 'trainer11@example.com', password: 'password', biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/キャサリン.jpg"), filename:" キャサリン.jpg")},
+    {name: 'トレーナー１２', email: 'trainer12@example.com', password: 'password', biography: "よろしくお願いします", gender: 0, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ジェイク.jpg"), filename:" ジェイク.jpg")},
+    {name: 'トレーナー１３', email: 'trainer13@example.com', password: 'password', biography: "よろしくお願いします", gender: 0, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ジョニー.jpg"), filename:" ジョニー.jpg")},
+    {name: 'トレーナー１４', email: 'trainer14@example.com', password: 'password', biography: "よろしくお願いします", gender: 0, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/スミス.jpg"), filename:" スミス.jpg")},
+    {name: 'トレーナー１５', email: 'trainer15@example.com', password: 'password', biography: "よろしくお願いします", gender: 0, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ダン.jpg"), filename:" ダン.jpg")},
+    {name: 'トレーナー１６', email: 'trainer16@example.com', password: 'password', biography: "よろしくお願いします", gender: 0, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ニコラス.jpg"), filename:" ニコラス.jpg")},
+    {name: 'トレーナー１７', email: 'trainer17@example.com', password: 'password', biography: "よろしくお願いします", gender: 0, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/マイケル.jpg"), filename:" マイケル.jpg")},
+    {name: 'トレーナー１８', email: 'trainer18@example.com', password: 'password', biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ミランダ.jpg"), filename:" ミランダ.jpg")},
+    {name: 'トレーナー１９', email: 'trainer19@example.com', password: 'password', biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/リサ.jpg"), filename:" リサ.jpg")},
+    {name: 'トレーナー２０', email: 'trainer20@example.com', password: 'password',biography: "よろしくお願いします", gender: 1, image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ワトソン.jpg"), filename:" ワトソン.jpg")},
+
   ]
   )
 
 
-# Photo.create!(
-#   [
-#     {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '脚トレ最高！', trainer_id: trainers[0].id },
-#     {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'ダイエット指導が得意です', trainer_id: trainers[1].id },
-#     {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '今日からはじめました！', trainer_id: trainers[2].id }
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[3].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[10].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[7].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[3].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[9].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[0].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[2].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[5].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[10].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[3].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[10].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[7].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[3].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[1].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[6].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[9].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[2].id },
-#     # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'test', trainer_id: trainers[8].id }
-#   ]
-# )
+Photo.create!(
+  [
+    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '脚トレ最高！', trainer_id: trainers[0].id },
+    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'ダイエット指導が得意です', trainer_id: trainers[1].id },
+    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '今日からはじめました！', trainer_id: trainers[2].id }
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '脚トレ最高！', trainer_id: trainers[3].id },
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'ダイエット指導が得意です', trainer_id: trainers[4].id },
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '今日からはじめました！', trainer_id: trainers[5].id },
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '脚トレ最高！', trainer_id: trainers[6].id },
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'ダイエット指導が得意です', trainer_id: trainers[7].id },
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '今日からはじめました！', trainer_id: trainers[8].id },
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '脚トレ最高！', trainer_id: trainers[9].id },
+    # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: 'ダイエット指導が得意です', trainer_id: trainers[10].id }
+    # # {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/noimage.jpg"), filename:"noimage.jpg"), caption: '今日からはじめました！', trainer_id: trainers[2].id }
+  ]
+)
 
 # 100.times do |n|
 #   Trainer.create!(

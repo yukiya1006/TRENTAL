@@ -1,4 +1,4 @@
-<div class="h-screen">
+<div class="bg-gray-600 bg-opacity-75 text-gray-100" style="height: 90vh;">
   <div class="flex justify-center py-10">
   <% if @user.image.attached? %>
     <%= image_tag @user.image, size:'200x200', class: "rounded-full mt-2" %>
@@ -11,8 +11,8 @@
     <%= @user.name %><br>
     <%= @user.email %>
   </div>
-  <button class="btn btn-accent">
-    <%= link_to 'Edit', edit_user_path(@user) %>
+  <button class="btn btn-accent text-gray-100">
+    <%= link_to '編集', edit_user_path(@user) %>
   </button>
   <button class="btn btn-primary">
     <%= link_to '退会', unsubscribe_path(@user) %>

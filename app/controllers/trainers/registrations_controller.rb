@@ -61,10 +61,10 @@ class Trainers::RegistrationsController < Devise::RegistrationsController
    
 protected
    def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image, :age, :gender, :activity_area, :training_history, :teaching_history, :qualification, :session_fee, :biography])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image, :age, :gender, :activity_area, :training_history, :teaching_history, :qualification, :session_fee, :biography, :strong_part])
    end
    
    def after_sign_in_path_for(resource)
-    root_path(current_trainer)
+    trainer_path(current_trainer)
    end
 end

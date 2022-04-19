@@ -1,29 +1,44 @@
-<section class="h-screen">
-  <div class="container flex justify-center py-10">
-    <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-md mt-10 md:mt-0">
-
-      <h2 class="text-gray-900 text-2xl font-medium title-font mb-5">Edit</h2>
-      <%= form_with model: @user, local: true do |f| %>
-　　　<%= render 'layouts/error', obj: @user %>
-
-        <div class="relative mb-4">
-          <%= f.label :メールアドレス, class: "leading-7 text-sm text-gray-600" %><br />
-          <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+<div class="relative">
+  <div class="relative bg-gray-600 bg-opacity-75" style="height: 90vh;">
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <div class="flex flex-col items-center justify-between xl:flex-row">
+        <div class="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
+          <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none"></h2>
         </div>
-        <div class="relative mb-4">
-          <%= f.label :名前, class: "leading-7 text-sm text-gray-600" %><br />
-          <%= f.text_field :name, autofocus: true, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %><br />
+        <div class="w-full max-w-xl xl:px-8 xl:w-5/12">
+          <div class="bg-white rounded shadow-2xl p-7 sm:p-10">
+            <h3 class="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
+              プロフィール
+            </h3>
+            <%= form_with model: @user, local: true do |f| %>
+　　　      <%= render 'layouts/error', obj: @user %>
+              <form>
+                <div class="mb-1 sm:mb-2">
+                  <%= f.label :メールアドレス, class: "leading-7 text-sm text-gray-600" %><br />
+                  <%= f.text_field :email, autofocus: true, class: "flex-grow w-full px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" %>
+                </div>
+                <div class="mb-1 sm:mb-2">
+                  <%= f.label :名前, class: "leading-7 text-sm text-gray-600" %><br />
+                  <%= f.text_field :name, autofocus: true, class: "flex-grow w-full px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" %><br />
+                </div>
+                <div class="mb-1 sm:mb-2">
+                  <%= f.label :プロフィール写真, class: "leading-7 text-sm text-gray-600" %><br />
+                  <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
+                </div>
+                <div class="mt-4 mb-2 sm:mb-4">
+                  <button type="submit" class="shadow-xl bg-purple-700 hover:bg-purple-900 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none">
+                    Update
+                  </button>
+                </div>
+                <p class="text-xs text-gray-600 sm:text-sm">
+                  We respect your privacy. Unsubscribe at any time.
+                </p>
+              </form>
+            <% end %>
+          </div>
         </div>
-        <div class="relative mb-4">
-          <%= f.label :プロフィール画像, class: "leading-7 text-sm text-gray-600" %><br />
-          <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
-        </div>
-
-        <div class="relative mb-4">
-          <%= f.submit 'Update', class: 'px-2 py-1 text-xl text-gray-900 bg-blue-300 font-semibold rounded' %>
-        </div>
-　　　<% end %>
-
+      </div>
     </div>
   </div>
-</section>
+</div>
+

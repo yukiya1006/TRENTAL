@@ -1,6 +1,6 @@
 <div class="relative">
-<%= image_tag 'trainer.index-1966247.jpg', class: "absolute inset-0 object-cover w-full h-full" %>
-<div class="relative bg-gray-900 bg-opacity-75">
+<%= image_tag 'trainer.index-1966247.jpg', class: "absolute inset-0 object-cover w-full h-full"%>
+<div class="relative bg-gray-900 bg-opacity-75" style="padding-bottom: 871px;">
 <div class="flex justify-center my-auto py-4 pl-7">
   <%= form_tag trainers_path, method: :get do %>
     <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender}), include_blank: "性別", class: "mr-1" %>
@@ -12,7 +12,7 @@
     <%= link_to 'マップ検索はこちら', map_searches_path, class: "text-gray-200 hover:text-white" %>
   <% end %>
 </div>
-<div class="py-6 sm:py-8 lg:py-12">
+<div class="">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
     <h2 class="text-white text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12"><%= @trainers.count%> Trainers</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
@@ -24,7 +24,7 @@
           <% end %>
         <% else %>
           <%= link_to trainer_path(trainer.id) do %>
-            <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full overflow-hidden mx-auto mt-8 shadow-lg" %>
+            <%= image_tag ("noimage.jpg"), class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% end %>
         <% end %>
         <div class="w-full flex flex-col bg-white text-center rounded-lg relative p-4">
@@ -36,5 +36,8 @@
     </div>
   </div>
 </div>
+      <div class="text-gray-100 text-center text-2xl pb-6">
+      <%= paginate @trainers %>
+      </div>
 </div>
 </div>

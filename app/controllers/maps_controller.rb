@@ -6,6 +6,7 @@ class MapsController < ApplicationController
   end
 
   def index
+    @user = current_user
     @trainer = current_trainer
     @map = Map.new
        # クエリ検索が空だったら
@@ -34,7 +35,7 @@ class MapsController < ApplicationController
   def destroy
     map = Map.find(params[:id])
     map.destroy
-    redirect_to action: :index
+    redirect_to new_map_path
   end
 
   private

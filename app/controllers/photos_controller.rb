@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
 
   def index
     @photo = Photo.new
-    @photos = Photo.all
+    @photos = Photo.order("id DESC").page(params[:page]).per(1)
     @user = current_user
     @trainer = current_trainer
   end

@@ -55,9 +55,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'kaminari'
 gem "chartkick"
 gem 'rails-i18n'
-gem 'acts-as-taggable-on'
 gem 'devise'
 gem 'jp_prefecture'
 gem 'jquery-rails'
@@ -65,7 +65,6 @@ gem "gon"
 gem "geocoder"
 gem 'dotenv-rails'
 gem "gmaps4rails"
-gem "ransack"
 gem 'rack-mini-profiler', '~> 2.0'
 group :production do
   gem 'mysql2'

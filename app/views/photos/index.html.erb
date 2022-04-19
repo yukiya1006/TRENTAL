@@ -1,5 +1,4 @@
-<div class="grid grid-cols-1 mx-auto w-full bg-gray-700 h-screen">
-  <div class="grid grid-cols-1">
+<div class='scroll-list jscroll bg-gray-600 bg-opacity-75 py-2 text-gray-100 h-screen'>
   <% @photos. each do |photos| %>
     <div class="text-center">
       <div class="flex justify-center my-2">
@@ -14,15 +13,24 @@
       </div>
       <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
       </div>
-      <%= image_tag photos.image, class: "rounded-md h-auto w-auto mx-auto" %>
+      <% if photos.image.attached? %>
+      <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto" %>
+      <% end %>
       <div class="text-center">
-        <p><%= photos.caption %></p>
-        <% if trainer_signed_in? %>
-        <p><%= link_to "Edit", edit_photo_path(photos.id) %></p>
+        <p class="mt-6 mb-24"><%= photos.caption %></p>
+        <% if trainer_signed_in? && photos.trainer_id == current_trainer.id %>
+        <div class="flex justify-center gap-4">
+        <p class="mb-12"><%= link_to "編集", edit_photo_path(photos.id) %></p>
+        <p class="mb-12"><%= link_to "削除", photo_path(photos.id), method: :delete, data: {confirm: "削除しますか"} %></p>
+        </div>
         <% end %>
         <% if user_signed_in? %>
       </div>
       <% end %>
   <% end %>
+  <div class="text-center" style="display: none;">
+  <%= paginate @photos %>
   </div>
 </div>
+
+

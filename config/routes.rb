@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
   patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
 
+  get '/trainers/:id/unsubscribe' => 'trainers#trainer_unsubscribe', as: 'trainer_unsubscribe'
+  patch '/trainers/:id/withdrawal' => 'trainers#trainer_withdrawal', as: 'trainer_withdrawal'
+
 
 
 

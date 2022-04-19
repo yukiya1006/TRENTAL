@@ -1,6 +1,10 @@
-<div class="text-center text-3xl mt-6">選択エリアのトレーナー</div>
-<div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12 p-8">
+<div class="bg-gray-600 bg-opacity-75 h-screen text-gray-100">
+  <% if params[:q] %>
+      <div class="text-center text-2xl font-bold py-4"><span class="text-4xl"><%= params[:q] %></span>のトレーナー</div>
+    <% end %>
+<div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12 pt-6 pl-6">
   <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
+
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-20 mx-auto">
       <% @maps.each do |t| %>
       <div class="overflow-hidden">
@@ -9,15 +13,17 @@
     <%= image_tag t.trainer.image, class: "rounded-md sm:h-auto sm:w-auto" %> <br>
   <% end %>
   <% else %>
-    <%= image_tag ("noimage.jpg"), size: '50x50' %>
+    <%= image_tag ("noimage.jpg"), class: "rounded-md sm:h-auto sm:w-auto" %>
   <% end %>
           <div class="text-center md:text-left">
-            <h2 class="text-lg"><%= t.address %></h2>
-            <div class="text-purple-500"><%= t.body %></div>
+            <div class=""><%= t.body %></div>
           </div>
+    <% if trainer_signed_in? && t.trainer.id == current_trainer.id %>
     <%= link_to "Delete", map_path(t.id), method: :delete %>
+    <% end %>
       </div>
       <% end %>
     </div>
   </div>
+</div>
 </div>

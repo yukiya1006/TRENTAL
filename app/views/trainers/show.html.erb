@@ -1,22 +1,25 @@
-<div class="grid grid-cols-1">
-  <div class="pt-8">
+<div class="grid grid-cols-1 bg-gray-600 bg-opacity-75 text-gray-100" style="padding-bottom: 189px;">
+  <div class="">
     <% unless trainer_signed_in? %>
     <div class="py-2 px-8">
       <%= link_to "検索画面へ戻る",  trainers_path %>
     </div>
     <% end %>
-
-    <div class="sm:grid grid-cols-1" >
-      <div class="area-1">
-        <div class="flex justify-center gap-6">
+        <div class="group h-96 flex items-end justify-center rounded-lg overflow-hidden shadow-lg relative p-4">
           <% if @trainer.image.attached? %>
-            <%= image_tag @trainer.image, size:'200x200', class: "rounded-full mt-2 shadow-2xl" %>
+            <%= image_tag @trainer.image, class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% else %>
-            <%= image_tag ("noimage.jpg"), size: '200x200', class: "rounded-full mt-2 shadow-xl" %>
+            <%= image_tag ("noimage.jpg"), class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% end %>
-          <div class="">
-           <%= pie_chart @date, colors: ["#99FFFF", "#FFBEDA"], donut: true , width: "82px", height: "150px" %>
-          </div>
+        <div class="w-full flex flex-col bg-white text-center rounded-lg relative p-4 text-gray-900">
+          <%= @trainer.name %>
+          <%= @trainer.activity_area %>
+          <%= @trainer.gender %>
+          <%= @trainer.age %>
+        </div>
+        <div class="absolute top-0 right-0 pr-6">
+          <%= pie_chart @date, colors: ["#99FFFF", "#FFBEDA"], donut: true , width: "82px", height: "150px", legend: false  %>
+        </div>
         </div>
 
         <div class="flex justify-center my-2 gap-5 mb-6">
@@ -46,14 +49,9 @@
           </div>
         </div>
 
-        <div class="text-center">
-          <span class="font-bold text-2xl"><%= @trainer.name %></span><span class="text-xl">トレーナー<br></span>
-        </div>
-        <div class="flex text-xl py-2 justify-center">
-          <%= @trainer.activity_area %>
-          <%= @trainer.gender %>
-          <%= @trainer.age %>
-        </div>
+
+
+
         <table class="table-auto mx-auto">
           <tbody>
             <tr>
@@ -129,7 +127,8 @@
               <td class="px-4 py-2"><%= @trainer.followers.count %></td>
               <td>
                 <% if @trainer == current_trainer %>
-                <%= link_to 'Edit', edit_trainer_path(@trainer), class: "btn btn-accent" %>
+                <%= link_to '編集', edit_trainer_path(@trainer), class: "btn btn-accent text-gray-100" %>
+                <%= link_to '退会', trainer_unsubscribe_path(@trainer) , class: "btn btn-primary" %>
                 <% end %>
               </td>
             </tr>
@@ -145,13 +144,18 @@
       <div class="area-2 col-span-2">
         <div class="grid grid-cols-3 gap-2">
           <% @photos. each do |photos| %>
-        <%= image_tag photos.image, class: "rounded-md w-full h-full" %>
-        <% end %>
+          <% if trainer_signed_in? && photos.trainer.id == current_trainer.id %>
+          <% if photos.image.attached? %>
+            <%= link_to edit_photo_path(photos.id) do %>
+            <%= image_tag photos.image, class: "rounded-md w-full h-full" %>
+            <% end %>
+          <% end %>
+          <% else %>
+            <%= image_tag photos.image, class: "rounded-md w-full h-full" %>
+          <% end %>
+          <% end %>
         </div>
       </div>
-
-    </div>
-  </div>
 </div>
 
 <script>

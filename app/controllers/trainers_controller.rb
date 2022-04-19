@@ -1,7 +1,7 @@
 class TrainersController < ApplicationController
 
   def index
-    @trainers = Trainer.all
+
     @trainer = current_trainer
     @user = current_user
     @map = Map.new
@@ -37,8 +37,11 @@ class TrainersController < ApplicationController
       strong_part = "strong_part is not null"
     end
 
-
-    @search = Trainer.where("#{gender} AND #{age} AND #{activity_area} AND #{teaching_history} AND #{strong_part}" )
+    if params[:strong_part] or params[:age] or params[:gender] or params[:activity_area] or params[:teaching_history]
+      @trainers = Trainer.where("is_trainer_deleted = false AND #{gender} AND #{age} AND #{activity_area} AND #{teaching_history} AND #{strong_part}").page(params[:page]).per(8)
+    else
+      @trainers = Trainer.where(is_trainer_deleted: false).order("id DESC").page(params[:page]).per(8)
+    end
 
   end
 
@@ -64,6 +67,19 @@ class TrainersController < ApplicationController
     else
       redirect_to edit_trainer_path
     end
+  end
+
+  def trainer_withdrawal
+    @trainer = current_trainer
+    @trainer = Trainer.find(params[:id])
+    @trainer.update(is_trainer_deleted: true)
+    sign_out
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+
+  def trainer_unsubscribe
+    @trainer = current_trainer
   end
 
   private

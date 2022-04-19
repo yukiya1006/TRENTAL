@@ -1,9 +1,15 @@
 <div id="chats" class="h-screen w-screen">
 <div class="text-center"><%="#{@chat.trainer.name}トレーナーとのチャット"%></div>
 <% @chats.each do |chat| %>
-  <% unless chat.is_trainer %>
-    <div class="mycomment">
+  <% unless chat.is_trainer%>
+  <%= chat.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+    <div class="mycomment flex justify-end">
       <p><%=chat.message%></p>
+      <% if chat.user.image.attached? %>
+      　<%= image_tag chat.user.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+      <% else %>
+          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+      <% end %>
     </div>
   <% else %>
     <div class="fukidasi">

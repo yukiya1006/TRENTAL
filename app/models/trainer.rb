@@ -22,9 +22,9 @@ class Trainer < ApplicationRecord
   has_many :likers, through: :reverse_of_like_relationships, source: :liker
   has_many :baders, through: :reverse_of_bad_relationships, source: :bader
 
-  enum activity_area: { 東京都:0,神奈川県:1,千葉:2,埼玉:3 }
+  enum activity_area: { "東京都":0,"神奈川県":1,"千葉":2,"埼玉":3 }
 
-  enum gender: { 男性:0,女性:1 }
+  enum gender: { "男性":0,"女性":1 }
 
   enum age: { "20~25歳":0,"26~30歳":1,"30~35歳":2,"35~40歳":3,"40~45歳":4,"45歳以上":5 }
 
@@ -32,11 +32,11 @@ class Trainer < ApplicationRecord
 
   enum training_history: { "1~2年":0,"2~3年":1,"3~4年":2,"4~5年":3,"5年以上":4 }
 
-  enum teaching_history: { 経験あり:0,経験なし:1 }
+  enum teaching_history: { "経験あり":0,"経験なし":1 }
 
-  enum qualification: { あり:0,なし:1 }
+  enum qualification: { "あり":0,"なし":1 }
 
-  enum strong_part: { 脚:0,お尻:1,胸:2,背中:3,腕:4,肩:5}
+  enum strong_part: { "脚":0,"お尻":1,"胸":2,"背中":3,"腕":4,"肩":5}
 
 
 
@@ -53,6 +53,10 @@ class Trainer < ApplicationRecord
   end
 
   def get_image(width, height)
+  end
+
+  def active_for_authentication?
+    super && (is_trainer_deleted == false)
   end
 
 end
