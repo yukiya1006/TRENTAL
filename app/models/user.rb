@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
+  has_many :chat_rooms
   has_many :rooms, through: :chat_rooms
-  has_many :chat_rooms, dependent: :destroy
-  has_many :chats, dependent: :destroy
+  has_many :chats
 
   # ユーザーはrelationshipsを通してfollower_id(フォローした)を複数持つ
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -20,10 +20,10 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :likings, through: :like_relationships, source: :liked
   has_many :badings, through: :bad_relationships, source: :baded
-  
+
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-  
+
   validates :name, presence: true
 
 # フォローしたときの処理

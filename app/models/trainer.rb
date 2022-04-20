@@ -4,12 +4,11 @@ class Trainer < ApplicationRecord
 
   has_one_attached :image
 
-  has_many :rooms, through: :chat_rooms
   has_many :chat_rooms, dependent: :destroy
+  has_many :rooms, through: :chat_rooms
   has_many :chats, dependent: :destroy
   has_many :maps
   has_many :photos
-  has_many :admins
 
   validates :name, presence: true
 

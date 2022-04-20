@@ -6,6 +6,7 @@ class CreateChats < ActiveRecord::Migration[6.1]
        t.integer :trainer_id
        t.text :message
        t.boolean :is_trainer
+       t.boolean :checked, default: false
 
       t.timestamps
     end

@@ -1,6 +1,6 @@
 class Room < ApplicationRecord
-    has_many :users
-    has_many :trainers
-    has_many :chat_rooms, dependent: :destroy
+    has_one :chat_room, dependent: :destroy
+    has_one :user, through: :chat_room
+    has_one :trainer, through: :chat_room
     has_many :chats, dependent: :destroy
 end

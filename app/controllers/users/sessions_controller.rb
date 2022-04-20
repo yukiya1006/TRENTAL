@@ -24,7 +24,7 @@ class Users::SessionsController < Devise::SessionsController
 def valid_user
   @user = User.find_by(email: params[:user][:email])
   if @user
-    if @user.valid_password?(params[:user][:password]) && (@user.is_user_deleted == false)
+    if @user.valid_password?(params[:user][:password]) && (@user.is_user_deleted == true)
       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to new_user_registration_path
     else
