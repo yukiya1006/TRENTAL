@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'homes#top'
   get 'about' => 'homes#about'
   devise_for :admins,skip:[:registrations, :passwords],controllers:{ sessions: "admins/sessions" }

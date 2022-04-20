@@ -14,7 +14,11 @@
   <% else %>
     <div class="fukidasi">
       <div class="faceicon">
-        <%= image_tag chat.trainer.image %>
+      <% if chat.trainer.image.attached? %>
+      　<%= image_tag chat.trainer.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+      <% else %>
+          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+      <% end %>
       </div>
       <div class="chatting">
         <div class="says">

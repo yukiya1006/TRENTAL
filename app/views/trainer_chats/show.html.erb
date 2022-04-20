@@ -5,12 +5,20 @@
   <%= chat.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
       <div class="mycomment flex justify-end">
         <p><%=chat.message%></p>
-        <%= image_tag chat.trainer.image, class: "h-12 w-12 rounded-full shadow-2xl" %>
+        <% if chat.trainer.image.attached? %>
+          <%= image_tag chat.trainer.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+        <% else %>
+          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+        <% end %>
       </div>
   <% else %>
     <div class="fukidasi">
       <div class="faceicon">
-        <%= image_tag chat.user.image %>
+      <% if chat.user.image.attached? %>
+      　<%= image_tag chat.user.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+      <% else %>
+          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+      <% end %>
       </div>
       <div class="chatting">
         <div class="says">

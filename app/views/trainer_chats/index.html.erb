@@ -5,18 +5,19 @@
       <% @rooms.each do |room| %>
       <div class="overflow-hidden">
         <% if room.user.image.attached? %>
-    <%= link_to trainer_chat_path(room.id) do %>
-    <%= image_tag room.user.image, class: "rounded-md sm:h-auto sm:w-auto" %> <br>
-  <% end %>
-  <% else %>
-  　 <%= link_to trainer_chat_path(room.id) do %>
-    <%= image_tag ("noimage.jpg"), size: 'rounded-md sm:h-auto sm:w-auto' %>
-    <% end %>
-  <% end %>
-      <%= room.user.name %>
+          <%= link_to trainer_chat_path(room.id) do %>
+            <%= image_tag room.user.image, class: "rounded-md sm:h-auto sm:w-auto" %> <br>
+          <% end %>
+         <% else %>
+           <%= link_to trainer_chat_path(room.id) do %>
+             <%= image_tag ("noimage.jpg"), size: 'rounded-md sm:h-auto sm:w-auto' %>
+           <% end %>
+        <% end %>
+      <%= room.user.name %></br>
+      <%= room.created_at.strftime("%Y年%m月%d日") %>～
       </div>
-      <% end %>
     </div>
+      <% end %>
   </div>
 </div>
 </div>

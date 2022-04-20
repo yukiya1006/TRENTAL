@@ -3,6 +3,9 @@ class TrainerChatsController < ApplicationController
   def index
     @rooms = ChatRoom.where(trainer_id: current_trainer.id)
     @trainer = current_trainer
+    @chats = Chat.where(room_id: params[:id])
+    # @chat = Chat.new(room_id: params[:id], user_id: @chats.last.user_id)
+    # @room = Room.find(params[:id])
   end
 
   def show
@@ -10,6 +13,7 @@ class TrainerChatsController < ApplicationController
     @chats = Chat.where(room_id: params[:id])
     @chat = Chat.new(room_id: params[:id], user_id: @chats.last.user_id)
     @room = Room.find(params[:id])
+    @user = current_user
   end
 
   def create
