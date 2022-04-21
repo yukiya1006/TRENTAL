@@ -1,42 +1,6 @@
-<div id="chats" class="h-screen w-screen">
+<div id="chats" class="h-screen w-screen" style="padding-bottom: 100px;">
 <div class="text-center"><%="#{@chat.trainer.name}トレーナーとのチャット"%></div>
-<% @chats.each do |chat| %>
-  <% unless chat.is_trainer%>
-  <%= chat.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
-    <div class="mycomment flex justify-end">
-      <p><%=chat.message%></p>
-      <% if chat.user.image.attached? %>
-      　<%= image_tag chat.user.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
-      <% else %>
-          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="fukidasi">
-      <div class="faceicon">
-      <% if chat.trainer.is_trainer_deleted == true %>
-      <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
-      <P>メンバーがいません</P>
-      <% elsif chat.trainer.image.attached? %>
-      　<%= image_tag chat.trainer.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
-      <% else %>
-          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
-      <% end %>
-      </div>
-      <div class="chatting">
-        <div class="says">
-          <p><%=chat.message%></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-<div class=" text-center">
-  <%= form_with model: @chat do |f| %>
-  <%= f.text_field :message %>
-  <%= f.hidden_field :room_id %>
-  <%= f.hidden_field :trainer_id %>
-  <%= f.submit "送信", class: "btn btn-info btn-xs" %>
- <% end %>
+<div id="chat_buttons">
+  <%= render "chats/chat", chats: @chats, chat: @chat %>
 </div>
 </div>

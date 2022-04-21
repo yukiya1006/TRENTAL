@@ -1,12 +1,13 @@
 class ChatsController < ApplicationController
 
   def index
-    @rooms = ChatRoom.where(user_id: current_user.id)
+    @rooms = ChatRoom.where(user_id: current_user.id).order("id DESC").page(params[:page]).per(8)
     @user = current_user
     @trainer = current_trainer
   end
 
   def show
+    # @room = Room.find(params[:id])
     @user = current_user
     @trainer = Trainer.find(params[:id])
     rooms = current_user.chat_rooms.pluck(:room_id)

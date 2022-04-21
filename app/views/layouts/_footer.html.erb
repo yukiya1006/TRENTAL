@@ -34,11 +34,11 @@
     <div class="">
       <% if @user.image.attached? %>
         <%= link_to user_path(current_user) do %>
-        <%= image_tag @user.image, size:'40x40', class: "rounded-full shadow-2xl" %>
+        <%= image_tag @user.image, class: "rounded-full shadow-2xl", style: "object-fit: cover; width: 40px; height: 40px;" %>
         <% end %>
         <% else %>
         <%= link_to user_path(current_user) do %>
-        <%= image_tag ("noimage.jpg"), size: '50x50', class: "rounded-full shadow-2xl" %>
+        <%= image_tag ("noimage.jpg"), class: "rounded-full shadow-2xl", style: "object-fit: cover; width: 40px; height: 40px;" %>
         <% end %>
       <% end %>
     </div>
@@ -81,11 +81,11 @@
     <div>
       <% if @trainer.image.attached? %>
         <%= link_to trainer_path(current_trainer) do %>
-        <%= image_tag @trainer.image, size:'40x40', class: "rounded-full shadow-2xl" %>
+        <%= image_tag @trainer.image, class: "rounded-full shadow-2xl", style: "object-fit: cover; width: 40px; height: 40px;"  %>
         <% end %>
         <% else %>
         <%= link_to trainer_path(current_trainer) do %>
-        <%= image_tag ("noimage.jpg"), size: '40x40', class: "rounded-full shadow-2xl" %>
+        <%= image_tag ("noimage.jpg"), class: "rounded-full shadow-2xl", style: "object-fit: cover; width: 40px; height: 40px;" %>
         <% end %>
       <% end %>
     </div>

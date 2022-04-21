@@ -1,20 +1,20 @@
-<div class='scroll-list jscroll bg-gray-600 bg-opacity-75 py-2 text-gray-100 h-screen'>
+<div class='scroll-list jscroll pt-24 text-gray-100 text-gray-900' style="height: 1130px; background-color: #dcdcdc;" >
   <% @photos. each do |photos| %>
     <div class="text-center">
       <div class="flex justify-center my-2">
       <% if photos.trainer.image.attached? %>
         <%= link_to trainer_path(photos.trainer.id) do %>
-        <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12" %>
+        <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12 object-content" %>
       <% end %>
       <% else %>
-        <%= image_tag ("noimage.jpg"), clas: "rounded-full w-12 h-12" %>
+        <%= image_tag ("noimage.jpg"), class: "rounded-full w-12 h-12 object-content" %>
       <% end %>
         <%= photos.trainer.name%>
       </div>
       <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
       </div>
       <% if photos.image.attached? %>
-      <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto" %>
+      <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto object-content" %>
       <% end %>
       <div class="text-center">
         <p class="mt-6 mb-24"><%= photos.caption %></p>

@@ -1,20 +1,26 @@
-<div class="bg-gray-600 bg-opacity-75 text-gray-100" style="height: 90vh;">
-<div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12 p-8">
-  <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-20 mx-auto">
-      <% @rooms.each do |room| %>
-      <div class="overflow-hidden">
-        <% if room.trainer.image.attached? %>
-    <%= link_to chat_path(room.id) do %>
-    <%= image_tag room.trainer.image, class: "rounded-md sm:h-auto sm:w-auto" %> <br>
-  <% end %>
-  <% else %>
-    <%= image_tag ("noimage.jpg"), size: '50x50' %>
-  <% end %>
-      <%= room.trainer.name %>
+<div class="py-24" style="height: 1380px; background-color: #dcdcdc;">
+  <div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12 p-8">
+    <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-20 mx-auto">
+        <% @rooms.each do |room| %>
+        <div class="overflow-hidden flex lg:block md:block">
+          <% if room.trainer.image.attached? %>
+            <%= link_to chat_path(room.trainer.id) do %>
+            <%= image_tag room.trainer.image, class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-contain" %> <br>
+          <% end %>
+          <% else %>
+            <%= image_tag ("noimage.jpg"), class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-contain" %>
+          <% end %>
+            <%= room.trainer.name %><br>
+            <%= room.created_at.strftime("%Y年%m月%d日") %>
+        </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
+  <div class="text-center text-2xl py-3">
+    <%= paginate @rooms %>
+  </div>
 </div>
-</div>
+
+

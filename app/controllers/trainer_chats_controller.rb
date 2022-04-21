@@ -2,7 +2,7 @@ class TrainerChatsController < ApplicationController
 
 
   def index
-    @rooms = ChatRoom.where(trainer_id: current_trainer.id)
+    @rooms = ChatRoom.where(trainer_id: current_trainer.id).order("id DESC").page(params[:page]).per(8)
     @trainer = current_trainer
     @chats = Chat.where(room_id: params[:id])
   end

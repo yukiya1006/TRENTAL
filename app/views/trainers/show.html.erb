@@ -1,17 +1,17 @@
-<div class="grid grid-cols-1 bg-gray-600 bg-opacity-75 text-gray-100" style="padding-bottom: 189px;">
-  <div class="">
+<div class="grid grid-cols-1 text-gray-900" style="padding-bottom: 189px; background-color: #dcdcdc;">
+  <div class="py-24">
     <% unless trainer_signed_in? %>
     <div class="py-2 px-8">
       <%= link_to "検索画面へ戻る",  trainers_path %>
     </div>
     <% end %>
-        <div class="group h-96 flex items-end justify-center rounded-lg overflow-hidden shadow-lg relative p-4">
+        <div class="h-96 w-96 flex mx-auto items-end justify-center rounded-lg overflow-hidden relative p-4">
           <% if @trainer.image.attached? %>
-            <%= image_tag @trainer.image, class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
+            <%= image_tag @trainer.image, class: "w-full h-full object-center object-contain absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% else %>
             <%= image_tag ("noimage.jpg"), class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% end %>
-        <div class="w-full flex flex-col bg-white text-center rounded-lg relative p-4 text-gray-900">
+        <div class="w-80 flex flex-col bg-white text-center rounded-lg relative p-4 text-gray-900">
           <%= @trainer.name %>
           <%= @trainer.activity_area %>
           <%= @trainer.gender %>

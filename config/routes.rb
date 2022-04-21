@@ -42,18 +42,4 @@ Rails.application.routes.draw do
   get '/trainers/:id/unsubscribe' => 'trainers#trainer_unsubscribe', as: 'trainer_unsubscribe'
   patch '/trainers/:id/withdrawal' => 'trainers#trainer_withdrawal', as: 'trainer_withdrawal'
 
-
-
-
-
-  # namespace :admins do
-  #   resources :trainers, only: [:index, :show, :edit, :update]
-  #   resources :users, only: [:index, :show, :edit, :update]
-  # end
-
-
-
-
-
-
 end

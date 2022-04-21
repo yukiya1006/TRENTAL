@@ -1,4 +1,4 @@
-<div id="chats" class="h-screen w-screen">
+<div id="chats" class="h-screen w-screen"　style="padding-bottom: 100px;">
 <div class="text-center"><%="#{@chat.user.name}さんとのチャット"%></div>
 <% @chats.each do |chat| %>
   <% if chat.is_trainer %>
@@ -12,7 +12,7 @@
         <% end %>
       </div>
   <% else %>
-    <div class="fukidasi">
+    <div class="fukidasi mt-12">
       <div class="faceicon">
       <% if chat.user.is_user_deleted == true %>
         <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
@@ -31,7 +31,7 @@
     </div>
   <% end %>
 <% end %>
-<div class=" text-center">
+<div class=" text-center mt-24">
   <%= form_with model: @chat, url: trainer_chats_path(@room.id), method: :post do |f| %>
   <%= f.text_field :message %>
   <%= f.hidden_field :room_id %>

@@ -84,22 +84,23 @@
 			</li>
 			<li>
 				<a>
-				  <%= link_to 'トレーナーログイン', new_trainer_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+				  <%= link_to 'メンバーログイン', new_user_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
 			</li>
 			<li>
 				<a>
-				  <%= link_to 'メンバーログイン', new_user_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+				  <%= link_to 'トレーナーログイン', new_trainer_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 				</a>
 			</li>
 			<% end %>
 		</ul>
-	<% if user_signed_in? %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "mr-5 hover:text-gray-900 hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" %>
+	  <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "mr-5 hover:text-gray-900 hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" %>
 		<% elsif trainer_signed_in? %>
-          <%= link_to "Sign out", destroy_trainer_session_path, method: :delete, class: "mr-5 hover:text-gray-900 hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" %>
+      <%= link_to "Sign out", destroy_trainer_session_path, method: :delete, class: "mr-5 hover:text-gray-900 hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" %>
 		<% else %>
-	    <% end %>
+		  <%= link_to "管理者", rails_admin_path, class: "mr-5 hover:text-gray-900 hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" %>
+	  <% end %>
 	</nav>
 	<div class="navbar-menu relative z-50 hidden">
 		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50"></div>
@@ -159,9 +160,12 @@
 				  	<li class="mb-10">
 				      <%= link_to 'トレーナー登録', new_trainer_registration_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
-				  		<li>
+				  		<li class="mb-10">
 				      <%= link_to 'トレーナーログイン', new_trainer_session_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
+				  	<li>
+				      <%= link_to '管理者', rails_admin_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
+			      </li>
 
 			  	<% end %>
 			  </ul>
