@@ -9,10 +9,10 @@ class TrainerChatsController < ApplicationController
 
   def show
     @trainer = current_trainer
-    @chats = Chat.where(room_id: params[:id])
-    @chat = Chat.new(room_id: params[:id], user_id: @chats.last.user_id)
-    @room = Room.find(params[:id])
     @user = current_user
+    @room = Room.find(params[:id])
+    @chats = Chat.where(room_id: params[:id])
+    @chat = Chat.new(room_id: params[:id], user_id: @room.user.id)
   end
 
   def create

@@ -12,7 +12,10 @@
             　<%= form_with model: @photo, local: true do |f| %>
               <form>
                 <div class="mb-1 sm:mb-2">
-                  <%= f.file_field :image, class: "inline-block mb-1 font-medium" %>
+                  <%= f.file_field :image, onchange: "loadImage(this);" %>
+                </div>
+                <div class="h-36 w-36" id="post_images" style="display: none;">
+                  <p id="preview" ></p>
                 </div>
                 <div class="mb-1 sm:mb-2">
                   <%= f.label :投稿文, class: "inline-block mb-1 font-medium" %><br />
@@ -34,3 +37,24 @@
     </div>
   </div>
 </div>
+
+<script>
+  function loadImage(obj)
+  {
+    var allPreview = document.getElementById('post_images');
+    var newPreview = document.createElement("p");
+    allPreview.querySelector("p").remove();
+    newPreview.setAttribute("id","preview");
+    allPreview.insertBefore(newPreview, allPreview.firstChild);
+    document.getElementById("post_images").style.display = "";
+    for (i = 0; i < obj.files.length; i++) {
+        var fileReader = new FileReader();
+        fileReader.onload = (function (e) {
+            var img = new Image();
+            img.src = e.target.result;
+            document.getElementById('preview').appendChild(img);
+        });
+      fileReader.readAsDataURL(obj.files[i]);
+    }
+  }
+</script>

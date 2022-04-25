@@ -1,24 +1,24 @@
-<div class="py-24" style="background-color: #dcdcdc; padding-bottom: 450px;">
+<div class="py-24" style="background-color: #dcdcdc;">
 <div class="flex justify-center my-auto py-4 pl-7 text-gray-900">
   <%= form_tag trainers_path, method: :get do %>
-    <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender}), include_blank: "性別", class: "mr-1" %>
-    <%= select_tag :age, options_for_select(Trainer.ages, {:selected => @age}), include_blank: "年齢", class: "mr-1" %>
-    <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area}), include_blank: "エリア", class: "mr-1" %>
-    <%= select_tag :teaching_history, options_for_select(Trainer.teaching_histories, {:selected => @teaching_history}), include_blank: "指導歴", class: "mr-1" %>
-    <%= select_tag :strong_part, options_for_select(Trainer.strong_parts, {:selected => @strong_part}), include_blank: "部位", class: "mr-1" %>
+    <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender_selected}), include_blank: "性別", class: "mr-1" %>
+    <%= select_tag :age, options_for_select(Trainer.ages, {:selected => @age_selected}), include_blank: "年齢", class: "mr-1" %>
+    <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area_selected}), include_blank: "エリア", class: "mr-1" %>
+    <%= select_tag :teaching_history, options_for_select(Trainer.teaching_histories, {:selected => @teaching_history_selected}), include_blank: "指導歴", class: "mr-1" %>
+    <%= select_tag :strong_part, options_for_select(Trainer.strong_parts, {:selected => @strong_part_selected}), include_blank: "部位", class: "mr-1" %>
     <%= submit_tag '検索', class: "btn btn-primary" %>
     <%= link_to 'マップ検索はこちら', map_searches_path, class: "text-gray-600 hover:text-black" %>
   <% end %>
 </div>
 <div class="">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
-    <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12"><%= @trainers.count%> Trainers</h2>
+    <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12"><%= @trainers_all.count%> Trainers</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
       <% @trainers.each do |trainer| %>
       <div class="group h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4">
         <% if trainer.image.attached? %>
           <%= link_to trainer_path(trainer.id) do %>
-          <%= image_tag trainer.image, class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
+          <%= image_tag trainer.image, class: "w-full h-full object-cover object-center absolute inset-0 transform scale-100 hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% end %>
         <% else %>
           <%= link_to trainer_path(trainer.id) do %>

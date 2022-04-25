@@ -8,38 +8,45 @@ class TrainersController < ApplicationController
     @maps = Map.all
     # 値が渡ってくればパラムスを返し、elseの場合nullを返す
     if params[:gender].present?
-      gender = "gender = '#{params[:gender]}'"
+      @gender = "gender = '#{params[:gender]}'"
+      @gender_selected = params[:gender]
     else
-      gender = "gender is not null"
+      @gender = "gender is not null"
     end
 
     if params[:age].present?
-      age = "age = '#{params[:age]}'"
+      @age = "age = '#{params[:age]}'"
+      @age_selected = params[:age]
     else
-      age = "age is not null"
+      @age = "age is not null"
     end
 
     if params[:activity_area].present?
-      activity_area = "activity_area = '#{params[:activity_area]}'"
+      @activity_area = "activity_area = '#{params[:activity_area]}'"
+      @activity_area_selected = params[:activity_area]
     else
-      activity_area = "activity_area is not null"
+      @activity_area = "activity_area is not null"
     end
 
     if params[:teaching_history].present?
-      teaching_history = "teaching_history = '#{params[:teaching_history]}'"
+      @teaching_history = "teaching_history = '#{params[:teaching_history]}'"
+      @teaching_history_selected = params[:teaching_history]
     else
-      teaching_history = "teaching_history is not null"
+      @teaching_history = "teaching_history is not null"
     end
 
     if params[:strong_part].present?
-      strong_part = "strong_part = '#{params[:strong_part]}'"
+      @strong_part = "strong_part = '#{params[:strong_part]}'"
+      @strong_part_selected = params[:strong_part]
     else
-      strong_part = "strong_part is not null"
+      @strong_part = "strong_part is not null"
     end
 
     if params[:strong_part] or params[:age] or params[:gender] or params[:activity_area] or params[:teaching_history]
-      @trainers = Trainer.where("is_trainer_deleted = false AND #{gender} AND #{age} AND #{activity_area} AND #{teaching_history} AND #{strong_part}").page(params[:page]).per(8)
+      @trainers_all = Trainer.where("is_trainer_deleted = false AND #{@gender} AND #{@age} AND #{@activity_area} AND #{@teaching_history} AND #{@strong_part}")
+      @trainers = Trainer.where("is_trainer_deleted = false AND #{@gender} AND #{@age} AND #{@activity_area} AND #{@teaching_history} AND #{@strong_part}").order("id DESC").page(params[:page]).per(8)
     else
+      @trainers_all = Trainer.where("is_trainer_deleted = false AND #{@gender} AND #{@age} AND #{@activity_area} AND #{@teaching_history} AND #{@strong_part}")
       @trainers = Trainer.where(is_trainer_deleted: false).order("id DESC").page(params[:page]).per(8)
     end
 
@@ -89,7 +96,7 @@ class TrainersController < ApplicationController
     :name,
     :biography,
     :guidance_content,
-    :image)
+    :image )
     .merge(activity_area: params[:trainer][:activity_area].to_i)
     .merge(gender: params[:trainer][:gender].to_i)
     .merge(age: params[:trainer][:age].to_i)

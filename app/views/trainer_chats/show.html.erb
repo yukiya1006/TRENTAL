@@ -2,8 +2,7 @@
 <div class="text-center"><%="#{@chat.user.name}さんとのチャット"%></div>
 <% @chats.each do |chat| %>
   <% if chat.is_trainer %>
-  <%= chat.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
-      <div class="mycomment flex justify-end">
+      <div class="mycomment flex justify-end mt-12">
         <p><%=chat.message%></p>
         <% if chat.trainer.image.attached? %>
           <%= image_tag chat.trainer.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
@@ -11,6 +10,7 @@
           <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
         <% end %>
       </div>
+  <%= chat.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
   <% else %>
     <div class="fukidasi mt-12">
       <div class="faceicon">
@@ -27,6 +27,9 @@
         <div class="says">
           <p><%=chat.message%></p>
         </div>
+      </div>
+       <div class="flex justify-start">
+        <%= chat.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
       </div>
     </div>
   <% end %>

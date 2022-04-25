@@ -3,7 +3,7 @@ class ChatsController < ApplicationController
   def index
     @rooms = ChatRoom.where(user_id: current_user.id).order("id DESC").page(params[:page]).per(8)
     @user = current_user
-    @trainer = current_trainer
+    # @last_message = Chat.where(room_id: @rooms.find_by(trainer_id: @trainer.id)).order("id DESC").limit(1)
   end
 
   def show

@@ -14,7 +14,7 @@
             <% end %>
           <% end %>
             <%= room.user.name %></br>
-            <%= room.created_at.strftime("%Y年%m月%d日") %>
+            <%= Chat.where(room_id: @rooms.find_by(user_id: room.user.id)).order("id DESC").limit(1)[0]&.message %>
         </div>
         <% end %>
         </div>

@@ -10,11 +10,11 @@ import "channels"
 import 'jquery'
 import 'jquery.jscroll.min.js'
 import 'slick.js'
-// import 'image_preview.js'
 import 'jquery.jpostal.js'
 import 'chartkick/chart.js'
 import 'ham.js'
 import 'mscroll.js'
+import 'image.preview.js'
 
 Rails.start()
 Turbolinks.start()

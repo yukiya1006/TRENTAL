@@ -1,5 +1,5 @@
-<div class="grid grid-cols-1 text-gray-900" style="padding-bottom: 189px; background-color: #dcdcdc;">
-  <div class="py-24">
+<div class="grid grid-cols-1 text-gray-900" style="padding-bottom: 80px; background-color: #dcdcdc;">
+  <div class="pt-24 pb-12">
     <% unless trainer_signed_in? %>
     <div class="py-2 px-8">
       <%= link_to "検索画面へ戻る",  trainers_path %>
@@ -7,11 +7,11 @@
     <% end %>
         <div class="h-96 w-96 flex mx-auto items-end justify-center rounded-lg overflow-hidden relative p-4">
           <% if @trainer.image.attached? %>
-            <%= image_tag @trainer.image, class: "w-full h-full object-center object-contain absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
+            <%= image_tag @trainer.image, class: "w-full h-full object-center object-contain absolute inset-0 transform hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% else %>
             <%= image_tag ("noimage.jpg"), class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% end %>
-        <div class="w-80 flex flex-col bg-white text-center rounded-lg relative p-4 text-gray-900">
+        <div class="w-72 flex flex-col bg-white text-center rounded-lg relative p-4 text-gray-900">
           <%= @trainer.name %>
           <%= @trainer.activity_area %>
           <%= @trainer.gender %>
@@ -49,10 +49,11 @@
           </div>
         </div>
 
+        <div class="text-center cursor-pointer pt-8" id="js-click">
+          プロフィールを確認
+        </div>
 
-
-
-        <table class="table-auto mx-auto">
+        <table class="table-auto flex justify-center" id="js-open-content01" style="display: none;">
           <tbody>
             <tr>
               <td class="px-4 py-2">
@@ -134,11 +135,11 @@
             </tr>
           </tbody>
         </table>
-        　  <div class="text-center py-4"><span class="text-xl">紹介文</span><br>
-        <div class="content-body">
-          <p><%= @trainer.biography %></p>
-        </div>
-      </div>
+        　<div class="text-center py-4" id="js-open-content02" style="display: none;"><span class="text-xl">紹介文</span><br>
+            <div class="content-body">
+              <p><%= @trainer.biography %></p>
+            </div>
+          </div>
       </div>
 
       <div class="area-2 col-span-2">
@@ -147,11 +148,24 @@
           <% if trainer_signed_in? && photos.trainer.id == current_trainer.id %>
           <% if photos.image.attached? %>
             <%= link_to edit_photo_path(photos.id) do %>
-            <%= image_tag photos.image, class: "rounded-md w-full h-full" %>
+            <%= image_tag photos.image, class: "rounded-md w-full h-full object-contain" %>
             <% end %>
           <% end %>
           <% else %>
-            <%= image_tag photos.image, class: "rounded-md w-full h-full" %>
+
+            <div class="modal-open" id=modal-open-<%= photos.id %>>
+              <%= image_tag photos.image, class: "rounded-md w-full h-full cursor-pointer" %>
+            </div>
+            <div class="modal-bg" id="modal-bg-<%= photos.id %>">
+
+            </div>
+            <div class="modal-container" id="modal-container-<%= photos.id %>" >
+              <% if photos.image.attached? %>
+            <%= image_tag photos.image, class: "rounded-md w-full h-full object-contain" %>
+          <% end %>
+              <%= photos.caption %>
+            </div>
+
           <% end %>
           <% end %>
         </div>
@@ -159,10 +173,32 @@
 </div>
 
 <script>
-  $('.see-more').click(function(){
-  $(this).closest(".content-body").find(".truncated").hide();
-  $(this).closest(".content-body").find(".untruncated").show();
-  })
+
+  $doc = document;
+  $click = $doc.getElementById('js-click');
+  $content01 = $doc.getElementById('js-open-content01');
+  $content02 = $doc.getElementById('js-open-content02');
+
+
+  $click.addEventListener('click', () => {
+    $click.style.display = 'none';
+    $content01.style.display = 'flex';
+    $content02.style.display = 'block';
+  });
+
+  <% @photos. each do |photos| %>
+    $doc.getElementById('modal-open-<%= photos.id %>').addEventListener('click', () => {
+    $doc.getElementById('modal-bg-<%= photos.id %>').classList.add('active');
+    $doc.getElementById('modal-container-<%= photos.id %>').classList.add('active');
+  });
+
+  $doc.getElementById('modal-bg-<%= photos.id %>').addEventListener('click', () => {
+    $doc.getElementById('modal-bg-<%= photos.id %>').classList.remove('active');
+    $doc.getElementById('modal-container-<%= photos.id %>').classList.remove('active');
+  });
+  <% end %>
+
+
 </script>
 
 

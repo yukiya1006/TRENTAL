@@ -13,33 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
-// @import "tailwindcss/base";
-// @import "tailwindcss/components";
-// @import "tailwindcss/utilities";
-
-
-// .title1 {
-//   position: absolute;
-//   top: 20%;
-//   left: 15%;
-//   transform: translate(-50%, -50%);
-// }
-
-// .title2 {
-//   position: absolute;
-//   top: 33%;
-//   left: 20%;
-//   transform: translate(-50%, -50%);
-// }
-
-// .title3 {
-//   position: absolute;
-//   top: 46%;
-//   left: 28%;
-//   transform: translate(-50%, -50%);
-// }
-
+ 
 .FooterSection{
   position: fixed;
   bottom: 0;
@@ -58,7 +32,7 @@
   margin:0 auto;
   background-color:#fdfdfd;
   border: 2px solid #eee;
-  padding:1em 2em;
+  padding: 1em 2em;
   height: 100%;
 }
 #chats{
@@ -151,74 +125,6 @@
   transition:transform .4s cubic-bezier(.86,0,.07,1)}.animoBorderLeftRight:hover::after{transform:scaleX(1);
   transform-origin:bottom left}
 
-.fade-in01{
-　opacity:0;
-  animation-name:fade-in01;
-  animation-duration:8s;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-}
-@keyframes fade-in01 {
-0% {
- opacity: 0;
- transform: translateX(-100px);
-}
-  50%{
-    opacity: 1;
-    transform: translateX(0);
-  }
- 100% {
- opacity:0;
- transform: translateX(50px);
- }
-}
-
-.fade-in02{
-　opacity:0;
-  animation-name:fade-in02;
-  animation-duration:9s;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-}
-@keyframes fade-in02 {
-0% {
- opacity: 0;
- transform: translateX(-100px);
-}
-  50%{
-    opacity: 1;
-    transform: translateX(0);
-  }
- 100% {
- opacity:0;
- transform: translateX(50px);
- }
-}
-
-.fade-in03{
-　opacity:0;
-  animation-name:fade-in03;
-  animation-duration:10s;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-}
-@keyframes fade-in03 {
-0% {
- opacity: 0;
- transform: translateX(-100px);
-}
-  50%{
-    opacity: 1;
-    transform: translateX(0);
-  }
- 100% {
- opacity:0;
- transform: translateX(50px);
- }
-}
-
-
-
 
 .Headline-right{
   animation: SlideIn01 1.6s;
@@ -251,21 +157,36 @@
   }
 }
 
-
-.fade {
-  transition: all 2000ms;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(0px, 50px);
+.error {
+  color: red;
 }
 
-.fadein {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(0px, 0px);
+.modal-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  opacity: 70%;
+  display: none;
 }
 
+.modal-bg.active {
+  opacity: 70%;
+  display: block;
+}
 
-// nav.pagination {
-//   display: none;
-// }
+.modal-container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dcdcdc;
+  padding: 20px;
+  display: none;
+}
+
+.modal-container.active {
+  display: block;
+}

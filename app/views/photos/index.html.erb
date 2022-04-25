@@ -1,36 +1,37 @@
-<div class='scroll-list jscroll pt-24 text-gray-100 text-gray-900' style="height: 1130px; background-color: #dcdcdc;" >
-  <% @photos. each do |photos| %>
-    <div class="text-center">
-      <div class="flex justify-center my-2">
-      <% if photos.trainer.image.attached? %>
-        <%= link_to trainer_path(photos.trainer.id) do %>
-        <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12 object-content" %>
-      <% end %>
-      <% else %>
-        <%= image_tag ("noimage.jpg"), class: "rounded-full w-12 h-12 object-content" %>
-      <% end %>
-        <%= photos.trainer.name%>
-      </div>
-      <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
-      </div>
-      <% if photos.image.attached? %>
-      <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto object-content" %>
-      <% end %>
+<div class="pt-24 h-screen">
+  <div class='scroll-list jscroll text-gray-100 text-gray-900' style="height: 1130px; background-color: #dcdcdc;" >
+    <% @photos. each do |photos| %>
       <div class="text-center">
-        <p class="mt-6 mb-24"><%= photos.caption %></p>
-        <% if trainer_signed_in? && photos.trainer_id == current_trainer.id %>
-        <div class="flex justify-center gap-4">
-        <p class="mb-12"><%= link_to "編集", edit_photo_path(photos.id) %></p>
-        <p class="mb-12"><%= link_to "削除", photo_path(photos.id), method: :delete, data: {confirm: "削除しますか"} %></p>
+        <div class="flex justify-center my-2">
+        <% if photos.trainer.image.attached? %>
+          <%= link_to trainer_path(photos.trainer.id) do %>
+          <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12 object-content" %>
+        <% end %>
+        <% else %>
+          <%= image_tag ("noimage.jpg"), class: "rounded-full w-12 h-12 object-content" %>
+        <% end %>
+          <%= photos.trainer.name%>
+        </div>
+        <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
+        </div>
+        <% if photos.image.attached? %>
+        <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto object-content" %>
+        <% end %>
+        <div class="text-center">
+          <p class="mt-6 mb-24"><%= photos.caption %></p>
+          <% if trainer_signed_in? && photos.trainer_id == current_trainer.id %>
+          <div class="flex justify-center gap-4">
+          <p class="mb-12"><%= link_to "編集", edit_photo_path(photos.id) %></p>
+          <p class="mb-12"><%= link_to "削除", photo_path(photos.id), method: :delete, data: {confirm: "削除しますか"} %></p>
+          </div>
+          <% end %>
+          <% if user_signed_in? %>
         </div>
         <% end %>
-        <% if user_signed_in? %>
-      </div>
-      <% end %>
-  <% end %>
-  <div class="text-center" style="display: none;">
-  <%= paginate @photos %>
+    <% end %>
+    <div class="text-center" style="display: none;">
+    <%= paginate @photos %>
+    </div>
   </div>
 </div>
-
 
