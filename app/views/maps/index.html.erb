@@ -1,29 +1,51 @@
-<div class="bg-gray-600 bg-opacity-75 h-screen text-gray-100">
-  <% if params[:q] %>
-      <div class="text-center text-2xl font-bold py-4"><span class="text-4xl"><%= params[:q] %></span>のトレーナー</div>
+<div class="py-24" style="background-color: #dcdcdc;">
+  <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+    <% if params[:q] %>
+      <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12"><span class="text-4xl"><%= params[:q] %></span>のトレーナー</h2>
     <% end %>
-<div class="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-6 sm:gap-y-8 lg:gap-y-12 pt-6 pl-6">
-  <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4">
-
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-20 mx-auto">
-      <% @maps.each do |t| %>
-      <div class="overflow-hidden">
-        <% if t.trainer.image.attached? %>
-    <%= link_to trainer_path(t.trainer.id) do %>
-    <%= image_tag t.trainer.image, class: "rounded-md sm:h-auto sm:w-auto" %> <br>
-  <% end %>
-  <% else %>
-    <%= image_tag ("noimage.jpg"), class: "rounded-md sm:h-auto sm:w-auto" %>
-  <% end %>
-          <div class="text-center md:text-left">
-            <div class=""><%= t.body %></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+      <% @maps.each do |m| %>
+        <div class="group h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4">
+          <% if m.trainer.image.attached? %>
+            <%= link_to trainer_path(m.trainer.id) do %>
+            <%= image_tag m.trainer.image, class: "w-full h-full object-center object-contain absolute inset-0 transform hover:scale-110 transition duration-200 rounded-lg object-fit object-cover shadow-2xl" %> <br>
+          <% end %>
+          <% else %>
+            <%= image_tag ("noimage.jpg"), class: "rounded-md sm:h-auto sm:w-auto" %>
+          <% end %>
+          <div class="w-full flex flex-col bg-white text-center rounded-lg relative p-4">
+          <%= m.trainer.name %>
+            <button class="btn btn-primary modal-open mt-2" id="modal-open-<%= m.id %>">
+              料金
+            </button>
+            <div class="modal-bg" id="modal-bg-<%= m.id %>">
+            </div>
+            <% if trainer_signed_in? && m.trainer.id == current_trainer.id %>
+              <%= link_to "削除", map_path(m.id), method: :delete, class: "btn btn-warning mt-2" %>
+            <% end %>
           </div>
-    <% if trainer_signed_in? && t.trainer.id == current_trainer.id %>
-    <%= link_to "Delete", map_path(t.id), method: :delete %>
-    <% end %>
-      </div>
+            <div class="modal-container" id="modal-conainer-<%= m.id %>">
+              <div class=""><%= m.body %></div>
+            </div>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
-</div>
+
+<script>
+
+  <% @maps.each do |m| %>
+
+  document.getElementById('modal-open-<%= m.id %>').addEventListener('click', () => {
+    document.getElementById('modal-bg-<%= m.id %>').classList.add('active');
+    document.getElementById('modal-conainer-<%= m.id %>').classList.add('active');
+  });
+
+  document.getElementById('modal-bg-<%= m.id %>').addEventListener('click', () => {
+    document.getElementById('modal-bg-<%= m.id %>').classList.remove('active');
+    document.getElementById('modal-conainer-<%= m.id %>').classList.remove('active');
+  });
+
+  <% end %>
+</script>

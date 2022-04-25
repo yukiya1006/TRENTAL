@@ -6,10 +6,10 @@
         <div class="overflow-hidden flex lg:block md:block">
           <% if trainers.image.attached? %>
           <%= link_to trainer_path(trainers.id) do %>
-            <%= image_tag trainers.image, class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-contain" %> <br>
+            <%= image_tag trainers.image, class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-fit object-cover shadow-xl" %> <br>
           <% end %>
           <% else %>
-            <%= image_tag ("noimage.jpg"), class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-contain" %>
+            <%= image_tag ("noimage.jpg"), class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-fit object-cover shadow-xl" %>
           <% end %>
         <%= trainers.name %>
         </div>

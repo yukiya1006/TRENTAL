@@ -1,12 +1,12 @@
 <div class="py-24" style="background-color: #dcdcdc;">
-<div class="flex justify-center my-auto py-4 pl-7 text-gray-900">
+<div class="flex justify-center my-auto py-4 px-7 text-gray-900">
   <%= form_tag trainers_path, method: :get do %>
     <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender_selected}), include_blank: "性別", class: "mr-1" %>
     <%= select_tag :age, options_for_select(Trainer.ages, {:selected => @age_selected}), include_blank: "年齢", class: "mr-1" %>
     <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area_selected}), include_blank: "エリア", class: "mr-1" %>
     <%= select_tag :teaching_history, options_for_select(Trainer.teaching_histories, {:selected => @teaching_history_selected}), include_blank: "指導歴", class: "mr-1" %>
     <%= select_tag :strong_part, options_for_select(Trainer.strong_parts, {:selected => @strong_part_selected}), include_blank: "部位", class: "mr-1" %>
-    <%= submit_tag '検索', class: "btn btn-primary" %>
+    <%= submit_tag '検索', class: "btn btn-primary mt-2" %>
     <%= link_to 'マップ検索はこちら', map_searches_path, class: "text-gray-600 hover:text-black" %>
   <% end %>
 </div>
@@ -34,8 +34,7 @@
     </div>
   </div>
 </div>
-      <div class="text-center text-2xl py-3">
-      <%= paginate @trainers %>
-      </div>
+  <div class="text-center text-2xl py-3">
+  <%= paginate @trainers %>
+  </div>
 </div>
-<!--</div>-->

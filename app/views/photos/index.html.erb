@@ -5,17 +5,17 @@
         <div class="flex justify-center my-2">
         <% if photos.trainer.image.attached? %>
           <%= link_to trainer_path(photos.trainer.id) do %>
-          <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12 object-content" %>
+          <%= image_tag photos.trainer.image, class: "rounded-full w-12 h-12 object-fit object-cover shadow-2xl" %>
         <% end %>
         <% else %>
-          <%= image_tag ("noimage.jpg"), class: "rounded-full w-12 h-12 object-content" %>
+          <%= image_tag ("noimage.jpg"), class: "rounded-full w-12 h-12 object-fit object-cover shadow-2xl" %>
         <% end %>
           <%= photos.trainer.name%>
         </div>
         <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
         </div>
         <% if photos.image.attached? %>
-        <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto object-content" %>
+        <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto object-fit object-cover shadow-2xl" %>
         <% end %>
         <div class="text-center">
           <p class="mt-6 mb-24"><%= photos.caption %></p>

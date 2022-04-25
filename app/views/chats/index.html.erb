@@ -5,14 +5,14 @@
         <% @rooms.each do |room| %>
         <div class="overflow-hidden flex lg:block md:block">
           <% if room.trainer.is_trainer_deleted == true %>
-        　　<%= image_tag ("noimage.jpg"), class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-contain" %>
+        　　<%= image_tag ("noimage.jpg"), class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-fit object-cover shadow-xl" %>
       　　　<P>メンバーがいません</P>
           <% elsif room.trainer.image.attached? %>
             <%= link_to chat_path(room.trainer.id) do %>
-            <%= image_tag room.trainer.image, class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-contain" %> <br>
+            <%= image_tag room.trainer.image, class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-fit object-cover shadow-xl" %> <br>
             <% end %>
           <% else %>
-            <%= image_tag ("noimage.jpg"), class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-contain" %>
+            <%= image_tag ("noimage.jpg"), class: "rounded-full h-24 w-24 md:h-auto md:w-auto lg:h-auto lg:w-auto object-fit object-cover shadow-xl" %>
           <% end %>
             <%= room.trainer.name %><br>
             <!--//&を書くと配列がなくても表示できる-->

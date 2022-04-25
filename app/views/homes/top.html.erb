@@ -1,93 +1,46 @@
 <div class="relative">
   <%= image_tag 'top-bg.jpg', class: "absolute inset-0 object-cover w-full h-full" %>
-  <div class="relative bg-gray-900 bg-opacity-75" style="padding-bottom: 257px; padding-top:152px;">
-    <div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-      <div class="flex flex-col items-center justify-between xl:flex-row">
-        <div class="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
-          <h2 class="mb-12 max-w-lg mb-6 font-sans text-8xl tracking-tight text-white sm:leading-none">
-            <span class="">Let's</span><br class="hidden md:block" />
-            <span class="">Start</span><br class="hidden md:block" />
-            <span class=" text-blue-400">Training</span><br class="hidden md:block" />
-          </h2>
-          <p class="max-w-xl mb-4 text-base text-gray-300 text-xl mt-24">
-            ユーザーとトレーナ―を繋げるマッチングサイトです。さっそくトレーナーを探してメッセージを開始しましょう！
-          </p>
-          <%= link_to "Learn more", about_path, class: "inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-green-400 hover:text-green-700" %>
-            <svg class="inline-block w-3 ml-2 text-green-400" fill="currentColor" viewBox="0 0 12 12">
-              <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z"></path>
-            </svg>
-          </a>
-        </div>
-        <div class="w-full max-w-xl xl:px-8 xl:w-5/12">
+  <div class="relative h-screen">
+<svg class="intro w-96 md:w-full h-screen" viewbox="0 0 200 86">
+  <text text-anchor="start" x="10" y="30" class="text text-stroke" clip-path="url(#text1)">Let's</text>
+  <text text-anchor="start" x="10" y="50" class="text text-stroke" clip-path="url(#text2)">Start</text>
+  <text text-anchor="start" x="10" y="70" class="text text-stroke" clip-path="url(#text3)">Training</text>
 
-          <div class="pt-12 pb-7 text-white">
-            <div class="flex">
-              <div class="animate-ping h-4 w-4 bg-purple-600 rounded-full"></div>
-              <h2 class="text-xl title-font font-medium mb-2">近所にジムがなくてお困りの方</h2>
-　　　　　  </div>
-            <p class="leading-relaxed text-base">自分の通っている24時間ジムや近所のレンタルジムで気軽にレンタル可能です</p>
-          </div>
+  <text text-anchor="start" x="10" y="30" class="text text-stroke text-stroke-2 py-24" clip-path="url(#text1)">Let's</text>
+  <text text-anchor="start" x="10" y="50" class="text text-stroke text-stroke-2" clip-path="url(#text2)">Start</text>
+  <text text-anchor="start" x="10" y="70" class="text text-stroke text-stroke-2" clip-path="url(#text3)">Training</text>
 
-          <div class="pt-7 pb-7 text-white">
-            <div class="flex">
-              <div class="animate-ping h-4 w-4 bg-purple-600 rounded-full"></div>
-              <h2 class="text-xl title-font font-medium mb-2">好みのトレーナーに教わりたい方</h2>
-　　　　　  </div>
-            <p class="leading-relaxed text-base">性別やトレーニング部位など、条件から好みのトレーナーを選べま</p>
-          </div>
-
-          <div class="pt-7 pb-7 text-white">
-            <div class="flex">
-              <div class="animate-ping h-4 w-4 bg-purple-600 rounded-full"></div>
-              <h2 class="text-xl title-font font-medium mb-2">パーソナルは値段が高くて躊躇している方</h2>
-　　　　　  </div>
-            <p class="leading-relaxed text-base">個人のトレーナーが在籍しているので低価格でトレーニングを受けられます</p>
-          </div>
-
-          <div class="pt-7 pb-7 text-white">
-            <div class="flex">
-              <div class="animate-ping h-4 w-4 bg-purple-600 rounded-full"></div>
-              <h2 class="text-xl title-font font-medium mb-2">個人でトレーナー活動を始めたい方</h2>
-　　　　　  </div>
-            <p class="leading-relaxed text-base">登録が済むと個人でのトレーナー活動が可能になります</p>
-          </div>
-
-          <% if user_signed_in? %>
-          <% elsif trainer_signed_in? %>
-          <% else %>
-          <div class="grid grid-cols-2 pt-20">
-            <div class="mx-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 animate-bounce bg-gray-300 rounded-full text-purple-900" style="margin:0 auto;" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-            <a href="/users/sign_up" class="px-5 py-2.5 relative rounded group font-medium text-white font-medium inline-block">
-              <span class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
-              <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
-              <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
-              <span class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
-              <span class="relative">ユーザーで始める</span>
-            </a>
-            </div>
-
-            <div class="mx-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 animate-bounce bg-gray-300 rounded-full text-purple-900" style="margin:0 auto;" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-            <a href="/trainers/sign_up" class="px-5 py-2.5 relative rounded group font-medium text-white font-medium inline-block">
-              <span class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
-              <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
-              <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
-              <span class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
-              <span class="relative">トレーナーで始める</span>
-            </a>
-            </div>
-          </div>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
+  <defs>
+    <clipPath id="text1">
+      <text  text-anchor="start" x="10" y="30" class="text">Let's</text>
+    </clipPath>
+    <clipPath id="text2">
+      <text text-anchor="start" x="10" y="50" class="text">Start</text>
+    </clipPath>
+    <clipPath id="text3">
+      <text text-anchor="start" x="10" y="70" class="text">Training</text>
+    </clipPath>
+  </defs>
+<div>
+<%= link_to "Learn more", about_path, class: "inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-green-400 hover:text-green-700" %>
+  <svg class="inline-block w-3 ml-2 text-green-400" fill="currentColor" viewBox="0 0 12 12">
+    <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z"></path>
+  </svg>
   </div>
+</svg>
 </div>
+</div>
+    
+<script>
+  $(function() {
+  $('.intro').addClass('go');
 
+  $('.reload').click(function() {
+    $('.intro').removeClass('go').delay(200).queue(function(next) {
+      $('.intro').addClass('go');
+      next();
+    });
 
+  });
+})
+</script>

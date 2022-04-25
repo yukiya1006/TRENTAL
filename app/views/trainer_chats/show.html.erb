@@ -5,9 +5,9 @@
       <div class="mycomment flex justify-end mt-12">
         <p><%=chat.message%></p>
         <% if chat.trainer.image.attached? %>
-          <%= image_tag chat.trainer.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+          <%= image_tag chat.trainer.image, class: "h-12 w-12 rounded-full mt-2 shadow-2xl object-fit object-cover" %>
         <% else %>
-          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-2xl object-fit object-cover" %>
         <% end %>
       </div>
   <%= chat.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
@@ -15,12 +15,12 @@
     <div class="fukidasi mt-12">
       <div class="faceicon">
       <% if chat.user.is_user_deleted == true %>
-        <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+        <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl object-fit object-cover" %>
         <P>メンバーがいません</P>
       <% elsif chat.user.image.attached? %>
-      　<%= image_tag chat.user.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+      　<%= image_tag chat.user.image, class: "h-12 w-12 rounded-full mt-2 shadow-xl object-fit object-cover" %>
       <% else %>
-          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl" %>
+          <%= image_tag ("noimage.jpg"), class: "h-12 w-12 rounded-full mt-2 shadow-xl object-fit object-cover" %>
       <% end %>
       </div>
       <div class="chatting">

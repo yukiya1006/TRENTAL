@@ -23,10 +23,10 @@ class MapsController < ApplicationController
   end
 
   def create
-    map = Map.new(map_params)
-    map.trainer_id = current_trainer.id
-    if map.save
-      redirect_to maps_path, notice: "ジムが登録されました"
+    @map = Map.new(map_params)
+    @map.trainer_id = current_trainer.id
+    if @map.save
+      redirect_to maps_path(q: @map.address), notice: "ジムが登録されました"
     else
       redirect_to request.referer
     end
