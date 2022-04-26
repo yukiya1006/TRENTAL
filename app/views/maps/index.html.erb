@@ -1,11 +1,11 @@
 <div class="py-24" style="background-color: #dcdcdc;">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
     <% if params[:q] %>
-      <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12"><span class="text-4xl"><%= params[:q] %></span>のトレーナー</h2>
+      <h2 class="title text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12"><span class="text-4xl"><%= params[:q] %></span>のトレーナー</h2>
     <% end %>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
       <% @maps.each do |m| %>
-        <div class="group h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4">
+        <div class="image group h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4">
           <% if m.trainer.image.attached? %>
             <%= link_to trainer_path(m.trainer.id) do %>
             <%= image_tag m.trainer.image, class: "w-full h-full object-center object-contain absolute inset-0 transform hover:scale-110 transition duration-200 rounded-lg object-fit object-cover shadow-2xl" %> <br>
@@ -48,4 +48,12 @@
   });
 
   <% end %>
+</script>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+  ScrollReveal({ reset: true, distance: "60px", duration: 1000, delay: 100 });
+  ScrollReveal().reveal('.image', { delay: 100, origin: "left" });
+  ScrollReveal().reveal('.title', { delay: 100, origin: "bottom" });
 </script>

@@ -1,4 +1,4 @@
-<div class="py-24 text-gray-900" style="height: 95vh; background-color: #dcdcdc;">
+<div class="pt-12 text-gray-900 content" style="height: 95vh; background-color: #dcdcdc;">
   <div class="flex justify-center py-10">
   <% if @user.image.attached? %>
     <%= image_tag @user.image, class: "h-96 w-96 rounded-full mt-2 object-fit object-cover" %>
@@ -19,5 +19,12 @@
   </button>
 </div>
 </div>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+  ScrollReveal({ reset: true, distance: "60px", duration: 1000, delay: 100 });
+  ScrollReveal().reveal('.content', { delay: 100, origin: "left" });
+</script>
 
 

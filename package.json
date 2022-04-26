@@ -12,6 +12,7 @@
     "chart.js": "^3.7.1",
     "chartkick": "^4.1.1",
     "jquery": "^3.6.0",
+    "nightwind": "^1.1.12",
     "postcss": "^7",
     "postcss-loader": "4",
     "rails_admin": "3.0.0",

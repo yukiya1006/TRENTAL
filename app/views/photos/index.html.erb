@@ -1,4 +1,4 @@
-<div class="pt-24 h-screen">
+<div class="pt-24 h-screen content">
   <div class='scroll-list jscroll text-gray-100 text-gray-900' style="height: 1130px; background-color: #dcdcdc;" >
     <% @photos. each do |photos| %>
       <div class="text-center">
@@ -13,7 +13,7 @@
           <%= photos.trainer.name%>
         </div>
         <%= time_ago_in_words(photos.created_at) + "前に投稿されました" %>
-        </div>
+      </div>
         <% if photos.image.attached? %>
         <%= image_tag photos.image, class: "rounded-md h-96 w-96 mx-auto object-fit object-cover shadow-2xl" %>
         <% end %>
@@ -34,4 +34,3 @@
     </div>
   </div>
 </div>
-

@@ -1,21 +1,25 @@
 <div class="py-24" style="background-color: #dcdcdc;">
 <div class="flex justify-center my-auto py-4 px-7 text-gray-900">
   <%= form_tag trainers_path, method: :get do %>
-    <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender_selected}), include_blank: "性別", class: "mr-1" %>
-    <%= select_tag :age, options_for_select(Trainer.ages, {:selected => @age_selected}), include_blank: "年齢", class: "mr-1" %>
-    <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area_selected}), include_blank: "エリア", class: "mr-1" %>
-    <%= select_tag :teaching_history, options_for_select(Trainer.teaching_histories, {:selected => @teaching_history_selected}), include_blank: "指導歴", class: "mr-1" %>
-    <%= select_tag :strong_part, options_for_select(Trainer.strong_parts, {:selected => @strong_part_selected}), include_blank: "部位", class: "mr-1" %>
-    <%= submit_tag '検索', class: "btn btn-primary mt-2" %>
-    <%= link_to 'マップ検索はこちら', map_searches_path, class: "text-gray-600 hover:text-black" %>
+    <div class="pl-8 font-sans">
+        <%= select_tag :gender, options_for_select(Trainer.genders, {:selected => @gender_selected}), include_blank: "性別", class: "mr-1 box-1 mb-2" %>
+        <%= select_tag :age, options_for_select(Trainer.ages, {:selected => @age_selected}), include_blank: "年齢", class: "mr-1 box-2" %>
+        <%= select_tag :activity_area, options_for_select(Trainer.activity_areas, {:selected => @activity_area_selected}), include_blank: "エリア", class: "mr-1 box-3" %>
+      <%= select_tag :teaching_history, options_for_select(Trainer.teaching_histories, {:selected => @teaching_history_selected}), include_blank: "指導歴", class: "mr-1 box-4" %>
+      <%= select_tag :strong_part, options_for_select(Trainer.strong_parts, {:selected => @strong_part_selected}), include_blank: "部位", class: "mr-1 box-5" %>
+    </div>
+    <div class="flex justify-center box-6 font-sans">
+      <%= submit_tag '検索', class: "btn btn-primary mt-2" %>
+      <%= link_to 'マップ検索はこちら', map_searches_path, class: "text-gray-600 hover:text-black text-sm mt-5 ml-2" %>
+    </div>
   <% end %>
 </div>
 <div class="">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
-    <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12"><%= @trainers_all.count%> Trainers</h2>
+    <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12 font-mono title"><%= @trainers_all.count%> Trainers</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
       <% @trainers.each do |trainer| %>
-      <div class="group h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4">
+      <div class="image h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4">
         <% if trainer.image.attached? %>
           <%= link_to trainer_path(trainer.id) do %>
           <%= image_tag trainer.image, class: "w-full h-full object-cover object-center absolute inset-0 transform scale-100 hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
@@ -25,7 +29,7 @@
             <%= image_tag ("noimage.jpg"), class: "w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200 rounded-lg shadow-lg" %>
           <% end %>
         <% end %>
-        <div class="w-full flex flex-col bg-white text-center rounded-lg relative p-4">
+        <div class="text-box w-full flex flex-col bg-white text-center rounded-lg relative p-4">
           <span class="text-gray-900 font-bold"><%= trainer.name %></span>
           <span class="text-gray-900"><%= trainer.biography %></span>
         </div>
@@ -34,7 +38,23 @@
     </div>
   </div>
 </div>
-  <div class="text-center text-2xl py-3">
+  <div class="page text-center text-2xl py-3">
   <%= paginate @trainers %>
   </div>
 </div>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+  ScrollReveal({ reset: true, distance: "60px", duration: 1000, delay: 100 });
+  ScrollReveal().reveal('.image', { delay: 100, origin: "left" });
+  ScrollReveal().reveal('.text-box', { delay: 100, origin: "bottom" });
+  ScrollReveal().reveal('.title', { delay: 100, origin: "right" });
+  ScrollReveal().reveal('.box-1', { delay: 170, origin: "top" });
+  ScrollReveal().reveal('.box-2', { delay: 130, origin: "top" });
+  ScrollReveal().reveal('.box-3', { delay: 90, origin: "top" });
+  ScrollReveal().reveal('.box-4', { delay: 50, origin: "top" });
+  ScrollReveal().reveal('.box-5', { delay: 10, origin: "top" });
+  ScrollReveal().reveal('.box-6', { delay: 60, origin: "bottom" });
+  ScrollReveal().reveal('.page', { delay: 60, origin: "bottom" });
+</script>

@@ -6,19 +6,19 @@
         <div class="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12"></div>
         <div class="w-full max-w-xl xl:px-8 xl:w-5/12">
           <div class="mt-24 bg-white rounded shadow-2xl p-7 sm:p-10">
-            <h3 class="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
+            <h3 class="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl title">
               投稿してみよう！
             </h3>
             　<%= form_with model: @photo, local: true do |f| %>
               <form>
-                <div class="mb-1 sm:mb-2">
+                <div class="mb-1 sm:mb-2 image">
                   <%= f.file_field :image, onchange: "loadImage(this);" %>
                 </div>
                 <div class="h-36 w-36" id="post_images" style="display: none;">
                   <p id="preview" ></p>
                 </div>
                 <div class="mb-1 sm:mb-2">
-                  <%= f.label :投稿文, class: "inline-block mb-1 font-medium" %><br />
+                  <%= f.label :投稿文, class: "inline-block mb-1 font-medium text" %><br />
                   <%= f.text_area :caption, autofocus: true, class: "flex-grow w-full h-32 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" %>
                 </div>
                 <div class="mt-4 mb-2 sm:mb-4">
@@ -26,7 +26,7 @@
                     投稿する
                   </button>
                 </div>
-                <p class="text-xs text-gray-600 sm:text-sm">
+                <p class="text-xs text-gray-600 sm:text-sm sub-text">
                   We respect your privacy. Unsubscribe at any time.
                 </p>
               </form>
@@ -58,3 +58,14 @@
     }
   }
 </script>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+  ScrollReveal({ reset: true, distance: "60px", duration: 800, delay: 100 });
+  ScrollReveal().reveal('.title', { delay: 200, origin: "left" });
+  ScrollReveal().reveal('.text', { delay: 400, origin: "bottom" });
+  ScrollReveal().reveal('.sub-text', { delay: 400, origin: "bottom" });
+  ScrollReveal().reveal('.image', { delay: 400, origin: "bottom" });
+</script>
+
