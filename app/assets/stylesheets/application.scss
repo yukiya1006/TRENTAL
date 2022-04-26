@@ -14,6 +14,18 @@
  *= require_self
  */
 
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(rgb(52, 72, 92), rgb(57, 47, 143));
+}
+
 .FooterSection{
   position: fixed;
   bottom: 0;
@@ -212,11 +224,14 @@
 
 
 
+
+
 svg.intro {
   position: absolute;
-  top: 40%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
+  // background: gray;
 
   .text {
     display: none;
@@ -255,12 +270,6 @@ svg.intro {
     .text-stroke:nth-child(6) {
       animation-delay: 1.8s;
     }
-    // .text-stroke:nth-child(8) {
-    //   animation-delay: 0.8s;
-    // }
-    // .text-stroke:nth-child(9) {
-    //   animation-delay: 1.2s;
-    // }
   }
 }
 
@@ -299,4 +308,9 @@ svg.intro {
     position: relative;
     top: -2px;
   }
+}
+
+
+.media-info li:not(:last-child) {
+  margin-bottom: 50px;
 }
