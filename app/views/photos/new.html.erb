@@ -1,7 +1,7 @@
 <div class="relative">
   <%= image_tag 'photos-new-bg.jpg', class: "absolute inset-0 object-cover object-contain w-full h-full" %>
-  <div class="relative bg-gray-900 bg-opacity-75" style="height: 95vh;">
-    <div class="px-4 pb- mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="relative bg-gray-900 bg-opacity-75 h-screen" style="height: 120vh;">
+    <div class="px-4 pb-36 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div class="flex flex-col items-center justify-between xl:flex-row">
         <div class="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12"></div>
         <div class="w-full max-w-xl xl:px-8 xl:w-5/12">
@@ -13,9 +13,6 @@
               <form>
                 <div class="mb-1 sm:mb-2 image">
                   <%= f.file_field :image, onchange: "loadImage(this);" %>
-                </div>
-                <div class="h-36 w-36" id="post_images" style="display: none;">
-                  <p id="preview" ></p>
                 </div>
                 <div class="mb-1 sm:mb-2">
                   <%= f.label :投稿文, class: "inline-block mb-1 font-medium text" %><br />
@@ -37,27 +34,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  function loadImage(obj)
-  {
-    var allPreview = document.getElementById('post_images');
-    var newPreview = document.createElement("p");
-    allPreview.querySelector("p").remove();
-    newPreview.setAttribute("id","preview");
-    allPreview.insertBefore(newPreview, allPreview.firstChild);
-    document.getElementById("post_images").style.display = "";
-    for (i = 0; i < obj.files.length; i++) {
-        var fileReader = new FileReader();
-        fileReader.onload = (function (e) {
-            var img = new Image();
-            img.src = e.target.result;
-            document.getElementById('preview').appendChild(img);
-        });
-      fileReader.readAsDataURL(obj.files[i]);
-    }
-  }
-</script>
 
 <script src="https://unpkg.com/scrollreveal"></script>
 
