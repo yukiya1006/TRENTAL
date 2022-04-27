@@ -1,23 +1,23 @@
 <div class="pt-12 text-gray-900 content" style="height: 95vh; background-color: #dcdcdc;">
   <div class="flex justify-center py-10">
-  <% if @user.image.attached? %>
-    <%= image_tag @user.image, class: "h-96 w-96 rounded-full mt-2 object-fit object-cover" %>
-  <% else %>
-    <%= image_tag ("noimage.jpg"), class: "h-32 w-32 rounded-full mt-2 object-fit object-cover" %>
-  <% end %>
-</div>
-<div class="flex justify-center py-2 gap-4">
-  <div class="">
-    <%= @user.name %><br>
-    <%= @user.email %>
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image, class: "h-96 w-96 rounded-full mt-2 object-fit object-cover" %>
+    <% else %>
+      <%= image_tag ("noimage.jpg"), class: "h-32 w-32 rounded-full mt-2 object-fit object-cover" %>
+    <% end %>
   </div>
-  <button class="btn btn-accent text-gray-100">
-    <%= link_to '編集', edit_user_path(@user) %>
-  </button>
-  <button class="btn btn-primary">
-    <%= link_to '退会', unsubscribe_path(@user) %>
-  </button>
-</div>
+  <div class="flex justify-center py-2 gap-4">
+    <div class="">
+      <%= @user.name %><br>
+      <%= @user.email %>
+    </div>
+    <button class="btn btn-accent text-gray-100">
+      <%= link_to '編集', edit_user_path(@user) %>
+    </button>
+    <button class="btn btn-primary">
+      <%= link_to '退会', unsubscribe_path(@user) %>
+    </button>
+  </div>
 </div>
 
 <script src="https://unpkg.com/scrollreveal"></script>
