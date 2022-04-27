@@ -134,26 +134,12 @@ background: radial-gradient(circle, rgba(171,131,217,1) 0%, rgba(48,53,156,1) 10
             </a>
             </div>
           </div>
-        </div>
-
-
-<script>
-  $(function() {
-    $('.intro').addClass('go');
-    $('.reload').click(function() {
-      $('.intro').removeClass('go').delay(200).queue(function(next) {
-        $('.intro').addClass('go');
-        next();
-      });
-
-    });
-  })
-</script>
+</div>
 
 <script src="https://unpkg.com/scrollreveal"></script>
 
 <script>
-  ScrollReveal({ reset: true, distance: "60px", duration: 800, delay: 100 });
+  ScrollReveal({ reset: true, distance: "60px", duration: 1000, delay: 100 });
   ScrollReveal().reveal('.title', { delay: 200, origin: "left" });
   ScrollReveal().reveal('.image-1', { delay: 400, origin: "bottom" });
   ScrollReveal().reveal('.image-2', { delay: 400, origin: "right" });

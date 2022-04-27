@@ -15,6 +15,7 @@ import 'chartkick/chart.js'
 import 'ham.js'
 import 'mscroll.js'
 import 'image.preview.js'
+import 'intro.js'
 
 Rails.start()
 Turbolinks.start()

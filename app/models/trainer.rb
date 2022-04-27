@@ -21,6 +21,9 @@ class Trainer < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :likers, through: :reverse_of_like_relationships, source: :liker
   has_many :baders, through: :reverse_of_bad_relationships, source: :bader
+  
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   enum activity_area: { "東京都":0,"神奈川県":1,"千葉":2,"埼玉":3 }
 
