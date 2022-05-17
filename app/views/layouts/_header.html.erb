@@ -14,7 +14,7 @@
 			</button>
 		</div>
 		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:gap-5 text-sm ">
-		    <% if user_signed_in? %>
+		  <% if user_signed_in? %>
 				<li>
 					<a>
 					  <%= link_to 'トレーナーを探す', trainers_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
@@ -40,58 +40,58 @@
 					  <%= link_to 'マイページ', user_path(current_user), class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
 					</a>
 				</li>
-			<% elsif trainer_signed_in? %>
-			<li>
-				<a>
-				  <%= link_to '投稿する', new_photo_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to '投稿一覧', photos_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to 'チャット履歴', trainer_chats_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to 'エリア登録', new_map_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to 'マイページ', trainer_path(current_trainer), class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<% else %>
-			<li>
-				<a>
-				  <%= link_to 'メンバー登録', new_user_registration_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to 'トレーナー登録', new_trainer_registration_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to 'トレーナーを見つける', trainers_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to 'メンバーログイン', new_user_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
-			<li>
-				<a>
-				  <%= link_to 'トレーナーログイン', new_trainer_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
-				</a>
-			</li>
+				<% elsif trainer_signed_in? %>
+				<li>
+					<a>
+					  <%= link_to '投稿する', new_photo_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to '投稿一覧', photos_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to 'チャット履歴', trainer_chats_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to 'エリア登録', new_map_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to 'マイページ', trainer_path(current_trainer), class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<% else %>
+				<li>
+					<a>
+					  <%= link_to 'メンバー登録', new_user_registration_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to 'トレーナー登録', new_trainer_registration_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to 'トレーナーを見つける', trainers_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to 'メンバーログイン', new_user_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
+				<li>
+					<a>
+					  <%= link_to 'トレーナーログイン', new_trainer_session_path, class: "text-md text-gray-300 hover:text-white animoBorderLeftRight" %>
+					</a>
+				</li>
 			<% end %>
 		</ul>
 	  <% if user_signed_in? %>
@@ -152,10 +152,10 @@
 			        <%= link_to 'トレーナーを見つける', trainers_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
-				      <%= link_to 'ユーザー登録', new_user_registration_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
+				      <%= link_to 'メンバー登録', new_user_registration_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
-				      <%= link_to 'ユーザーログイン', new_user_session_path, class: "font-bold text-gray-200 hover:text-white animoBorderLeftRight" %>
+				      <%= link_to 'メンバーログイン', new_user_session_path, class: "font-bold text-gray-200 hover:text-white animoBorderLeftRight" %>
 				  	</li>
 				  	<li class="mb-10">
 				      <%= link_to 'トレーナー登録', new_trainer_registration_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
@@ -166,11 +166,10 @@
 				  	<li>
 				      <%= link_to '管理者', rails_admin_path, class: "font-bold text-md text-gray-200 hover:text-white animoBorderLeftRight" %>
 			      </li>
-
 			  	<% end %>
 			  </ul>
 			</div>
-			<div class="">
+			<div>
 				<p class="my-4 text-xs text-center text-gray-100">
 					<span>Copyright © 2021</span>
 				</p>

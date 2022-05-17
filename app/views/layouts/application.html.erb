@@ -7,36 +7,19 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.13.6/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
     <link href="css/iziModal.css" rel="stylesheet" type="text/css">
   </head>
-
-  <body class="">
+  <body>
     <%= render 'layouts/header' %>
     <main class="h-screen" style="background-color: #dcdcdc;">
-      <!--<p id="notice" class="text-center bg-blue-300"><%#= notice %></p>-->
       <%= yield%>
     </main>
     <div class="FooterSection">
       <%= render 'layouts/footer' %>
     </div>
-    <script>
-      $(function() {
-        setTimeout("$('#notice').fadeOut('slow')", 2000);
-      });
-    </script>
-        <script>
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
    </script>
   </body>
-
 </html>

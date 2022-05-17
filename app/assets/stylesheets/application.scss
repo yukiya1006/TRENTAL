@@ -21,7 +21,6 @@
   box-sizing: border-box;
 }
 
-
 .FooterSection{
   position: fixed;
   bottom: 0;
@@ -36,6 +35,13 @@
   padding-bottom: 70px
 }
 
+.error {
+  color: red;
+}
+
+
+
+//*********チャット**********//
 .rooms{
   margin:0 auto;
   background-color:#fdfdfd;
@@ -116,6 +122,9 @@
   transform: rotate(-35deg);
 }
 
+
+
+//*********ヘッダー文字アニメーション**********//
 .animoBorderLeftRight{
   display:inline-block;
   position:relative;cursor:pointer}
@@ -134,9 +143,8 @@
   transform-origin:bottom left}
 
 
-.error {
-  color: red;
-}
+
+//*********モーダル**********//
 
 .modal-bg {
   position: fixed;
@@ -170,6 +178,9 @@
 
 
 
+
+//*********トップページタイトル**********//
+
 .anim-box.slide-skew.is-animated {
   animation: slide-skew 0.4s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
 }
@@ -187,16 +198,11 @@
   }
 }
 
-
-
-
-
 svg.intro {
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // background: gray;
 
   .text {
     display: none;
@@ -282,5 +288,5 @@ svg.intro {
 
 
 .title {
-  text-shadow: 0px 5px 10px rgb(0, 0, 0);
+  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
 }
