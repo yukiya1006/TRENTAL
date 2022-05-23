@@ -36,9 +36,9 @@
     </div>
   <% end %>
 <% end %>
-<div class=" text-center mt-24">
+<div class="mt-24 form">
   <%= form_with model: chat do |f| %>
-  <%= f.text_field :message %>
+  <%= f.text_field :message, class: "w-64" %>
   <%= f.hidden_field :room_id %>
   <%= f.hidden_field :trainer_id %>
   <%= f.submit "送信", class: "btn btn-info btn-xs" %>
