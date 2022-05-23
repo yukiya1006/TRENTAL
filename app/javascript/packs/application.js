@@ -9,7 +9,6 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'jquery'
 import 'jquery.jscroll.min.js'
-import 'slick.js'
 import 'jquery.jpostal.js'
 import 'chartkick/chart.js'
 import 'ham.js'

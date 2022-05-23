@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @photo = Photo.new
@@ -48,5 +49,11 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:image, :caption, :trainer_id)
+  end
+
+  def correct_user
+    @photo = Photo.find(params[:id])
+    @trainer = @photo.trainer
+    redirect_to(photos_path) unless @trainer == current_trainer
   end
 end
