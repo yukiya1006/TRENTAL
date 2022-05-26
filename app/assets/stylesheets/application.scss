@@ -110,6 +110,7 @@
 .says p {
   margin: 0;
   padding: 0;
+  word-wrap: break-word;
 }
 .mycomment {
   margin: 20px 0 0 0;
@@ -123,6 +124,8 @@
   border-radius: 12px;
   background: #30e852;
   font-size: 15px;
+  word-wrap: break-word;
+
 }
 .mycomment p:after {
   content: "";
@@ -177,7 +180,7 @@
 
 .modal-container {
   position: absolute;
-  top: 70%;
+  top: 40%;
   left: 50%;
   transform: translateX(-50%);
   background: #dcdcdc;

@@ -14,6 +14,8 @@
             <% end %>
           <% end %>
             <%= room.user.name %></br>
+            メッセージ履歴
+            <br>
             <%= Chat.where(room_id: @rooms.find_by(user_id: room.user.id)).order("id DESC").limit(1)[0]&.message %>
         </div>
         <% end %>

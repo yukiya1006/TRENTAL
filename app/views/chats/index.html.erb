@@ -16,7 +16,7 @@
           <% end %>
             <%= room.trainer.name %><br>
             <!--//&を書くと配列がなくても表示できる-->
-            <%= Chat.where(room_id: @rooms.find_by(trainer_id: room.trainer.id)).order("id DESC").limit(1)[0]&.message %>
+            最終メッセージ　<%= Chat.where(room_id: @rooms.find_by(trainer_id: room.trainer.id)).order("id DESC").limit(1)[0]&.message %>
         </div>
         <% end %>
       </div>
